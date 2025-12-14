@@ -1,10 +1,10 @@
-# 🚀 Cursor for Product Managers 🤖
+# Cursor for Product Managers 
 
 Welcome to **Cursor for Product Managers**! This repository provides a comprehensive toolkit and framework designed to supercharge your product management workflow using Cursor as an AI-native PM copilot. Originally inspired by the [Maven course on AI-native PMs](https://maven.com/p/0a96cb/cursor-isn-t-just-for-coding-how-ai-native-p-ms-work), the [AI Dev Tasks](https://github.com/snarktank/ai-dev-tasks/tree/main) structured workflow approach, and [Lee Robinson's YouTube video](https://www.youtube.com/watch?v=8QN23ZThdRY), this toolkit transforms Cursor from a coding tool into a powerful product thinking, strategic decision-making, and document creation platform.
 
 Stop wrestling with fragmented product management tools and start building a unified, AI-powered PM workspace that grows smarter with every conversation!
 
-## ✨ The Core Idea
+## The Core Idea
 
 Product management involves complex workflows across research, discovery, and delivery. This toolkit aims to bring structure, clarity, and AI-native efficiency to the process by:
 
@@ -15,7 +15,7 @@ Product management involves complex workflows across research, discovery, and de
 
 This approach helps ensure your AI copilot stays on track, makes it easier to manage complex product initiatives, and gives you confidence in AI-generated strategic content.
 
-## 🗂️ Repository Structure
+## Repository Structure
 
 ### Company Level Context (`company-level-context/`)
 - **Product Vision & Strategy** (`product-vision-and-strateggy/`): 
@@ -75,7 +75,7 @@ This approach helps ensure your AI copilot stays on track, makes it easier to ma
 
 > Tip: When referencing files in Cursor, use the exact path names above.
 
-## 🧭 Quick Start
+## Quick Start
 
 1. Clone this repository to your local workspace
 2. In Cursor, use `@` to mention files (e.g., `@company-level-context/product-vision-and-strateggy/product-strategy-review.mdc`)
@@ -85,9 +85,9 @@ This approach helps ensure your AI copilot stays on track, makes it easier to ma
    - **OKR Coaching**: `@company-level-context/okrs/okr-sparring-partner.mdc`
 4. Or begin with product development: `guides/product/create-prd.mdc` or `initiatives/_templates/setup-new-initiative.mdc`
 
-## 🚀 How to Use
+##  How to Use
 
-### 1️⃣ Setup Your AI-Native PM Workspace
+### 1️. Setup Your AI-Native PM Workspace
 
 First, ensure you have Cursor installed and these framework files accessible:
 
@@ -95,7 +95,7 @@ First, ensure you have Cursor installed and these framework files accessible:
 2. In Cursor's Agent chat, reference files with `@` (e.g., `@frameworks/continuous-discovery-habits/create-interview-snapshots.mdc`)
 3. Follow the structured workflows for different PM activities
 
-### 2️⃣ Leverage AI Dev Tasks Framework
+### 2️. Leverage AI Dev Tasks Framework
 
 This toolkit integrates with the [AI Dev Tasks](https://github.com/snarktank/ai-dev-tasks/tree/main) structured workflow for complex product initiatives:
 
@@ -104,7 +104,7 @@ This toolkit integrates with the [AI Dev Tasks](https://github.com/snarktank/ai-
 3. **Iterative Implementation**: Guide AI through one task at a time with verification checkpoints
 4. **Progress Tracking**: Visual representation of completed tasks and next steps
 
-### 3️⃣ Document-Centric Workflow
+### 3️. Document-Centric Workflow
 
 Instead of chat-based interactions, work directly in documents that grow smarter:
 
@@ -112,7 +112,7 @@ Instead of chat-based interactions, work directly in documents that grow smarter
 - **Visual Diffs**: Clearly see AI-generated content changes and modifications
 - **Continuous Learning**: Documents improve with every AI interaction and iteration
 
-## 🔄 Common Workflows
+## Common Workflows
 
 - **Create a PRD**: Start with `guides/product/create-prd.mdc`
 - **Create One-Pager**: Use `guides/product/create-1-pager.mdc` for concise product summaries
@@ -127,50 +127,8 @@ Instead of chat-based interactions, work directly in documents that grow smarter
 - **Design Team Structure**: Reference `company-level-context/team-structure/readme.md` for organizational models
 - **Start a New Initiative**: Use `initiatives/_templates/setup-new-initiative.mdc` and the `initiative-template/` structure
 
-## 🌟 Key Benefits
 
-* **Structured PM Workflow**: Enforces clear processes from research to delivery
-* **AI-Native Efficiency**: Leverages Cursor's capabilities for PM-specific tasks
-* **Context Preservation**: Maintains product context across all AI interactions
-* **Framework Integration**: Built-in proven PM methodologies and frameworks
-* **Strategic Review System**: PRISM-aligned strategy evaluation with auto-gate evidence readiness
-* **Vision & OKR Coaching**: Systematic evaluation and coaching for vision clarity and goal setting
-* **Organizational Intelligence**: Team structure models and design principles for better alignment
-* **Design Integration**: Seamless workflow from product requirements to design specifications
-* **Comprehensive Documentation**: From one-pagers to detailed PRDs and design briefs
-* **Iterative Improvement**: Documents and frameworks evolve with use
-* **Unified Knowledge Base**: Single source of truth for all PM activities
-
-## 🛠️ Framework Integration
-
-### Continuous Discovery Habits
-- **Interview Snapshots**: Structured templates for user research documentation
-- **Opportunity Mapping**: Systematic approach to identifying product opportunities
-- **Solution Generation**: AI-assisted ideation and solution development
-- **Synthesis**: Research insights consolidation and pattern recognition
-
-### Evidence-Guided Decision Making
-- Data-driven frameworks for strategic decisions
-- A/B testing templates and analysis tools
-- User behavior analysis frameworks
-- ROI calculation and measurement tools
-
-### Strategic Review & Evaluation
-- **PRISM Product Strategy Review**: Comprehensive 5-dimension evaluation framework (Problem Diagnosis, Reframe Opportunity, Intentional Bets, Systemized Execution, Momentum & Meta-Reflection) with auto-gate evidence readiness checks
-- **Product Vision Review**: 4-criteria vision evaluation system (Lofty & Inspiring, Realistic & Attainable, Constraint-Free, Grounded in User Problem) with 0-5 scoring
-- **OKR Sparring Partner**: Context-aware OKR coaching that considers organization size, industry, and maturity level for realistic, executable goal setting
-- **Team Structure Design**: Organizational models (Functional, Matrix, Value Stream, Divisional) with design principles and re-org considerations
-
-
-## 🔧 Cursor-Specific Features
-
-- **Document-Centric Work**: Work in documents rather than chats for better context retention
-- **Selective Context**: Choose what information to share with AI for focused assistance
-- **Visual Diffs**: Clearly see AI-generated changes and modifications
-- **From Instructions to Initiatives**: Build complete product initiatives step by step
-
-
-## 🙏 Acknowledgments
+## Acknowledgments
 
 - **[Cursor isn't just for coding: how AI-native PMs work](https://maven.com/p/0a96cb/cursor-isn-t-just-for-coding-how-ai-native-p-ms-work)** - Tal Raviv and Hilary Gridley's course on transforming Cursor into a PM AI copilot
 - **[AI Dev Tasks](https://github.com/snarktank/ai-dev-tasks/tree/main)** - Structured workflow framework for AI-assisted development that inspired our PM workflow approach
@@ -181,4 +139,4 @@ Instead of chat-based interactions, work directly in documents that grow smarter
 
 ---
 
-Happy AI-assisted product managing! 🚀
+Happy AI-assisted product managing! 
