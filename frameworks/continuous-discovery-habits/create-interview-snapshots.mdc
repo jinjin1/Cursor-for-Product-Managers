@@ -22,13 +22,14 @@ To guide an AI assistant in systematically extracting meaningful insights from q
 7. **Snapshot Creation**: Compile into structured interview snapshot
 8. **Quality Review**: Validate completeness and clarity
 
-## AI Instructions
+## Guide
 
 ### When Receiving Interview Data
 - **Ask clarifying questions** if data is incomplete or ambiguous
 - **Request specific examples** if only general statements are provided
 - **Confirm participant context** if demographic or behavioral details are missing
 - **Validate research goals** to ensure alignment with snapshot objectives
+- **Highlight inconsistencies** if conflicting information appears
 
 ### Data Processing Guidelines
 - **Focus on concrete behaviors** over opinions or intentions
@@ -36,6 +37,7 @@ To guide an AI assistant in systematically extracting meaningful insights from q
 - **Identify emotional moments** (frustration, delight, surprise, confusion)
 - **Capture workarounds** and problem-solving approaches
 - **Note repeated patterns** that indicate systematic issues
+- **Distinguish** between what people say vs. what they do
 
 ### Quality Standards
 - **Completeness**: All required sections must be filled
@@ -76,19 +78,7 @@ To guide an AI assistant in systematically extracting meaningful insights from q
 ### Story 1: [Descriptive title]  
 **Context:** [Time, place, situation, trigger]  
 **What Happened:** [Concrete actions taken, step by step]  
-**Outcome:** [Result or consequence of the actions]  
-
-**Key Moments:**  
-- [Specific behavioral insight with context]  
-- [Emotional response or reaction]  
-- [Workaround or adaptation used]  
-
----
-
-### Story 2: [Descriptive title]  
-**Context:** [Time, place, situation, trigger]  
-**What Happened:** [Concrete actions taken, step by step]  
-**Outcome:** [Result or consequence of the actions]  
+**Outcome:** [Result or consequence of the actions]
 
 **Key Moments:**  
 - [Specific behavioral insight with context]  
@@ -96,6 +86,7 @@ To guide an AI assistant in systematically extracting meaningful insights from q
 - [Workaround or adaptation used]  
 
 *(Repeat as needed for additional stories)*
+
 ---
 
 ## Experience Map
@@ -105,34 +96,22 @@ To guide an AI assistant in systematically extracting meaningful insights from q
 **Goal:** [Participant's desired outcome]  
 
 **Journey Stages:**
-1. **Stage 1: [Stage title]**
+1. **Stage: [Stage title]**
    - **Actions:** [Specific behaviors and steps taken]
    - **Thoughts/Feelings:** [Quotes or paraphrased emotions]
    - **Pain Points:** [Specific frustrations or challenges]
    - **Tools/Resources:** [What was used or available]
 
-2. **Stage 2: [Stage title]**
-   - **Actions:** [Specific behaviors and steps taken]
-   - **Thoughts/Feelings:** [Quotes or paraphrased emotions]
-   - **Pain Points:** [Specific frustrations or challenges]
-   - **Tools/Resources:** [What was used or available]
-
-3. **Stage 3: [Stage title]**
-   - **Actions:** [Specific behaviors and steps taken]
-   - **Thoughts/Feelings:** [Quotes or paraphrased emotions]
-   - **Pain Points:** [Specific frustrations or challenges]
-   - **Tools/Resources:** [What was used or available]
+*(Repeat for each stage in the journey)*
 
 ---
 
 ## Opportunities
 - **[Opportunity title]**: [Specific description of customer needs, pain points, desires, wants—chances for us to intervene in a way that makes our customers' lives better.]
-- **[Opportunity title]**: [Specific description of customer needs, pain points, desires, wants—chances for us to intervene in a way that makes our customers' lives better]
 
 ---
 
 ## Insights
-- **[Insight category]**: [Pattern or behavior that goes beyond a single story, e.g., user mental models, decision-making shortcuts, systemic frustrations]
 - **[Insight category]**: [Pattern or behavior that goes beyond a single story, e.g., user mental models, decision-making shortcuts, systemic frustrations]
 ```
 
@@ -140,44 +119,6 @@ To guide an AI assistant in systematically extracting meaningful insights from q
 - **Follow-up Questions**: Additional research needed
 - **Related Research**: Connections to other studies or findings
 - **Stakeholder Notes**: Implications for different teams or roles
-
-## Interaction Model
-
-### 1. Data Input Phase
-- User provides interview transcript, notes, or observations
-- AI assesses data completeness and requests clarification if needed
-- AI confirms research context and objectives
-
-### 2. Processing Phase
-- AI systematically extracts stories and behavioral insights
-- AI creates structured experience maps
-- AI identifies opportunities and patterns
-
-### 3. Review Phase
-- AI presents draft snapshot for user review
-- User provides feedback and requests modifications
-- AI iterates and improves based on feedback
-
-### 4. Finalization Phase
-- AI saves completed snapshot to specified location
-- AI confirms file creation and provides summary
-
-## Error Handling
-
-### Incomplete Data
-- **Missing Context**: Ask for session type, participant background, or research goals
-- **Vague Responses**: Request specific examples or concrete details
-- **Limited Stories**: Probe for additional behavioral examples
-
-### Ambiguous Information
-- **Multiple Interpretations**: Present alternatives and ask for clarification
-- **Unclear Relationships**: Request additional context or examples
-- **Conflicting Data**: Highlight inconsistencies and ask for resolution
-
-### Quality Issues
-- **Generalizations**: Push for specific behavioral examples
-- **Opinions vs. Behaviors**: Distinguish between what people say vs. what they do
-- **Missing Emotions**: Probe for emotional responses and reactions
 
 ## Quality Assurance Checklist
 
@@ -190,19 +131,7 @@ To guide an AI assistant in systematically extracting meaningful insights from q
 - [ ] Quotes are accurate and representative
 - [ ] Context is clear and complete
 
-### Validation Questions
-- Would a product team member understand this insight?
-- Is there enough detail to take action?
-- Does this capture the participant's actual behavior?
-- Are the opportunities specific enough to prioritize?
-
 ## Best Practices
-
-### Story Extraction
-- Ask "Tell me about the last time you..." to get specific instances
-- Focus on recent experiences for accuracy
-- Capture the sequence of actions, not just outcomes
-- Note what participants actually did vs. what they intended
 
 ### Experience Mapping
 - Start with clear boundaries (what triggers the journey, what defines success)
@@ -216,6 +145,3 @@ To guide an AI assistant in systematically extracting meaningful insights from q
 - Evaluate impact and feasibility
 - Prioritize based on frequency and severity
 
----
-
-*This framework ensures consistent, actionable interview snapshots that drive product decisions and user experience improvements.*
