@@ -1,0 +1,581 @@
+---
+name: generate-solutions
+description: >
+  Generates multiple potential solutions for identified opportunities using Teresa Torres'
+  Continuous Discovery Habits framework. Use after identifying target opportunities to
+  explore different solution directions through AI-human collaborative ideation.
+---
+
+# Generate Solutions (Continuous Discovery Habits)
+
+## Goal
+To generate multiple potential solutions for identified opportunities using Teresa Torres' Continuous Discovery Habits framework, then systematically evaluate and select the most promising approaches. This framework helps create diverse solutions through structured AI-human collaboration and ideation.
+
+---
+
+## When to Use
+- After identifying clear opportunities using [Create Opportunities](/create-opportunities)
+- When you have a well-defined target opportunity to solve
+- Before committing to a single solution approach
+- When you need to explore different solution directions
+- After synthesizing user research findings
+
+---
+
+## Input
+
+### Primary Input Sources (Choose One)
+- **Option A**: Prioritized opportunities from `opportunities/` directory
+- **Option B**: Direct opportunity input from user (ad-hoc opportunities)
+- **Option C**: Mixed approach (file-based + direct input)
+
+### Secondary Input Sources
+- Interview snapshots and synthesis documents
+- User research findings and behavioral insights
+- Current solution limitations and pain points
+- Business context and constraints
+
+### Input Requirements
+- **Minimum**: At least 1 target opportunity with supporting evidence
+- **Ideal**: 3-5 opportunities for comparison and prioritization
+- **Evidence**: User quotes, behavioral observations, or research data
+
+### Flexible Input Handling
+**When user provides direct opportunity input:**
+1. **Validate Input Quality**: Ensure opportunity is clearly defined
+2. **Request Supporting Evidence**: Ask for user quotes or behavioral data
+3. **Extract Topic**: Analyze opportunity content for semantic filename
+4. **File Existence Check**: MANDATORY - Check for existing files with pattern `solutions-[topic]-v*.md` before creating new file
+5. **Version Management**: MANDATORY - Auto-increment version number based on existing files. Never overwrite existing files
+6. **Proceed with Process**: Continue with standard solution generation
+
+**When user provides mixed input:**
+1. **Combine Sources**: Merge file-based and direct opportunities
+2. **Prioritize**: Help user select target opportunity from combined list
+3. **Standard Process**: Follow normal solution generation workflow
+
+---
+
+## Output
+**Format:** Markdown (`.md`)  
+**Location:** `solutions/[topic]/`  
+**Filename:** `solutions-[topic]-v[version].md`
+
+**Semantic Naming Guidelines:**
+- topic: kebab-case topic name extracted from opportunity content (e.g., newsletter-creation, user-onboarding)
+- version: auto-incrementing version number (v1, v2, v3...)
+- Example: solutions-newsletter-creation-v1.md
+
+**Version Management:**
+- Check existing files with same topic pattern before creating new solutions
+- Auto-increment version number (v1 → v2 → v3...)
+- Never overwrite existing solution files
+- Preserve all solution versions for comparison
+- No date dependency required  
+
+---
+
+## AI Instructions for Solution Generation
+
+### MANDATORY PROCESS ENFORCEMENT
+**CRITICAL: AI MUST NOT SKIP STEP 2 (Individual Ideation)**
+
+- **STEP 2 MANDATORY**: Request human to generate individual ideas first
+- **VIOLATION PREVENTION**: If human requests solutions without Step 2, AI must:
+  - STOP immediately
+  - Explain: "Please generate at least 3 individual ideas first (recommended: 10-15 ideas)"
+  - Wait for human's ideas before proceeding
+  - Do NOT generate solutions until Step 2 is completed
+
+### Input Validation and Processing
+**When receiving opportunity data:**
+- **Validate Input Quality**: Check if opportunities are clearly defined with supporting evidence
+- **Identify Solution Constraints**: Note technical, business, and user constraints
+- **Request Additional Context**: Ask for more details about user needs and current solutions
+- **Topic Extraction**: Analyze opportunity content to extract main topic for semantic filename
+
+**For direct opportunity input:**
+- **Clarify Context**: Ask for user segments, timing, and current solutions
+- **Request Evidence**: Ask for specific user quotes or behavioral observations
+- **Validate Scope**: Ensure opportunity is appropriately sized (leaf-node level)
+- **Extract Topic**: Analyze opportunity content for semantic filename
+
+### AI-Human Collaboration Guidelines
+- **MANDATORY WAIT**: Never generate solutions before human completes individual ideation
+- **Build on Human Ideas**: Use human's ideas as foundation, not starting point
+- **Ask Probing Questions**: "What if we looked at this differently?" "How might different user types experience this?"
+- **Expand and Vary**: Take human's ideas and suggest variations, improvements, and alternatives
+- **Cross-Pollination**: Suggest how ideas could work in different contexts or domains
+- **Maintain Focus**: Keep ideation centered on the target opportunity
+- **Encourage Diversity**: Push for different types of solutions, not just variations
+
+### Quality Standards
+- **Problem Clarity**: Each solution clearly addresses the target opportunity
+- **Evidence-Based**: Solutions grounded in user research and behavioral insights
+- **Diverse Approaches**: Multiple solution types and implementation strategies
+- **Actionable**: Solutions that can be realistically implemented
+
+### Semantic File Naming Guidelines
+- **Topic Extraction**: Analyze opportunity content to identify main topic/theme
+- **Filename Format**: Use semantic naming pattern `solutions-[topic]-v[version].md`
+- **Version Management**: Auto-increment version number based on existing files
+- **Folder Organization**: Create topic-specific subfolders for better organization
+- **No Date Dependency**: Remove all date-based filename requirements
+
+**Topic Extraction Process:**
+1. Analyze opportunity document for main theme and keywords
+2. Identify the most relevant topic/theme from opportunity content
+3. Convert to kebab-case format (e.g., "Newsletter Creation" → "newsletter-creation")
+4. Ensure topic uniqueness across different solution files
+5. Use topic as primary identifier instead of date
+
+**Version Management Process:**
+1. **MANDATORY STEP 1:** Check existing files with pattern `solutions-[topic]-v*.md`
+2. **MANDATORY STEP 2:** Find the highest version number for the same topic
+3. **MANDATORY STEP 3:** Auto-increment version number (v1 → v2 → v3...)
+4. **MANDATORY STEP 4:** Generate new filename with incremented version
+5. **MANDATORY STEP 5:** Verify no file with new filename exists before creation
+6. **CRITICAL:** Never overwrite existing files - always create new version
+7. No manual version tracking required
+
+**Smart Topic Detection:**
+- **Content Analysis**: Extract main themes from opportunity document
+- **Keyword Frequency**: Use most frequent relevant keywords as topic
+- **Kebab-Case Format**: Convert spaces to hyphens, lowercase (e.g., "User Onboarding" → "user-onboarding")
+- **Uniqueness Check**: Ensure topic doesn't conflict with existing files
+- **Fallback**: Use generic topic name if extraction fails
+
+---
+
+## Process
+
+### 0) File Management (MANDATORY PRE-STEP)
+1. **Extract topic** from opportunity document or direct input
+2. **Check existing files** with pattern `solutions-[topic]-v*.md` in target directory
+3. **Find highest version** number for same topic (e.g., if v1, v2 exist, next is v3)
+4. **Generate new filename** with incremented version: `solutions-[topic]-v[version].md`
+5. **Verify no file exists** with new filename before proceeding
+6. **CRITICAL**: Never overwrite existing files - always create new version
+
+### 1. Review Your Target Opportunity
+1. **Opportunity Alignment**: Ensure both AI and human understand the opportunity and context
+2. **Opportunity Validation**: Confirm this is an appropriately sized leaf-node opportunity
+3. **Context Review**: Review supporting evidence and user research findings
+4. **Success Criteria**: Define what success looks like for this opportunity
+
+**For direct input opportunities:**
+- **Clarify Details**: Ask for user segments, timing, and current solutions
+- **Request Evidence**: Ask for specific user quotes or behavioral observations
+- **Validate Scope**: Ensure opportunity is appropriately sized
+
+---
+
+### 2. Individual Ideation (Human) - MANDATORY
+1. **Solo Brainstorming**: Human generates initial ideas individually
+2. **Overcome Blocks**: If stuck, take a break and try again
+3. **Seek Inspiration**: Look to competitors or similar products for inspiration
+4. **Think Broadly**: Don't limit to your industry - look at other domains solving similar problems
+5. **Quantity Focus**: Aim for maximum quantity without judgment
+6. **Target**: Generate **minimum 3 individual ideas** before proceeding
+   - **Recommended**: 10-15 ideas for better diversity and quality
+   - **Time-constrained**: 3-5 ideas acceptable for quick iterations
+
+**AI MUST WAIT**: Do not proceed to Step 3 until human completes this step
+
+---
+
+### 3. AI-Human Collaborative Ideation
+1. **Share Initial Ideas**: Human presents their ideas to AI
+2. **AI Expansion**: AI builds on human ideas and generates variations
+3. **Cross-Pollination**: AI suggests different approaches and categories
+4. **Challenge Assumptions**: AI asks probing questions to explore new angles
+5. **Iterative Refinement**: Multiple rounds of collaborative ideation
+
+---
+
+### 4. Repeat and Expand (Iterative Ideation)
+1. **Multiple Rounds**: Continue individual and collaborative ideation sessions
+2. **Cross-Pollination**: Use each other's ideas to generate more ideas
+3. **Don't Skip Individual Work**: Continue solo ideation to maximize diversity
+4. **Target Quantity**: Generate 15-20 ideas for your target opportunity
+5. **Embrace Diversity**: First ideas aren't always best - seek variety and originality
+
+---
+
+### 5. Evaluate and Select Ideas
+1. **Initial Filter**: Ask "Does this idea address the target opportunity?"
+2. **Remove Irrelevant**: Filter out ideas that don't address the target opportunity
+3. **Collaborative Evaluation**: AI and human discuss and evaluate ideas together
+4. **Selection Criteria**: Focus on how well ideas address the target opportunity
+5. **Select Top 3**: Choose the 3 most promising ideas through discussion
+6. **Document Rationale**: Record why these 3 ideas were selected
+
+---
+
+## Process Flow
+
+### Continuous Discovery Workflow
+```
+Individual Interviews → Create Snapshots → Synthesize Patterns → Create Opportunities → Generate Solutions
+     ↓                    ↓                    ↓                    ↓                    ↓
+[Raw Data]        [Structured Stories]   [Shared Patterns]    [Problem Statements] [Product Ideas]
+```
+
+### Input-Output Relationship
+- **Input:** Prioritized opportunities with supporting evidence (from files or direct input)
+- **Process:** Topic extraction, AI-human collaborative ideation and evaluation
+- **Output:** Top 3 solution approaches with rationale
+- **Next Step:** Use selected solutions for further development or testing
+
+### Recommended Folder Structure
+```
+solutions/
+├── newsletter-creation/
+│   ├── solutions-newsletter-creation-v1.md
+│   └── solutions-newsletter-creation-v2.md
+├── user-onboarding/
+│   ├── solutions-user-onboarding-v1.md
+│   └── solutions-user-onboarding-v2.md
+└── payment-flow/
+    └── solutions-payment-flow-v1.md
+```
+
+---
+
+## Solution Generation Template
+
+```markdown
+# Solutions for [Opportunity Name]
+
+**Topic:** [Extracted topic name]  
+**Version:** [v1, v2, v3...]  
+**Target Opportunity:** [Opportunity statement]  
+**Source Documents:** [List of opportunities and research documents used]  
+**Total Ideas Generated:** [Number] (Target: 15-20)  
+**Final Solutions Selected:** 3
+
+---
+
+## Problem Definition
+
+### Target Opportunity Statement
+[Clear problem statement from opportunity document]
+
+### Opportunity Context
+- **Who:** [User segments affected]
+- **When:** [Context and timing of the problem]
+- **Current Solutions:** [What exists now and why it fails]
+- **Impact:** [How this problem affects users and business]
+
+### Success Criteria
+- [Measurable outcome 1]
+- [Measurable outcome 2]
+- [User behavior change expected]
+
+---
+
+## Ideation Process
+
+### Individual Ideation Sessions
+**Human Session 1:** [Date] - [Number] ideas generated
+**Human Session 2:** [Date] - [Number] ideas generated
+**Human Session 3:** [Date] - [Number] ideas generated
+
+### AI-Human Collaborative Sessions
+**Session 1:** [Date] - [Key insights and new ideas generated]
+**Session 2:** [Date] - [Key insights and new ideas generated]
+**Session 3:** [Date] - [Key insights and new ideas generated]
+
+### Total Ideas Generated: [Number]
+
+---
+
+## Idea Evaluation
+
+### Initial Filter
+**Ideas that address target opportunity:** [Number]
+**Ideas removed (don't address opportunity):** [Number]
+
+### Collaborative Evaluation Process
+**Evaluation Criteria:**
+- How well does the idea address the target opportunity?
+- Is the idea feasible given our constraints?
+- Does the idea represent a different approach from others?
+- Is the idea grounded in user research?
+
+### Evaluation Results
+| Idea | Addresses Opportunity | Feasibility | Uniqueness | Evidence-Based | Notes |
+|------|----------------------|-------------|------------|----------------|-------|
+| Idea 1 | [Yes/No] | [High/Med/Low] | [High/Med/Low] | [Yes/No] | [Comments] |
+| Idea 2 | [Yes/No] | [High/Med/Low] | [High/Med/Low] | [Yes/No] | [Comments] |
+| Idea 3 | [Yes/No] | [High/Med/Low] | [High/Med/Low] | [Yes/No] | [Comments] |
+
+---
+
+## Selected Solutions
+
+### Solution 1: [Solution Name]
+**Type:** [Feature/Process/Interface/Business Model]  
+**Approach:** [How this solution works]  
+
+**Description:**
+[Detailed explanation of the solution approach]
+
+**Key Features:**
+- [Feature 1]
+- [Feature 2]
+- [Feature 3]
+
+**User Experience:**
+[How users will interact with this solution]
+
+**Why Selected:**
+[Rationale for why this solution was chosen]
+
+**Implementation Considerations:**
+- **Feasibility:** [Technical and resource considerations]
+- **User Value:** [How well this solves the problem]
+- **Business Value:** [Alignment with business goals]
+- **Risks:** [Potential challenges and mitigation strategies]
+
+---
+
+### Solution 2: [Solution Name]
+[Repeat structure for each solution]
+
+---
+
+### Solution 3: [Solution Name]
+[Repeat structure for each solution]
+
+---
+
+## Next Steps
+- [ ] [Next development action 1]
+- [ ] [Next development action 2]
+- [ ] [Research action 1]
+- [ ] [Research action 2]
+```
+
+---
+
+## Process Validation Checkpoints (RECOMMENDED)
+
+**Before proceeding to each step, AI should verify:**
+- **Step 1**: Target opportunity clearly defined with success criteria
+- **Step 2**: Human has generated minimum 3 individual ideas (MANDATORY)
+- **Step 3**: Human's ideas have been shared and reviewed
+- **Step 4**: Multiple rounds of collaborative ideation completed (15-20 total ideas)
+- **Step 5**: Collaborative evaluation and selection completed
+
+**Note**: These checkpoints are recommended for quality assurance but not mandatory for basic usage.
+
+---
+
+## Common Antipatterns to Avoid
+
+### 1. Not Including Diverse Perspectives
+- **Problem**: Limiting ideation to single perspective or approach
+- **Solution**: AI acts as diverse thinking partner, challenging assumptions
+- **Why**: Diversity leads to more diverse ideas
+- **Practice**: AI asks probing questions and suggests alternative approaches
+
+### 2. Generating Too Many Variations of the Same Idea
+- **Problem**: Focusing on variations rather than different approaches
+- **Solution**: AI helps identify categorically different ideas
+- **Why**: Diversity matters more than quantity when selecting final 3
+- **Practice**: AI suggests different solution categories and approaches
+
+### 3. Limiting Ideation to One Session
+- **Problem**: Trying to generate all ideas in a single interaction
+- **Solution**: Allow ideas to incubate over multiple sessions
+- **Why**: Brain's problem-incubation capability is powerful
+- **Practice**: Schedule multiple ideation sessions with breaks between
+
+### 4. Selecting Ideas That Don't Address the Target Opportunity
+- **Problem**: Getting distracted by interesting but irrelevant ideas
+- **Solution**: AI helps maintain focus on target opportunity
+- **Why**: Maintains focus on strategic decisions made during opportunity selection
+- **Practice**: AI consistently asks "Does this idea address the target opportunity?"
+
+---
+
+## AI-Human Collaboration Techniques
+
+### 1. AI Expansion Techniques
+- **Build on Ideas**: Take human's idea and suggest variations or improvements
+- **Cross-Category Thinking**: Suggest how idea could work in different contexts
+- **Constraint Exploration**: Explore how idea could work with different constraints
+- **Analogous Inspiration**: Suggest similar solutions from other domains
+
+### 2. AI Challenge Techniques
+- **Assumption Testing**: Question underlying assumptions in ideas
+- **Perspective Shifting**: Ask "What if we looked at this differently?"
+- **Constraint Addition**: Explore "What if we had to do this with [constraint]?"
+- **User Perspective**: Ask "How would different user types experience this?"
+
+### 3. AI Synthesis Techniques
+- **Pattern Recognition**: Identify common themes across ideas
+- **Category Creation**: Group similar ideas and suggest missing categories
+- **Gap Analysis**: Identify areas where no ideas have been generated
+- **Combination Suggestions**: Propose combining elements from different ideas
+
+---
+
+## Solution Categories
+
+### 1. Feature-Based Solutions
+- **New Features**: Adding new capabilities to existing products
+- **Feature Improvements**: Enhancing current features
+- **Feature Removal**: Simplifying by removing complexity
+
+### 2. Process Solutions
+- **Workflow Changes**: Modifying how users complete tasks
+- **Automation**: Reducing manual steps
+- **Integration**: Connecting different tools or systems
+
+### 3. Interface Solutions
+- **UI/UX Improvements**: Better visual design and interaction
+- **Accessibility**: Making solutions usable by more people
+- **Mobile/Responsive**: Adapting for different devices
+
+### 4. Business Model Solutions
+- **Pricing Changes**: Adjusting cost structure
+- **Distribution**: Changing how users access the solution
+- **Partnerships**: Working with others to solve problems
+
+---
+
+## Quality Indicators
+
+### Strong Solutions
+- **Clear Problem Focus**: Directly addresses the target opportunity
+- **User-Centered**: Based on actual user needs and behaviors
+- **Feasible**: Realistic given constraints and resources
+- **Diverse**: Represents different approaches to solving the problem
+- **Evidence-Based**: Grounded in user research and insights
+
+### Weak Solutions
+- **Vague Description**: Unclear how the solution works
+- **Assumption-Based**: Not grounded in user research
+- **Unrealistic**: Beyond current capabilities or resources
+- **Too Similar**: Variations of the same basic approach
+- **Off-Target**: Doesn't address the target opportunity
+
+---
+
+## Error Handling
+
+### Insufficient Data
+- **Unclear Opportunities**: Request clearer problem definition before solution generation
+- **Missing Context**: Ask for additional user research or behavioral insights
+- **Weak Evidence**: Highlight areas needing stronger user validation
+
+### Quality Issues
+- **Solution-First Thinking**: Help reframe as problem-focused solutions
+- **Assumption-Based Solutions**: Push for user research validation
+- **Lack of Diversity**: Encourage different types of solutions
+- **Off-Target Ideas**: Redirect focus to target opportunity
+
+### File Naming Issues
+- **Topic Extraction Failure**: Ensure clear topic identification from opportunity content
+- **Version Conflicts**: Always check existing files before creating new solutions
+- **Incorrect Format**: Use kebab-case for topic, v[number] for version
+- **Missing Topic**: Extract main theme from opportunity document for filename
+- **Overwriting Prevention**: Never overwrite existing solution files, always increment version
+- **File Existence Check Failure**: MANDATORY - Always verify file existence before creation
+- **Version Detection Error**: If version detection fails, start with v1 and add warning note
+
+---
+
+## Best Practices
+
+### Do's
+- Generate 15-20 ideas before selecting top 3
+- Use AI as a thinking partner, not just an executor
+- Allow ideas to incubate over multiple sessions
+- Focus on ideas that address the target opportunity
+- Collaborate iteratively between human and AI
+- Build on each other's ideas
+- Challenge assumptions and explore different angles
+
+### Don'ts
+- Don't limit ideation to one session
+- Don't generate only variations of the same idea
+- Don't include ideas that don't address the target opportunity
+- Don't skip the individual ideation step
+- Don't fall in love with your first solution
+- Don't ignore AI's suggestions and challenges
+- Don't assume you know what users want
+
+---
+
+## Quality Assurance Checklist
+
+### Input Validation
+- [ ] Clear target opportunity statement with supporting evidence
+- [ ] Opportunity context and problem definition complete
+- [ ] Current solutions and their limitations documented
+
+### Ideation Quality
+- [ ] 15-20 ideas generated through multiple sessions
+- [ ] AI-human collaboration used effectively
+- [ ] Ideas represent different approaches, not just variations
+- [ ] All ideas address the target opportunity
+
+### Selection Quality
+- [ ] Collaborative evaluation process completed
+- [ ] Top 3 ideas selected based on target opportunity alignment
+- [ ] Selection rationale documented
+- [ ] Selected ideas are feasible and actionable
+
+### Process Completion
+- [ ] All solutions evaluated against criteria
+- [ ] Implementation considerations documented
+- [ ] Next steps are clear and actionable
+
+### File Naming Validation
+- [ ] **MANDATORY**: Extracted clear topic from opportunity content before creating filename
+- [ ] Filename uses semantic naming format: solutions-[topic]-v[version].md
+- [ ] Version number is correctly auto-incremented for same-topic solutions
+- [ ] Topic name is descriptive and kebab-case formatted
+- [ ] No overwriting of existing solution files
+- [ ] Topic extraction completed through content analysis before solution creation
+
+---
+
+## AI Implementation Checklist
+
+### Before Creating Any Solution File:
+1. **Topic Extraction** ✅
+   - [ ] Analyze opportunity document for main theme
+   - [ ] Extract kebab-case topic name (e.g., "newsletter-creation")
+   - [ ] Verify topic is descriptive and unique
+
+2. **File Existence Check** ✅
+   - [ ] Search for existing files: `solutions-[topic]-v*.md`
+   - [ ] List all found files with their version numbers
+   - [ ] Identify highest version number
+
+3. **Version Management** ✅
+   - [ ] Calculate next version number (highest + 1)
+   - [ ] Generate new filename: `solutions-[topic]-v[version].md`
+   - [ ] Verify new filename doesn't already exist
+
+4. **File Creation** ✅
+   - [ ] Create file with new filename only
+   - [ ] Never overwrite existing files
+   - [ ] Add version number to document header
+
+### Error Handling:
+- **If topic extraction fails**: Use generic topic name and add warning
+- **If version detection fails**: Start with v1 and add warning note
+- **If file already exists**: Increment version and try again
+- **If multiple topics found**: Use most relevant one and document choice
+
+---
+
+## Related Frameworks
+- [Create Interview Snapshots](/create-interview-snapshots)
+- [Synthesize Interview Snapshots](/synthesize-snapshots)
+- [Create Opportunities](/create-opportunities)

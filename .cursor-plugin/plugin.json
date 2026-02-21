@@ -1,0 +1,27 @@
+{
+  "name": "cursor-for-product-managers",
+  "version": "2.0.0",
+  "description": "Comprehensive PM toolkit with AI-native workflows for product strategy, discovery, and delivery. Includes 18 specialized skills, 3 orchestration subagents, and proven PM frameworks.",
+  "license": "MIT",
+  "components": {
+    "rules": [
+      ".cursor/rules/"
+    ],
+    "skills": [
+      ".cursor/skills/"
+    ],
+    "agents": [
+      ".cursor/agents/"
+    ]
+  },
+  "keywords": [
+    "product-management",
+    "pm-toolkit",
+    "continuous-discovery",
+    "okr",
+    "prd",
+    "product-strategy",
+    "user-research",
+    "ice-scoring"
+  ]
+}

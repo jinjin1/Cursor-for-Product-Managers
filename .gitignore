@@ -1,3 +1,5 @@
-# Cursor IDE settings
-.cursor/
+# Cursor IDE settings (exclude user-specific, keep skills/agents/rules)
+.cursor/mcp/
+.cursor/settings/
+.cursor/extensions/
 .DS_Store
