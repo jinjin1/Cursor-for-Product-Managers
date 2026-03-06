@@ -17,12 +17,10 @@ Outputs: **Markdown (human-readable)** + **JSON (machine-readable)** simultaneou
 ## Folder Globs (read-only)
 # Safe globs reflecting attached structure. External/unconnected materials only referenced when version snapshots exist.
 - company-level-context/**/*
-- company-level-context/okrs/**/*                     # includes okr-sparring-partner.mdc
-- company-level-context/product-vision-and-strategy/**/*  # product-strategy.md, product-strategy-review.mdc
+- company-level-context/okrs/**/*                     # includes /okr-sparring-partner skill
+- company-level-context/product-vision-and-strategy/**/*  # product-strategy.md, /product-strategy-review skill
 - team-structure/**/*                                 # team structure/role context
-- frameworks/continuous-discovery-habits/**/*         # interview/opportunity/solution/assumption-testing
-- evidence-guided/**/*                                # calculate-ICE-score.mdc etc.
-- guides/product/**/*                                 # create-1-pager.mdc, create-prd.mdc, generate-tasks.mdc, process-task-list.mdc
+- .cursor/skills/**/*                                 # all skill definitions (interview/opportunity/solution/assumption-testing, ICE scoring, PRD, tasks, etc.)
 - initiatives/**/*                                    # individual initiatives, _templates/initiative-template included
 - meetings/**/*                                       # meeting/retrospective notes
 - .cursor/rules/**/*                                  # related rule references allowed
@@ -193,7 +191,7 @@ M — Momentum & Meta-Reflection:
 - Missing required input → **HOLD** + 1-Day Evidence Sprint (specify required items)
 - Never hallucinate evidence; **only cite materials within globs and inputs**
 - Generation order: **review.json → review.md**
-- Action Items follow guides/product/process-task-list.mdc rules
+- Action Items follow /process-task-list skill rules
 - Token/length: md ≤ 900 words; Exec Summary 3–5 bullets
 
 ## How to Use (Fastest Path)
