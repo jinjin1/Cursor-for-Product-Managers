@@ -1,191 +1,173 @@
 # Cursor for Product Managers
 
-A comprehensive PM toolkit that transforms Cursor into an AI-native product management copilot. Built with **Agent Skills**, **Subagents**, and **Plugin** architecture for seamless AI-powered PM workflows.
+Transform Cursor into your AI-native product management copilot. Stop wrestling with fragmented PM tools and start building a unified, AI-powered workspace for user research, product strategy, OKR planning, PRD creation, and discovery workflows — all powered by proven frameworks like Continuous Discovery Habits, PRISM, and Evidence-Guided product development.
 
 Originally inspired by the [Maven course on AI-native PMs](https://maven.com/p/0a96cb/cursor-isn-t-just-for-coding-how-ai-native-p-ms-work), [AI Dev Tasks](https://github.com/snarktank/ai-dev-tasks/tree/main), and [Lee Robinson's demo](https://www.youtube.com/watch?v=8QN23ZThdRY).
+
+## Why This Toolkit?
+
+Product management involves complex workflows across research, discovery, and delivery. This toolkit brings structure, clarity, and AI-native efficiency to the process:
+
+1. **Unified Context Management** — Centralize all PM knowledge, frameworks, and insights in one AI-accessible workspace
+2. **Structured Discovery** — Run systematic user research with Continuous Discovery Habits (Teresa Torres) built in
+3. **AI-Native Workflows** — Create PRDs, 1-pagers, design briefs, and strategy reviews through natural conversation
+4. **Iterative Improvement** — Documents and insights grow smarter with every AI interaction
 
 ## Quick Start
 
 1. Clone this repository into your Cursor workspace
-2. Skills are automatically discovered from `.cursor/skills/`
-3. Subagents are available from `.cursor/agents/`
-4. Start using skills via `/skill-name` in Agent chat, or let the agent decide automatically
+2. Open Cursor Agent chat and start with a workflow:
 
-## Architecture
+| What you want to do | Just type |
+|:---------------------|:----------|
+| Process interview transcripts | `/create-interview-snapshots` |
+| Create a PRD | `/create-prd` |
+| Review product strategy (PRISM) | `/product-strategy-review` |
+| Start a new initiative | `/setup-initiative` |
+| Run full discovery research | `/discovery-researcher` |
 
-```
-.cursor/
-├── skills/           → 18 specialized PM skills (auto-discovered)
-├── agents/           → 3 orchestration subagents
-└── rules/            → Always-apply rules (PM copilot persona)
+Skills are automatically discovered — no configuration needed.
 
-company-level-context/ → Strategic company documents (data)
-initiatives/           → Active product initiatives (workspace)
-meeting-notes/         → Meeting documentation (workspace)
-```
+## What You Can Do
 
-## Skills (18)
+### User Research & Discovery
 
-Skills are portable, version-controlled packages that teach the AI agent how to perform PM tasks. They are automatically applied when relevant, or manually invoked with `/skill-name`.
+Run the full Continuous Discovery Habits workflow, from raw interview data to testable assumptions:
 
-### Continuous Discovery Habits
-
-| Skill | Description | Invoke |
-|:------|:------------|:-------|
-| **create-interview-snapshots** | Extract structured snapshots from interviews | `/create-interview-snapshots` |
-| **synthesize-snapshots** | Find patterns across multiple interviews | `/synthesize-snapshots` |
-| **create-opportunities** | Identify and prioritize opportunities (OST) | `/create-opportunities` |
-| **generate-solutions** | AI-human collaborative solution ideation | `/generate-solutions` |
-| **identify-test-assumptions** | Surface and test leap-of-faith assumptions | `/identify-test-assumptions` |
-
-### Product Documents
-
-| Skill | Description | Invoke |
-|:------|:------------|:-------|
-| **create-prd** | Create Product Requirements Documents | `/create-prd` |
-| **create-one-pager** | Amazon-style decision-focused 1-Pagers | `/create-one-pager` |
-| **create-design-brief** | Design briefs (JSON + Markdown) | `/create-design-brief` |
-| **generate-figma-prompt** | Figma Make-ready prompts (manual only) | `/generate-figma-prompt` |
-
-### Task Management
-
-| Skill | Description | Invoke |
-|:------|:------------|:-------|
-| **generate-tasks** | Break PRDs into actionable task lists | `/generate-tasks` |
-| **process-task-list** | Execute task lists with verification | `/process-task-list` |
-
-### Strategic Review
-
-| Skill | Description | Invoke |
-|:------|:------------|:-------|
-| **product-strategy-review** | PRISM-based strategy assessment | `/product-strategy-review` |
-| **product-vision-review** | 4-criteria vision evaluation | `/product-vision-review` |
-| **okr-sparring-partner** | OKR coaching and sparring | `/okr-sparring-partner` |
-
-### Evidence-Guided
-
-| Skill | Description | Invoke |
-|:------|:------------|:-------|
-| **calculate-ice-score** | ICE prioritization scoring | `/calculate-ice-score` |
-
-### Meetings & Writing
-
-| Skill | Description | Invoke |
-|:------|:------------|:-------|
-| **one-on-one-meeting** | 1:1 meeting notes organization | `/one-on-one-meeting` |
-| **writing-guide** | Writing style and tone standards | `/writing-guide` |
-
-### Initiative Management
-
-| Skill | Description | Invoke |
-|:------|:------------|:-------|
-| **setup-initiative** | Create new initiative folder structure (manual only) | `/setup-initiative` |
-
-## Subagents (3)
-
-Subagents are specialized AI assistants that handle complex, multi-step workflows autonomously. They orchestrate multiple skills in sequence and maintain their own context window.
-
-| Subagent | Description | Use When |
-|:---------|:------------|:---------|
-| **discovery-researcher** | Full CDH workflow: snapshots → synthesis → opportunities → solutions → assumptions | Running user research and discovery |
-| **strategy-reviewer** | Combined PRISM strategy + vision + OKR review | Reviewing strategic documents |
-| **initiative-planner** | End-to-end initiative planning: setup → 1-pager → PRD → design → tasks | Starting a new product initiative |
-
-### Invoke subagents
-
-```
-/discovery-researcher analyze these interview transcripts
-/strategy-reviewer review our Q3 product strategy
-/initiative-planner set up a new initiative for checkout optimization
-```
-
-## Rules
-
-| Rule | Scope | Description |
-|:-----|:------|:------------|
-| **pm-strategic-copilot** | Always Apply | Sets the AI as your expert product coach and strategic advisor |
-
-## Company Level Context
-
-Store your organization's strategic documents in `company-level-context/`:
-
-```
-company-level-context/
-├── okrs/                          → OKR documents
-├── product-vision-and-strategy/   → Vision and strategy docs
-└── team-structure/                → Team organization models
-```
-
-## Initiative Structure
-
-Each initiative follows a standardized structure. Use `/setup-initiative` to create one:
-
-```
-initiatives/[initiative-name]/
-├── user-interviews/
-│   ├── snapshots/      → Interview snapshots
-│   ├── synthesis/      → Cross-interview synthesis
-│   └── transcripts/    → Raw transcripts
-├── opportunities/      → Opportunity maps
-├── assumptions/        → Assumption tests
-├── solutions/          → Solution ideation
-├── design/             → Design briefs & Figma prompts
-├── prd/                → Product Requirements Documents
-├── product-analytics/  → Analytics frameworks
-└── tasks/              → Task breakdowns
-```
-
-## Common Workflows
-
-### Discovery Research
 ```
 Interview data → /create-interview-snapshots → /synthesize-snapshots
 → /create-opportunities → /generate-solutions → /identify-test-assumptions
 ```
-Or use the `/discovery-researcher` subagent to run the full flow.
 
-### Initiative Planning
+Or let the `/discovery-researcher` subagent run the entire flow for you.
+
+| Skill | What it does |
+|:------|:-------------|
+| `/create-interview-snapshots` | Extract structured snapshots from qualitative interviews |
+| `/synthesize-snapshots` | Find patterns and themes across multiple interviews |
+| `/create-opportunities` | Build an Opportunity Solution Tree (OST) |
+| `/generate-solutions` | AI-human collaborative solution ideation |
+| `/identify-test-assumptions` | Surface and test leap-of-faith assumptions |
+
+### Product Documents
+
+Create professional product artifacts through guided conversation:
+
+| Skill | What it does |
+|:------|:-------------|
+| `/create-prd` | Generate Product Requirements Documents with clarifying questions |
+| `/create-one-pager` | Amazon-style decision-focused 1-Pagers |
+| `/create-design-brief` | Design briefs in JSON + Markdown |
+| `/generate-figma-prompt` | Figma Make-ready prompts (5000 char limit) |
+
+### Product Strategy & OKRs
+
+Review and refine your strategic direction with proven frameworks:
+
+| Skill | What it does |
+|:------|:-------------|
+| `/product-strategy-review` | PRISM framework: Problem Diagnosis, Reframe, Intentional Bets, Systemized Execution, Momentum |
+| `/product-vision-review` | Evaluate vision on 4 criteria: Lofty, Realistic, Constraint-Free, User-Grounded |
+| `/okr-sparring-partner` | Context-aware OKR coaching and sparring partner |
+| `/calculate-ice-score` | ICE prioritization scoring (Impact x Confidence x Ease) |
+
+### Task Management
+
+Break strategy into execution:
+
+| Skill | What it does |
+|:------|:-------------|
+| `/generate-tasks` | Break PRDs into actionable, granular task lists |
+| `/process-task-list` | Execute task lists with verification checkpoints |
+
+### Meetings & Writing
+
+| Skill | What it does |
+|:------|:-------------|
+| `/one-on-one-meeting` | Structure and organize 1:1 meeting notes |
+| `/writing-guide` | Consistent writing style and tone standards |
+
+## Subagents — Multi-Step Workflows
+
+For complex workflows, subagents orchestrate multiple skills end-to-end:
+
+| Subagent | What it does | Example |
+|:---------|:-------------|:--------|
+| `/discovery-researcher` | Full CDH workflow: interviews → synthesis → opportunities → solutions → assumptions | `/discovery-researcher analyze these interview transcripts` |
+| `/initiative-planner` | End-to-end planning: setup → 1-pager → PRD → design → tasks | `/initiative-planner set up checkout optimization` |
+| `/strategy-reviewer` | Combined PRISM strategy + vision + OKR review | `/strategy-reviewer review our Q3 product strategy` |
+
+## Common Workflows
+
+### Starting a New Product Initiative
 ```
 /setup-initiative → /create-one-pager → /create-prd
 → /create-design-brief → /generate-tasks → /process-task-list
 ```
-Or use the `/initiative-planner` subagent to run the full flow.
+Or use `/initiative-planner` to run the full flow.
 
-### Strategic Review
+### Reviewing Strategic Direction
 ```
 /product-strategy-review (PRISM) + /product-vision-review + /okr-sparring-partner
 ```
-Or use the `/strategy-reviewer` subagent for a combined review.
+Or use `/strategy-reviewer` for a combined review.
 
-### Idea Prioritization
+### Prioritizing Ideas
 ```
 /calculate-ice-score → Score and rank ideas → Select for exploration
 ```
 
+## Project Structure
+
+```
+company-level-context/        → Your organization's strategic documents
+├── okrs/                     → OKR documents
+├── product-vision-and-strategy/ → Vision and strategy docs
+└── team-structure/            → Team organization models
+
+initiatives/                   → Active product initiatives
+├── _templates/                → Initiative template structure
+└── [initiative-name]/         → Each initiative's workspace
+    ├── user-interviews/       → Snapshots, synthesis, transcripts
+    ├── opportunities/         → Opportunity maps (OST)
+    ├── assumptions/           → Assumption tests
+    ├── solutions/             → Solution ideation
+    ├── design/                → Design briefs & Figma prompts
+    ├── prd/                   → Product Requirements Documents
+    ├── product-analytics/     → Analytics frameworks
+    └── tasks/                 → Task breakdowns
+
+meeting-notes/                 → Meeting documentation
+├── 1-1 notes/                 → One-on-one meetings
+├── leadership/                → Leadership meetings
+├── product-trio/              → PM, Design, Engineering collaboration
+└── board-n-investor/          → Board and investor meetings
+```
+
+Skills, subagents, and rules live in `.cursor/` and are auto-discovered by Cursor.
+
 ## Installation
 
 ### As a Cursor Plugin
-This repository is structured as a Cursor Plugin. Install via:
 1. Cursor Settings (Cmd+Shift+J) → Rules → Add Rule → Remote Rule (GitHub)
 2. Enter this repository's URL
 
 ### Manual Installation
-Clone the repository and open in Cursor. Skills and agents are auto-discovered.
+Clone the repository and open in Cursor. All 18 skills and 3 subagents are automatically discovered.
 
 ## Migration from v1
 
-This v2 release migrates from `.mdc` rules to the Agent Skills standard:
+This v2 release migrates from `.mdc` rules to the [Agent Skills standard](https://agentskills.io):
 - `.mdc` files with `alwaysApply: false` → `.cursor/skills/[name]/SKILL.md`
 - `.mdc` files with `alwaysApply: true` → `.cursor/rules/[name].mdc`
 - Complex workflows → `.cursor/agents/[name].md` (Subagents)
 - Legacy folders (`copilots/`, `frameworks/`, `guides/`) have been removed
-- Directory typo fixed: `product-vision-and-strateggy/` → `product-vision-and-strategy/`
 
 ## Acknowledgments
 
-- **[Cursor isn't just for coding: how AI-native PMs work](https://maven.com/p/0a96cb/cursor-isn-t-just-for-coding-how-ai-native-p-ms-work)** - Tal Raviv and Hilary Gridley's course
-- **[AI Dev Tasks](https://github.com/snarktank/ai-dev-tasks/tree/main)** - Structured workflow framework
-- **[Cursor AI Agents Work Like 10 Developers](https://www.youtube.com/watch?v=8QN23ZThdRY)** - Lee Robinson's demo
-- **[Continuous Discovery Habits](https://www.youtube.com/watch?v=9RFaz9ZBXpk)** - Teresa Torres' framework
-- **[Evidence-Guided](https://www.youtube.com/watch?v=aJWSn-tz3jQ)** - Itamar Gilad's framework
-- **[Agent Skills Standard](https://agentskills.io)** - Open standard for extending AI agents
+- **[Cursor isn't just for coding: how AI-native PMs work](https://maven.com/p/0a96cb/cursor-isn-t-just-for-coding-how-ai-native-p-ms-work)** — Tal Raviv and Hilary Gridley's course on transforming Cursor into a PM copilot
+- **[AI Dev Tasks](https://github.com/snarktank/ai-dev-tasks/tree/main)** — Structured workflow framework for AI-assisted development
+- **[Cursor AI Agents Work Like 10 Developers](https://www.youtube.com/watch?v=8QN23ZThdRY)** — Lee Robinson's demo
+- **[Continuous Discovery Habits](https://www.youtube.com/watch?v=9RFaz9ZBXpk)** — Teresa Torres' framework on continuous user research and discovery
+- **[Evidence-Guided](https://www.youtube.com/watch?v=aJWSn-tz3jQ)** — Itamar Gilad's framework on evidence-guided product development
+- **[Agent Skills Standard](https://agentskills.io)** — Open standard for extending AI agents
