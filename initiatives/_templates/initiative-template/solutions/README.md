@@ -6,7 +6,7 @@ This folder stores solution explorations and the selected top approaches for a t
 - `solutions-[opportunity-name]-[YYYY-MM-DD].md`
 
 ## 🧭 Where These Come From
-- Use `frameworks/continuous-discovery-habits/generate-solutions.mdc`.
+- Use `/generate-solutions`.
 - Outputs should be saved here per the framework’s Output section.
 
 ## ✅ Suggested Structure

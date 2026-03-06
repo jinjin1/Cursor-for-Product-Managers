@@ -15,13 +15,13 @@ This folder contains design-related artifacts for the initiative.
 ## Usage
 
 ### Design Briefs
-Use `@create-design-brief.mdc` to generate:
+Use `/create-design-brief` to generate:
 - Machine-readable JSON specifications for Figma/Make and prototyping tools
 - Stakeholder-friendly Markdown summaries
 - Design system integration with existing components and tokens
 
 ### Figma Make Prompts
-Use `@generate-figma-make-prompt.mdc` to create:
+Use `/generate-figma-prompt` to create:
 - Figma Make-ready prompts (max 5000 characters)
 - Automated design generation specifications
 - Brand-consistent design tokens and components
