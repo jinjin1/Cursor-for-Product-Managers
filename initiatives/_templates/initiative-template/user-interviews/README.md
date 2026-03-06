@@ -7,7 +7,7 @@ This folder contains all customer discovery research for this initiative.
 ### snapshots/
 Individual interview insights using the Continuous Discovery Habits methodology.
 
-**Usage:** Use `@create-interview-snapshots.mdc` to generate structured interview snapshots.
+**Usage:** Use `/create-interview-snapshots` to generate structured interview snapshots.
 
 **Naming Convention:** `snapshot-[participant-name]-[date].md`
 

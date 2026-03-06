@@ -56,9 +56,9 @@ initiatives/[initiative-name]/
 ├── opportunities/
 │   └── README.md
 ├── assumptions/
-│   └── README.md                  # Outputs from @indentify-and-test-assumptions.mdc
+│   └── README.md                  # Outputs from /identify-test-assumptions
 ├── solutions/
-│   └── README.md                  # Outputs from @generate-solutions.mdc
+│   └── README.md                  # Outputs from /generate-solutions
 ├── design/
 │   └── README.md                  # Design briefs and Figma Make prompts
 ├── product-analytics/
@@ -72,14 +72,14 @@ initiatives/[initiative-name]/
 ## Integration Points
 After creating the initiative structure, remind the user about these workflow integrations:
 
-- **User Research:** Use `@create-interview-snapshots.mdc` in `user-interviews/snapshots/`
-- **Design Briefs:** Use `@create-design-brief.mdc` in `design/` folder
-- **Figma Make Prompts:** Use `@generate-figma-make-prompt.mdc` in `design/` folder
-- **PRD Creation:** Use `@create-prd.mdc` in `prd/` folder
-- **Task Generation:** Use `@generate-tasks.mdc` with the PRD to create tasks in `tasks/` folder
-- **Task Processing:** Use `@process-task-list.mdc` to systematically work through tasks
-- **Assumption Identification:** Use `@indentify-and-test-assumptions.mdc`; outputs saved to `assumptions/`
-- **Solution Generation:** Use `@generate-solutions.mdc`; outputs saved to `solutions/`
+- **User Research:** Use `/create-interview-snapshots` in `user-interviews/snapshots/`
+- **Design Briefs:** Use `/create-design-brief` in `design/` folder
+- **Figma Make Prompts:** Use `/generate-figma-prompt` in `design/` folder
+- **PRD Creation:** Use `/create-prd` in `prd/` folder
+- **Task Generation:** Use `/generate-tasks` with the PRD to create tasks in `tasks/` folder
+- **Task Processing:** Use `/process-task-list` to systematically work through tasks
+- **Assumption Identification:** Use `/identify-test-assumptions`; outputs saved to `assumptions/`
+- **Solution Generation:** Use `/generate-solutions`; outputs saved to `solutions/`
 
 ## Validation
 Ensure the following after creation:
