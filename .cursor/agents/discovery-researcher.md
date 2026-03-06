@@ -1,9 +1,10 @@
 ---
 name: discovery-researcher
 description: >
-  Continuous Discovery Habits 전체 워크플로를 실행합니다.
-  사용자 인터뷰 데이터에서 스냅샷 → 종합 → 기회 도출 → 솔루션 → 가정 검증까지
-  자동으로 진행합니다. 인터뷰 분석, 사용자 리서치, 디스커버리를 요청할 때 사용합니다.
+  Runs the complete Continuous Discovery Habits workflow.
+  Automatically progresses from user interview data through snapshots, synthesis,
+  opportunity identification, solutions, and assumption testing.
+  Use when requesting interview analysis, user research, or discovery.
 model: inherit
 ---
 
