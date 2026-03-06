@@ -1,10 +1,10 @@
 ---
 name: initiative-planner
 description: >
-  이니셔티브 기획의 전체 사이클을 관리합니다.
-  새 이니셔티브 설정부터 PRD 작성, 디자인 브리프, 태스크 분해까지
-  전체 기획 프로세스를 자동으로 진행합니다.
-  새 프로젝트 시작, 이니셔티브 기획을 요청할 때 사용합니다.
+  Manages the complete initiative planning cycle.
+  Automatically progresses through the entire planning process from new initiative
+  setup to PRD creation, design briefs, and task breakdown.
+  Use when starting a new project or requesting initiative planning.
 model: inherit
 ---
 

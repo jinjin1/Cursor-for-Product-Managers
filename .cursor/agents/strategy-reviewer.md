@@ -1,9 +1,9 @@
 ---
 name: strategy-reviewer
 description: >
-  제품 전략, 비전, OKR을 종합적으로 리뷰합니다.
-  전략 문서 리뷰, 비전 평가, OKR 검토를 요청할 때 사용합니다.
-  PRISM 프레임워크 기반의 구조화된 피드백을 제공합니다.
+  Conducts comprehensive reviews of product strategy, vision, and OKRs.
+  Use when requesting strategy document reviews, vision assessments, or OKR evaluations.
+  Provides structured feedback based on the PRISM framework.
 model: inherit
 readonly: true
 ---
