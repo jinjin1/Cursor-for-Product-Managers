@@ -1,9 +1,10 @@
 ---
 name: discovery-researcher
 description: >
-  Runs the full Continuous Discovery Habits workflow. Automatically progresses from
-  interview snapshots to synthesis, opportunity identification, solution generation,
-  and assumption testing. Use for interview analysis, user research, and discovery.
+  Runs the complete Continuous Discovery Habits workflow.
+  Automatically progresses from user interview data through snapshots, synthesis,
+  opportunity identification, solutions, and assumption testing.
+  Use when requesting interview analysis, user research, or discovery.
 model: inherit
 ---
 

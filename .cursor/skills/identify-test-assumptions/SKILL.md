@@ -282,8 +282,8 @@ Actors: [User, Platform, Partner]
 ```
                     Evidence Known
                 Strong              Weak
-More     [A-01]  [A-03]    [A-02]  [A-04] ← LoFA (3개)
-Important [A-09]  [A-10]    [A-05]  [A-06] ← LoFA (3개)
+More     [A-01]  [A-03]    [A-02]  [A-04] ← LoFA (max 3)
+Important [A-09]  [A-10]    [A-05]  [A-06] ← LoFA (max 3)
 
 Less     [A-15]  [A-14]    [A-18]  [A-17]
 Important [A-12]  [A-11]    [A-13]  [A-16]
