@@ -52,6 +52,12 @@ To extract explicit assumptions from insights and opportunities, categorize and 
 - Preserve all assumption versions for comparison
 - No date dependency required
 
+**Source Reference (MANDATORY):**
+- Include source reference at the top of every output document
+- Format: `**Based on:** [source filename(s)]`
+- Example: `**Based on:** opportunities-user-onboarding-v2.md, solutions-user-onboarding-v1.md`
+- When source is updated, create a new version with updated source reference
+
 ---
 
 ## AI Instructions for Assumption Identification
@@ -99,6 +105,7 @@ To extract explicit assumptions from insights and opportunities, categorize and 
   - **Weak Evidence** (right side of X-axis)
   - **More Important** (top half of Y-axis)
   - **Maximum 3 LoFA** per assumption document
+  - **If more than 3 in quadrant**: Place remaining items in a "Watch List" section; test these after current LoFA tests are complete
   - **Visual indicator**: Mark with circle or highlight
 
 ### Testing Guidelines
@@ -115,11 +122,11 @@ To extract explicit assumptions from insights and opportunities, categorize and 
 - **Folder Organization:** Create topic-specific subfolders for better organization
 - **No Date Dependency:** Remove all date-based filename requirements
 
-**Topic Extraction Process:**
-1. Analyze opportunity document for main theme and keywords
-2. Identify the most relevant topic/theme from opportunity content
-3. Convert to kebab-case format (e.g., "Newsletter Creation" → "newsletter-creation")
-4. Ensure topic uniqueness across different assumption files
+**Topic Extraction Rules:**
+1. When running inside an initiative folder: use the initiative folder name as the topic
+2. When running independently: explicitly ask the user for the topic name
+3. Do NOT auto-extract topics from content analysis; topics must always be deterministic
+4. Format: kebab-case (e.g., "user-onboarding", "checkout-optimization")
 5. Use topic as primary identifier instead of date
 
 **Version Management Process:**

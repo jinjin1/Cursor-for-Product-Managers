@@ -1,7 +1,7 @@
 {
   "name": "cursor-for-product-managers",
   "version": "2.0.0",
-  "description": "Comprehensive PM toolkit with AI-native workflows for product strategy, discovery, and delivery. Includes 18 specialized skills, 3 orchestration subagents, and proven PM frameworks.",
+  "description": "Comprehensive PM toolkit with AI-native workflows for product strategy, discovery, and delivery. Includes 17 specialized skills, 3 orchestration subagents, and proven PM frameworks.",
   "license": "MIT",
   "components": {
     "rules": [

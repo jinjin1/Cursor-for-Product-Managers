@@ -4,7 +4,6 @@ description: >
   Generates Figma Make-ready prompts based on design briefs and design systems. Use when
   creating automated design generation prompts for Figma Make, with character limit
   optimization and design token mapping.
-disable-model-invocation: true
 ---
 
 # Generate Figma Make Prompt

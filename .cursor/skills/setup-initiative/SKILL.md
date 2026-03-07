@@ -4,7 +4,6 @@ description: >
   Creates a new initiative folder with standardized structure and customized templates.
   Use when starting a new product initiative to set up the complete folder structure
   with all necessary subfolders and README files.
-disable-model-invocation: true
 ---
 
 # Create New Initiative Structure
@@ -77,7 +76,6 @@ After creating the initiative structure, remind the user about these workflow in
 - **Figma Make Prompts:** Use `/generate-figma-prompt` in `design/` folder
 - **PRD Creation:** Use `/create-prd` in `prd/` folder
 - **Task Generation:** Use `/generate-tasks` with the PRD to create tasks in `tasks/` folder
-- **Task Processing:** Use `/process-task-list` to systematically work through tasks
 - **Assumption Identification:** Use `/identify-test-assumptions`; outputs saved to `assumptions/`
 - **Solution Generation:** Use `/generate-solutions`; outputs saved to `solutions/`
 

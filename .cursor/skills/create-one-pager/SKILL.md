@@ -23,6 +23,7 @@ The core purpose is to verify whether the Outcome and Opportunity are truly valu
 * **Structure:** Each section is written as a narrative paragraph, with **key summary bullets** provided below the paragraph.
 * **Section Division:** Outcome → Opportunity → Lessons → Solutions & Assumptions → Decision Requests
 * **Style:** Amazon-style 1-pager narrative (logically connected writing, avoiding unnecessary headings/list enumerations)
+* **Writing Standards:** Follow the `/writing-guide` skill rules for voice, tone, banned words, and LLM pattern avoidance.
 
 ---
 

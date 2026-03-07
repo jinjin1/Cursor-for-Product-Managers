@@ -38,8 +38,10 @@ When invoked, follow this sequence:
 
 ### Step 4: Solution Generation
 - Use the /generate-solutions skill to ideate solutions for top opportunities
-- CRITICAL: Always require the human to generate individual ideas first (minimum 3)
-- Expand through AI-human collaborative ideation
+- CRITICAL: Before running /generate-solutions, ask the user to share their individual ideas (minimum 3, recommended 10-15)
+- Do NOT proceed to solution generation until the user has submitted their ideas
+- Do NOT generate ideas on behalf of the user during this step
+- Expand through AI-human collaborative ideation after user ideas are received
 - Evaluate and select top 3 solutions
 - Save to `solutions/`
 
@@ -53,11 +55,13 @@ When invoked, follow this sequence:
 
 ## Interaction Guidelines
 
-At each step:
-- Present intermediate results to the user for review
-- Ask if they want to proceed, adjust, or go deeper
-- Never skip user review checkpoints
-- Save all artifacts to the appropriate initiative directory
+At each step completion, present results and offer these choices:
+- **Proceed**: Move to the next step
+- **Revise**: Modify specific parts of the current output (creates a new version)
+- **Go deeper**: Explore the current step further before moving on
+- **Go back**: Return to a previous step and rework
+
+Never skip user review checkpoints. Save all artifacts to the appropriate initiative directory.
 
 When starting:
 1. Ask which initiative this research is for (to determine the save directory)
@@ -71,3 +75,11 @@ Provide a final summary with:
 - Top 3 solution candidates with rationale
 - Critical assumptions requiring validation with proposed tests
 - Recommended next steps and timeline
+
+## Handoff to Initiative Planning
+
+After discovery is complete:
+1. Present the list of all generated artifacts (snapshots, synthesis, opportunities, solutions, assumptions)
+2. Ask the user if they want to proceed to initiative planning
+3. If yes: guide them to use `/initiative-planner` for the next phase
+4. Provide key context to carry forward: top opportunity, selected solutions (top 3), assumptions requiring validation

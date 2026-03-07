@@ -46,7 +46,13 @@ and ultimately **propose target opportunities for exploration**.
 - Auto-increment version number (v1 → v2 → v3...)
 - Never overwrite existing opportunity files
 - Preserve all opportunity versions for comparison
-- No date dependency required  
+- No date dependency required
+
+**Source Reference (MANDATORY):**
+- Include source reference at the top of every output document
+- Format: `**Based on:** [source filename(s)]`
+- Example: `**Based on:** synthesis-user-onboarding-v2.md`
+- When source is updated, create a new version with updated source reference
 
 ---
 
@@ -101,12 +107,11 @@ and ultimately **propose target opportunities for exploration**.
 - **Folder Organization**: Create topic-specific subfolders for better organization
 - **No Date Dependency**: Remove all date-based filename requirements
 
-**Topic Extraction Process:**
-1. Analyze interview snapshots or synthesis for common themes and keywords
-2. Identify the most frequent and relevant topic/theme
-3. Convert to kebab-case format (e.g., "Newsletter Creation" → "newsletter-creation")
-4. Ensure topic uniqueness across different opportunity files
-5. Use topic as primary identifier instead of date
+**Topic Extraction Rules:**
+1. When running inside an initiative folder: use the initiative folder name as the topic
+2. When running independently: explicitly ask the user for the topic name
+3. Do NOT auto-extract topics from content analysis; topics must always be deterministic
+4. Format: kebab-case (e.g., "user-onboarding", "checkout-optimization")
 
 **Version Management Process:**
 1. **MANDATORY STEP 1:** Check existing files with pattern `opportunities-[topic]-v*.md`
@@ -142,6 +147,13 @@ and ultimately **propose target opportunities for exploration**.
 3. **Extract key strategic elements**: vision, goals, priorities, constraints, resource status, etc.
 4. **Set opportunity evaluation criteria**: alignment with company strategy, resource availability, business impact, etc.
 5. **Prepare context utilization**: provide strategic context for priority decisions
+
+**Empty Directory Handling:**
+- If `company-level-context/` contains no documents (only `.gitkeep`):
+  1. Inform the user: "No strategic documents found in company-level-context/"
+  2. Ask the user for brief verbal strategic context (company vision, current OKRs, key constraints)
+  3. Use verbal input for strategic alignment assessment
+  4. Mark the output with: `⚠️ Strategic context based on verbal input; no formal documents referenced`
 
 ### 1. Extract Opportunities
 1. Extract customer **stories, needs, pain points, and desires** from interview snapshots and synthesis results.  
