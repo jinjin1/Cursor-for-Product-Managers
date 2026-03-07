@@ -11,7 +11,7 @@ description: >
 ## Goal
 
 Generate **consistent design briefs** from requester input, outputting both **machine-readable specifications (JSON)** for direct reference in **Figma/Make and other prototyping tools**, plus **stakeholder-friendly summaries (Markdown)**.
-Leverage the current repo's **design system** (Button, Card, Banner, MetricCard components and color/typography/spacing/radius/elevation/motion tokens) to ensure **reusability** across advertising creative, prototyping, external branding, and social media.
+If the project has a **design system**, reference its tokens and components (colors, typography, spacing, radius, elevation, motion). If no design system exists, ask the user for brand colors, typography, and grid preferences, then use those as the foundation.
 
 ---
 

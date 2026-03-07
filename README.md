@@ -78,7 +78,6 @@ Break strategy into execution:
 | Skill | What it does |
 |:------|:-------------|
 | `/generate-tasks` | Break PRDs into actionable, granular task lists |
-| `/process-task-list` | Execute task lists with verification checkpoints |
 
 ### Meetings & Writing
 
@@ -97,12 +96,44 @@ For complex workflows, subagents orchestrate multiple skills end-to-end:
 | `/initiative-planner` | End-to-end planning: setup → 1-pager → PRD → design → tasks | `/initiative-planner set up checkout optimization` |
 | `/strategy-reviewer` | Combined PRISM strategy + vision + OKR review | `/strategy-reviewer review our Q3 product strategy` |
 
+## Workflow Connections
+
+```
+                    /discovery-researcher
+                           │
+    ┌──────────────────────┼──────────────────────┐
+    ▼                      ▼                      ▼
+/create-interview   /synthesize-      /create-opportunities
+  -snapshots          snapshots              │
+                                      ┌──────┴──────┐
+                                      ▼              ▼
+                              /generate-       /calculate-
+                               solutions        ice-score
+                                   │
+                                   ▼
+                          /identify-test-
+                            assumptions
+                                   │
+               ────────── handoff ──────────
+                                   │
+                    /initiative-planner
+                           │
+    ┌──────────┬───────────┼───────────┬──────────┐
+    ▼          ▼           ▼           ▼          ▼
+/setup-    /create-    /create-   /create-   /generate-
+initiative  one-pager    prd     design-brief  tasks
+                                      │
+                                      ▼
+                              /generate-figma-
+                                  prompt
+```
+
 ## Common Workflows
 
 ### Starting a New Product Initiative
 ```
 /setup-initiative → /create-one-pager → /create-prd
-→ /create-design-brief → /generate-tasks → /process-task-list
+→ /create-design-brief → /generate-tasks
 ```
 Or use `/initiative-planner` to run the full flow.
 
@@ -153,7 +184,7 @@ Skills, subagents, and rules live in `.cursor/` and are auto-discovered by Curso
 2. Enter this repository's URL
 
 ### Manual Installation
-Clone the repository and open in Cursor. All 18 skills and 3 subagents are automatically discovered.
+Clone the repository and open in Cursor. All 17 skills and 3 subagents are automatically discovered.
 
 ## Migration from v1
 

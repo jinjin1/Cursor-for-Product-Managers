@@ -77,9 +77,7 @@ This framework guides you through analyzing multiple interview snapshots to iden
 **Initiative Name Process:**
 1. Use current initiative folder name as primary identifier
 2. Ensure initiative name is kebab-case format (e.g., "live-sports-vod-conversion")
-3. Use extracted topic instead of initiative name as primary identifier
-4. Maintain consistency across all synthesis files for same initiative
-5. No content analysis needed for topic extraction
+3. Maintain consistency across all synthesis files for same initiative
 
 **Version Management Process:**
 1. Check existing files with pattern `synthesis-[initiative-name]-v*.md`
@@ -106,6 +104,7 @@ This framework guides you through analyzing multiple interview snapshots to iden
 - **Behavioral Specificity**: Concrete examples, not generalizations
 - **Segment Clarity**: Clear understanding of user group differences
 - **Actionable Insights**: Patterns that inform product decisions
+- **Writing Standards**: Follow the `/writing-guide` skill rules for voice, tone, banned words, and LLM pattern avoidance
 
 ---
 

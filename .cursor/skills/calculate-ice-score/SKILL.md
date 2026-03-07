@@ -53,7 +53,7 @@ Ingest an idea description and current state, score it on **Impact, Confidence, 
 | 0.1 - 0.4%               | 1      |
 | ≤ 0%                     | 0      |
 
-- Automatic fallback: If no explicit percentage is provided, assume a default +1.5% improvement → Impact 2.
+- Missing data handling: If no explicit percentage is provided, first ask the user for an estimate. If the user cannot provide one, apply default +1.5% improvement (Impact 2) and add a warning in the output: `⚠️ DEFAULT VALUE: Impact uses assumed +1.5% improvement due to missing data`.
 
 ### 2) Ease Mapping (Estimated Effort: person-weeks)
 | Duration | Ease |
