@@ -1,16 +1,9 @@
 ---
 name: initiative-planner
 description: >
-<<<<<<< Updated upstream
-  Manages the complete initiative planning cycle.
-  Automatically progresses through the entire planning process from new initiative
-  setup to PRD creation, design briefs, and task breakdown.
-  Use when starting a new project or requesting initiative planning.
-=======
   Manages the full initiative planning cycle. From setup through 1-pager,
   PRD, design brief, task breakdown, and prioritization. Use when starting
   a new project or requesting initiative planning.
->>>>>>> Stashed changes
 model: inherit
 ---
 

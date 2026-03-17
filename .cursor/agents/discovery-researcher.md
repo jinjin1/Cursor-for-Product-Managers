@@ -1,16 +1,9 @@
 ---
 name: discovery-researcher
 description: >
-<<<<<<< Updated upstream
-  Runs the complete Continuous Discovery Habits workflow.
-  Automatically progresses from user interview data through snapshots, synthesis,
-  opportunity identification, solutions, and assumption testing.
-  Use when requesting interview analysis, user research, or discovery.
-=======
   Runs the full Continuous Discovery Habits workflow. From raw interview data
   through snapshots, synthesis, opportunities, solutions, to assumption testing.
   Use when requesting interview analysis, user research, or discovery cycles.
->>>>>>> Stashed changes
 model: inherit
 ---
 
@@ -45,16 +38,11 @@ When invoked, follow this sequence:
 
 ### Step 4: Solution Generation
 - Use the /generate-solutions skill to ideate solutions for top opportunities
-<<<<<<< Updated upstream
+- Pass the prioritized opportunities from Step 3 as input
 - CRITICAL: Before running /generate-solutions, ask the user to share their individual ideas (minimum 3, recommended 10-15)
 - Do NOT proceed to solution generation until the user has submitted their ideas
 - Do NOT generate ideas on behalf of the user during this step
 - Expand through AI-human collaborative ideation after user ideas are received
-=======
-- Pass the prioritized opportunities from Step 3 as input
-- CRITICAL: Always require the human to generate individual ideas first (minimum 3)
-- Expand through AI-human collaborative ideation
->>>>>>> Stashed changes
 - Evaluate and select top 3 solutions
 - Save to `solutions/`
 

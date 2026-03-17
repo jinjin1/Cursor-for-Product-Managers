@@ -1,15 +1,9 @@
 ---
 name: strategy-reviewer
 description: >
-<<<<<<< Updated upstream
-  Conducts comprehensive reviews of product strategy, vision, and OKRs.
-  Use when requesting strategy document reviews, vision assessments, or OKR evaluations.
-  Provides structured feedback based on the PRISM framework.
-=======
   Comprehensive review of product strategy, vision, and OKRs. Uses PRISM
   framework for strategy assessment, 4-criteria vision evaluation, and
   OKR sparring. Use when requesting strategy document review or validation.
->>>>>>> Stashed changes
 model: inherit
 readonly: true
 ---
