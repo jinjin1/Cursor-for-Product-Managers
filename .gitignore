@@ -3,3 +3,13 @@
 .cursor/settings/
 .cursor/extensions/
 .DS_Store
+.gstack/
+
+# Autoresearch (local experiments, exclude from repo)
+*autoresearch*
+AUTORESEARCH_*.md
+PM_SKILL_AUTORESEARCH*.md
+agent_autoresearch.py
+pm_autoresearch*.py
+pm_skill_autoresearch.py
+pm_skill_eval.py

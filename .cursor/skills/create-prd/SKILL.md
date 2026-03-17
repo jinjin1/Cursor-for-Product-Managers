@@ -11,7 +11,18 @@ description: >
 
 To guide an AI assistant in creating a detailed Product Requirements Document (PRD) in Markdown format, based on an initial user prompt. The PRD should be clear, actionable, and suitable for a junior developer to understand and implement the feature.
 
-## Process
+## When to Use
+- When defining feature requirements for development teams
+- When creating specification documents from product decisions
+- When translating user needs into actionable development specs
+- 적용 대상: 모든 PM이 기능 요구사항을 문서화할 때 사용
+
+## Input
+- **Required:** Feature description or user request
+- **Optional:** User research, 1-pager, design brief
+- **Context Source:** Reference `company-level-context/product-vision-and-strategy/` for strategic alignment
+
+## Process (단계별 워크플로우)
 
 1.  **Receive Initial Prompt:** The user provides a brief description or request for a new feature or functionality.
 2.  **Ask Clarifying Questions:** Before writing the PRD, the AI *must* ask only the most essential clarifying questions needed to write a clear PRD. Limit questions to 3-5 critical gaps in understanding. The goal is to understand the "what" and "why" of the feature, not necessarily the "how" (which the developer will figure out). Make sure to provide options in letter/number lists so I can respond easily with my selections.
@@ -81,6 +92,30 @@ Assume the primary reader of the PRD is a **junior developer**. Therefore, requi
 *   **Format:** Markdown (`.md`)
 *   **Location:** `/prd/`
 *   **Filename:** `prd-[feature-name].md`
+
+## Success Criteria
+- All 9 PRD sections completed (metric: section coverage score)
+- Success metrics are quantified with specific targets (metric: %)
+- Functional requirements numbered and unambiguous
+- Junior developer can understand without additional context (metric: clarity score)
+
+## Quality Check
+Before finalizing, validate:
+- [ ] All sections from template Structure are present
+- [ ] Success metrics are measurable
+- [ ] Non-goals clearly state boundaries
+- [ ] Open questions are documented
+
+## Decision Support
+When scope is unclear, suggest options:
+- **Option A:** MVP scope — core functionality only
+- **Option B:** Full scope — includes nice-to-haves
+- **Recommend:** Option A for time-constrained projects, Option B for strategic features
+
+## Skill Chaining
+- **Before this skill:** Use `create-one-pager` for approval, and `create-design-brief` for UX context
+- **After this skill:** Use `generate-tasks` to break PRD into development tasks
+- **Related workflow:** `create-one-pager` → this skill → `generate-tasks` → `process-task-list`
 
 ## Final instructions
 

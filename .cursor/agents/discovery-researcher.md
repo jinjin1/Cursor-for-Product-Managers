@@ -1,10 +1,16 @@
 ---
 name: discovery-researcher
 description: >
+<<<<<<< Updated upstream
   Runs the complete Continuous Discovery Habits workflow.
   Automatically progresses from user interview data through snapshots, synthesis,
   opportunity identification, solutions, and assumption testing.
   Use when requesting interview analysis, user research, or discovery.
+=======
+  Runs the full Continuous Discovery Habits workflow. From raw interview data
+  through snapshots, synthesis, opportunities, solutions, to assumption testing.
+  Use when requesting interview analysis, user research, or discovery cycles.
+>>>>>>> Stashed changes
 model: inherit
 ---
 
@@ -23,13 +29,14 @@ When invoked, follow this sequence:
 
 ### Step 2: Snapshot Synthesis (if multiple snapshots exist)
 - Use the /synthesize-snapshots skill to find patterns across interviews
+- Use the output from Step 1 (snapshots) as input
 - Identify common themes, behaviors, and pain points
 - Create integrated experience maps
-- Document segment variations
 - Save synthesis to `user-interviews/synthesis/`
 
 ### Step 3: Opportunity Identification
 - Use the /create-opportunities skill to extract opportunities
+- Use synthesis from Step 2 as the primary input
 - Focus on customer needs, pain points, and desires (not solutions)
 - Build an Opportunity Solution Tree structure
 - Prioritize using the four-lens assessment (Opportunity Sizing, Market, Company, Customer)
@@ -38,17 +45,24 @@ When invoked, follow this sequence:
 
 ### Step 4: Solution Generation
 - Use the /generate-solutions skill to ideate solutions for top opportunities
+<<<<<<< Updated upstream
 - CRITICAL: Before running /generate-solutions, ask the user to share their individual ideas (minimum 3, recommended 10-15)
 - Do NOT proceed to solution generation until the user has submitted their ideas
 - Do NOT generate ideas on behalf of the user during this step
 - Expand through AI-human collaborative ideation after user ideas are received
+=======
+- Pass the prioritized opportunities from Step 3 as input
+- CRITICAL: Always require the human to generate individual ideas first (minimum 3)
+- Expand through AI-human collaborative ideation
+>>>>>>> Stashed changes
 - Evaluate and select top 3 solutions
 - Save to `solutions/`
 
 ### Step 5: Assumption Testing
 - Use the /identify-test-assumptions skill to surface assumptions
+- Use the selected solutions from Step 4 as input
 - Categorize across: Desirability, Usability, Feasibility, Viability, Ethical
-- Map assumptions on the 2D grid (Evidence × Importance)
+- Map assumptions on the 2D grid (Evidence x Importance)
 - Select maximum 3 Leap-of-Faith assumptions
 - Design lightweight test cards with clear success criteria
 - Save to `assumptions/`
@@ -67,6 +81,14 @@ When starting:
 1. Ask which initiative this research is for (to determine the save directory)
 2. Ask what interview data is available
 3. Determine which step to start from (not always Step 1)
+
+## Error Recovery
+
+If a step fails or produces insufficient results:
+- **Missing data:** If interview data is incomplete, ask the user to provide more context or retry with alternative input
+- **Low-quality snapshots:** Re-run /create-interview-snapshots with more specific extraction guidance
+- **Blocked at synthesis:** If fewer than 3 snapshots exist, skip synthesis and move directly to opportunity identification from individual snapshots
+- **Resume from any step:** The workflow can be re-started from any step using previously saved artifacts as input
 
 ## Output
 

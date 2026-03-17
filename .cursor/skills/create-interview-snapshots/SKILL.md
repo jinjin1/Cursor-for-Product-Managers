@@ -6,145 +6,128 @@ description: >
   transcripts, creating user research snapshots, or extracting insights from user tests.
 ---
 
-# Extracting Insights from Qualitative Interviews and User Tests (Continuous Discovery Habits)
+# Extract Interview Snapshots (Continuous Discovery Habits)
 
 ## Goal
-To guide an AI assistant in systematically extracting meaningful insights from qualitative interviews or user test sessions, creating structured interview snapshots that capture specific stories, opportunities, and behavioral insights following the Continuous Discovery Habits methodology.
+Systematically extract meaningful insights from qualitative interviews or user test sessions, creating structured interview snapshots that capture stories, opportunities, and behavioral insights.
+
+## When to Use
+- Use when a PM or product manager needs structured insights from qualitative interviews or user tests
+- When processing interview transcripts following Continuous Discovery Habits methodology
+- When converting interview data into input for opportunity analysis in an initiative
+- When systematically organizing multiple interviews to identify patterns
+
+## Input
+- **Primary source**: Interview transcripts, observation notes, user test recordings
+- **Context source**: company-level-context/ (product strategy, OKR, strategic documents for context)
+- **Required**: At least 1 interview transcript or user test recording
+- **Optional**: Participant profiles, research goals, previous snapshots
 
 ## Output
-**Format:** Markdown (`.md`)  
-**Location:** `user-interviews/snapshots/`  
-**Filename:** `snapshot-[participant-name]-[date].md`
+- **Format:** Markdown (`.md`)
+- **Location:** `user-interviews/snapshots/`
+- **Filename:** `snapshot-[participant-name]-[date].md`
 
 ## Process
-1. **Data Validation**: Assess the completeness and quality of provided interview data
-2. **Context Extraction**: Identify session type, research goals, and participant context
-3. **Story Identification**: Extract specific behavioral stories, not generalizations
-4. **Experience Mapping**: Create user journey maps for key stories
-5. **Opportunity Analysis**: Identify pain points, needs, and improvement areas
-6. **Insight Synthesis**: Recognize patterns and behavioral insights
-7. **Snapshot Creation**: Compile into structured interview snapshot
-8. **Quality Review**: Validate completeness and clarity
 
-## Guide
+1. Validate inputs and gather context
+2. Execute core analysis
+3. Generate output and review results
+4. Iterate based on feedback
 
-### When Receiving Interview Data
-- **Ask clarifying questions** if data is incomplete or ambiguous
-- **Request specific examples** if only general statements are provided
-- **Confirm participant context** if demographic or behavioral details are missing
-- **Validate research goals** to ensure alignment with snapshot objectives
-- **Highlight inconsistencies** if conflicting information appears
 
-### Data Processing Guidelines
-- **Focus on concrete behaviors** over opinions or intentions
-- **Extract contextual details** (when, where, with whom, why)
-- **Identify emotional moments** (frustration, delight, surprise, confusion)
-- **Capture workarounds** and problem-solving approaches
-- **Note repeated patterns** that indicate systematic issues
-- **Distinguish** between what people say vs. what they do
+### Step 1: Data Validation
+Assess completeness and quality of provided interview data. Complete within 5 minutes.
 
-### Quality Standards
-- **Completeness**: All required sections must be filled
-- **Specificity**: Use concrete examples, not generalizations
-- **Clarity**: Write in clear, actionable language
-- **Consistency**: Follow established format and structure
-- **Insight Value**: Each insight should be actionable or informative
+### Step 2: Context Extraction
+Identify session type, research goals, and participant context.
 
-## Output Format
+### Step 3: Story Identification
+Extract specific behavioral stories, not generalizations. Focus on concrete actions.
 
-### Required Structure
+### Step 4: Experience Mapping
+Create user journey maps for key stories with actions, emotions, and pain points.
+
+### Step 5: Opportunity Analysis
+Identify pain points, needs, and improvement areas from stories.
+
+### Step 6: Insight Synthesis
+Recognize patterns and behavioral insights across stories.
+
+### Step 7: Snapshot Creation
+Compile into the structured template format below.
+
+### Step 8: Quality Review
+Validate completeness and clarity against success criteria. Improve weak areas.
+
+## Success Criteria
+- Completeness: 100% of required sections filled (Quick Facts, Stories, Experience Map, Opportunities, Insights)
+- Specificity: Each story contains at least 3 concrete behavioral details
+- Quote coverage: 70% or more of opportunities backed by direct quotes
+- Actionability: 80% or more of opportunities are addressable through product changes
+
+## Data Processing Guidelines
+- Focus on concrete behaviors over opinions or intentions
+- Extract contextual details (when, where, with whom, why)
+- Identify emotional moments (frustration, delight, surprise, confusion)
+- Capture workarounds and problem-solving approaches
+- Distinguish between what people say vs. what they do
+- Note repeated patterns indicating systematic issues
+
+## Output Template Structure
+
+Required sections and fields:
+
 ```markdown
 # Interview Snapshot: [Participant Name]
-
-**Date:** [YYYY-MM-DD]  
-**Type:** [Discovery Interview | Usability Test | Contextual Inquiry | Other]  
-**Duration:** [Minutes]  
-**Interviewer(s):** [Name(s)]  
-
----
+**Date:** [YYYY-MM-DD]
+**Type:** [Discovery Interview | Usability Test | Contextual Inquiry]
+**Duration:** [Minutes]
+**Interviewer(s):** [Name(s)]
 
 ## Quick Facts
-- **Segment:** [User profile / role / demographic]  
-- **Key Behaviors:** [2-3 observed behavior patterns]  
-- **Tools Used:** [Products, tools, services mentioned]  
-- **Experience Level:** [Novice / Intermediate / Expert / Domain-specific level]  
-- **Setting:** [Contextual environment and circumstances]  
-
----
+- **Segment / Key Behaviors / Tools Used / Experience Level / Setting**
 
 ## Memorable Quote
-> "[Direct quote that captures participant's voice and perspective]"
-
----
+> "[Direct quote capturing participant's voice]"
 
 ## Story Summary
-
-### Story 1: [Descriptive title]  
-**Context:** [Time, place, situation, trigger]  
-**What Happened:** [Concrete actions taken, step by step]  
-**Outcome:** [Result or consequence of the actions]
-
-**Key Moments:**  
-- [Specific behavioral insight with context]  
-- [Emotional response or reaction]  
-- [Workaround or adaptation used]  
-
-*(Repeat as needed for additional stories)*
-
----
+### Story 1: [Title]
+**Context:** [Time, place, situation, trigger]
+**What Happened:** [Concrete actions, step by step]
+**Outcome:** [Result or consequence]
+**Key Moments:** [Behavioral insight, emotional response, workaround]
 
 ## Experience Map
-*A text-based, visual representation of the participant's journey for a specific story. Focus on concrete actions and context, not generalizations.*
-
-**Scope:** [Start and end points of the journey]  
-**Goal:** [Participant's desired outcome]  
-
-**Journey Stages:**
-1. **Stage: [Stage title]**
-   - **Actions:** [Specific behaviors and steps taken]
-   - **Thoughts/Feelings:** [Quotes or paraphrased emotions]
-   - **Pain Points:** [Specific frustrations or challenges]
-   - **Tools/Resources:** [What was used or available]
-
-*(Repeat for each stage in the journey)*
-
----
+**Scope / Goal / Journey Stages** (Actions, Thoughts/Feelings, Pain Points, Tools)
 
 ## Opportunities
-- **[Opportunity title]**: [Specific description of customer needs, pain points, desires, wants—chances for us to intervene in a way that makes our customers' lives better.]
-
----
+- **[Title]**: [Customer needs, pain points, desires — chances to improve their experience]
 
 ## Insights
-- **[Insight category]**: [Pattern or behavior that goes beyond a single story, e.g., user mental models, decision-making shortcuts, systemic frustrations]
+- **[Category]**: [Pattern or behavior beyond a single story]
 ```
 
-### Optional Sections
-- **Follow-up Questions**: Additional research needed
-- **Related Research**: Connections to other studies or findings
-- **Stakeholder Notes**: Implications for different teams or roles
+## Decision Support
 
-## Quality Assurance Checklist
+- **Option A — Full Snapshot**: Recommend for discovery interviews with rich behavioral data. All sections with detailed experience maps.
+- **Option B — Quick Snapshot**: Suggest for usability tests or follow-up sessions. Quick Facts, Stories, and Opportunities only.
+- **Option C — Synthesis-Ready Snapshot**: Recommend when preparing for cross-interview synthesis. Emphasize patterns, quotes, and opportunity statements.
 
-### Before Finalizing
-- [ ] All required sections are complete
-- [ ] Stories contain concrete behavioral details
-- [ ] Experience map follows logical flow
-- [ ] Opportunities are specific and actionable
-- [ ] Insights go beyond individual stories
-- [ ] Quotes are accurate and representative
-- [ ] Context is clear and complete
+Selection depends on interview type, data richness, and next-step purpose.
 
-## Best Practices
+## Quality Review
+Before finalizing, evaluate and validate:
+- All required sections complete with concrete behavioral details
+- Experience map follows logical flow; opportunities are specific and actionable
+- Insights go beyond individual stories; quotes are accurate
+- Iterate to improve specificity where needed
 
-### Experience Mapping
-- Start with clear boundaries (what triggers the journey, what defines success)
-- Focus on concrete actions and decisions
-- Include emotional states and pain points
-- Map the complete journey, not just the happy path
+## Workflow Integration
 
-### Opportunity Identification
-- Connect opportunities to specific stories and behaviors
-- Consider both explicit needs and implicit frustrations
-- Evaluate impact and feasibility
-- Prioritize based on frequency and severity
+**Before** this skill: Conduct interviews and transcription to collect raw data.
+**After** this skill: [Create Opportunities](/create-opportunities) to extract and prioritize opportunities from snapshots. Also feeds into [Calculate ICE Score](/calculate-ice-score) as evidence.
+
+```
+Interview → Create Snapshots → Synthesize → Create Opportunities → Solutions
+```

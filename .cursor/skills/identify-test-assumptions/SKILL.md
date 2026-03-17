@@ -6,36 +6,21 @@ description: >
   ideas, surfacing leap-of-faith assumptions, or designing lightweight tests.
 ---
 
-# Identify and Test Assumptions (Continuous Discovery Habits)
-
-## Goal
-To extract explicit assumptions from insights and opportunities, categorize and prioritize them to identify "leap-of-faith" assumptions, and design a lightweight, iteratively-scaled testing plan that reduces risk across desirability, usability, feasibility, viability, and ethical dimensions.
-
----
+# Identify and Test Assumptions
 
 ## When to Use
-- After creating opportunities using [Create Opportunities](/create-opportunities)
-- After synthesizing interviews using [Synthesize Interview Snapshots](/synthesize-snapshots)
-- When preparing to generate or downselect solutions with [Generate Solutions](/generate-solutions)
-- Whenever a new idea is proposed and you need to surface and derisk its underlying assumptions
-
----
+- Use when a PM needs to validate ideas before investing in development
+- After creating opportunities with [Create Opportunities](/create-opportunities) or after synthesizing interviews with [Synthesize Snapshots](/synthesize-snapshots)
+- Before or after [Generate Solutions](/generate-solutions) in the workflow
+- When any new initiative requires systematic risk assessment
 
 ## Input
-- **Primary Sources:**
-  - Prioritized opportunities from `opportunities/`
-  - Early solution sketches from `solutions/`
-  - Interview snapshots from `user-interviews/snapshots/`
-  - Synthesis documents from `user-interviews/synthesis/`
-- **Optional Sources:**
-  - Product analytics or behavioral data
-- **Minimum Requirements:**
-  - 1 target opportunity with supporting evidence, and
-  - 2–3 candidate solution ideas OR a single idea with key user journeys
-
----
+- **Required:** Prioritized opportunities from `opportunities/`, solution sketches from `solutions/`, interview snapshots/synthesis
+- **Context:** Reference `company-level-context/` for company-level OKR and strategy alignment
+- **Minimum:** 1 target opportunity with evidence + 2-3 candidate solutions (or 1 solution with key user journeys)
 
 ## Output
+<<<<<<< Updated upstream
 **Format:** Markdown (`.md`)
 **Location:** `assumptions/[topic]/`
 **Filename:** `assumptions-[opportunity-name]-v[version].md`
@@ -146,118 +131,108 @@ To extract explicit assumptions from insights and opportunities, categorize and 
 - **Fallback:** Use generic topic name if extraction fails
 
 ---
+=======
+- **Format:** Markdown, saved to `assumptions/[topic]/`
+- **Filename:** `assumptions-[opportunity-name]-v[version].md` (kebab-case, auto-increment version)
+- **Template structure:** Each file has required sections: Story Map, Assumption Log, Assumption Map, Test Cards, Results
+- **Version management:** Check existing files before creation; never overwrite previous versions
+>>>>>>> Stashed changes
 
 ## Process
 
-### 0) File Management (MANDATORY PRE-STEP)
-1. **Extract topic** from opportunity document content
-2. **Check existing files** with pattern `assumptions-[topic]-v*.md` in target directory
-3. **Find highest version** number for same topic (e.g., if v1, v2 exist, next is v3)
-4. **Generate new filename** with incremented version: `assumptions-[topic]-v[version].md`
-5. **Verify no file exists** with new filename before proceeding
-6. **CRITICAL**: Never overwrite existing files - always create new version
+### Step 1: File management (mandatory pre-step)
+1. Extract topic from opportunity document content
+2. Check existing `assumptions-[topic]-v*.md` files; find highest version
+3. Generate new filename with incremented version; verify no conflict
 
-### 1) Prepare Context and Actors
-1. Confirm target opportunity and desired outcome(s).
-2. Identify key actors (end-user types, internal systems, third parties).
+### Step 2: Prepare context
+1. Confirm target opportunity and desired outcomes
+2. Identify key actors (end-users, systems, third parties)
 
-### 2) Story Map Candidate Ideas (or Key Journeys)
-1. Assume the solution exists; map what users do to get value.
-2. Sequence steps by actor; highlight moments critical to success.
+### Step 3: Story-map candidate ideas
+1. Assume the solution exists; map what users do to get value
+2. Sequence steps by actor; highlight critical moments
 
-### 3) Generate Assumptions (Five Categories)
+### Step 4: Generate assumptions (five categories)
 For each pivotal step, enumerate assumptions across: Desirability, Usability, Feasibility, Viability, Ethical.
+- Phrase positively and specifically (what must be true)
+- Tie to behavior, not opinions; attach evidence where available
 
-### 4) Pre-Mortem (Prospective Hindsight)
-"It's six months later; launch failed. What went wrong?" Convert reasons into specific assumptions that must be true.
+### Step 5: Pre-mortem
+"Six months later, launch failed. What went wrong?" Convert reasons into testable assumptions.
 
-### 5) Walk OST Lines (Outcome ↔ Opportunity ↔ Solution)
-Write why the solution addresses the opportunity and drives the outcome. Extract each inference as a testable assumption (esp. viability).
+### Step 6: Walk OST lines (Outcome-Opportunity-Solution)
+Write why the solution addresses the opportunity. Extract each inference as a testable assumption.
 
-### 6) Normalize, Deduplicate, and Attach Evidence
-Rewrite assumptions to be positive, specific, and single-concept. Link supporting quotes, behaviors, analytics.
+### Step 7: Normalize and deduplicate
+Rewrite assumptions to be positive, specific, single-concept. Link supporting quotes/data.
 
-### 7) Map and Prioritize (Assumption Mapping)
-1. **Plot all assumptions** on 2D grid using binary classification
-2. **Identify top-right quadrant** (Weak Evidence + More Important)
-3. **Select maximum 3 assumptions** from this quadrant
-4. **If more than 3 in quadrant**: Prioritize by impact, test complexity, dependencies
-5. **Mark selected LoFA** with visual indicator
+### Step 8: Map and prioritize (Assumption Mapping)
+1. Plot on 2D grid: X=Evidence (strong left, weak right), Y=Importance (high top, low bottom)
+2. Select max 3 Leap-of-Faith Assumptions (LoFA) from top-right quadrant (weak evidence + high importance)
+3. If more than 3 in quadrant, prioritize by impact, test complexity, dependencies
 
-### 8) Define Test Cards for LoFA Assumptions
-For each of the 3 selected LoFA, design the smallest simulation with clear success criteria, sample size, method, audience, and time window.
+### Step 9: Design test cards for LoFA
+For each LoFA, define: simulation, method, audience, sample size, time window, and success criteria (absolute numbers, e.g., "3/10 do X").
 
-### 9) Run Tests → Record Results → Update the Map
-Move assumptions leftward as evidence grows; iterate simulation quality or move to next riskiest item.
+### Step 10: Run tests, record results, update map
+Move assumptions leftward as evidence grows. Iterate or proceed based on findings.
 
-### 10) Decide and Proceed
-Use accumulated evidence to: evolve the idea, change the opportunity focus, or scale the solution test.
+## Success Criteria
+- At least 3 LoFA identified with clear test designs (success metric: 3/3 test cards complete)
+- Each test card has absolute-number success criteria (not percentages)
+- All five assumption categories covered
+- Evidence citations linked to each assumption where available
 
----
+## Decision Support
+Based on test results, recommend one of these options:
+- **Option A: Proceed** — Recommend when 70% or more of LoFA pass their tests
+- **Option B: Iterate** — Suggest when some LoFA pass but others need refinement
+- **Option C: Pivot** — Suggest when critical assumptions fail; explore alternative opportunities
 
-## Output Structure (assumptions-[opportunity-name]-v[version].md)
+## Context Preservation
+- Always reference `company-level-context/` for strategic alignment and OKR context
+- Review previous assumption versions to track how understanding evolved over time
+- Ensure assumptions connect to existing company-level strategy and product vision
+
+## Self-Evaluation
+- Review and validate assumption quality: Are they specific, behavioral, and testable?
+- Evaluate test design: Is the simulation minimal? Is the audience correct?
+- After results, improve the process: What false positives/negatives occurred? How to iterate?
+- Use feedback from test outcomes to refine future assumption identification
+
+## Skill Integration
+- **Before this skill:** Run after [Create Opportunities](/create-opportunities) or [Generate Solutions](/generate-solutions)
+- **After this skill:** Feed results into [Generate Solutions](/generate-solutions) for solution refinement
+- **Workflow:** Opportunities > Solutions > Assumptions > Test > Iterate
+
+## Output Template Structure
 
 ```markdown
 # Assumptions — [Opportunity Name]
-
-**Topic:** [Extracted topic name]  
-**Version:** [v1, v2, v3...]  
-**Target Opportunity:** [Opportunity statement]  
-**Related Documents:** [Snapshots/Synthesis/Opportunities/Solutions]
-
----
+**Topic:** [topic] | **Version:** [vN] | **Target Opportunity:** [statement]
 
 ## Story Map Snapshot
-- **Actors:** [End-user types, systems, partners]
-- **Key Steps:**
-  1. [Actor] — [Step]
-  2. [Actor] — [Step]
-
----
+- **Actors:** [types] | **Key Steps:** 1. [Actor] — [Step] ...
 
 ## Assumption Log
-| ID | Category | Assumption (positive, specific) | Evidence (link/quote/data) | Importance | Evidence Known | LoFA |
-|----|----------|----------------------------------|-----------------------------|------------|----------------|------|
-| A-01 | Desirability | [What must be true] | [Quote/analytics/ref] | More/Less Important | Strong/Weak | Yes/No |
+| ID | Category | Assumption | Evidence | Importance | Evidence Known | LoFA |
+|----|----------|------------|----------|------------|----------------|------|
 
----
+## Assumption Map Summary
+- **LoFA (max 3):** [IDs] | **Notable clusters:** [notes]
 
-## Assumption Map (Summary)
-- **Top-right (LoFA):** [A-01, A-07, A-12] - Maximum 3 assumptions
-- **Notable clusters:** [e.g., viability assumptions lacking data]
-- **Visual Grid:** Use 2D grid with binary classification (Strong/Weak Evidence, More/Less Important)
-
----
-
-## Test Cards (LoFA)
-
-### Test Card: [A-01] — [Short name]
-- **Assumption:** [Assumption statement]
-- **Simulation:** [Prototype/mock experience/data query/concept test]
-- **Method:** [Unmoderated test | 1-question survey | Customer letter technique|  Data Analysis | Concierge Test | Wizard of Oz | Usability Test | Live-data prototype | Fake door test | Landing Page Demand Test | Ealry Adopters | Longitudinal User Study | Qualitative Value Testing | Dogfood | Fishfood | Smoke Tests]
-- **Audience:** [Screening criteria; segment]
-- **Sample Size & Window:** [e.g., n=10 over 2 days]
-- **Success Criteria:** [e.g., ≥ 3/10 do X]
-- **Risks & Biases:** [Key concerns and mitigations]
-- **Next Step if Pass/Fail:** [Scale test / iterate assumption / Experiment(e.g., Multivariate, A/B tests) / pivot idea]
-
-*(Repeat per LoFA assumption)*
-
----
+## Test Cards (per LoFA)
+- **Assumption / Simulation / Method / Audience / Sample & Window / Success Criteria / Next if Pass-Fail**
 
 ## Results and Decisions
-- **Outcomes:** [Observed behaviors vs. criteria]
-- **Map Update:** [Assumptions moved left; new LoFA]
-- **Decisions:** [Proceed/iterate/stop; changes to opportunity or idea]
-
----
+- Outcomes / Map updates / Decisions
 
 ## Next Steps
-- [ ] Run next LoFA test
-- [ ] Evolve idea based on findings
-- [ ] Share summary with stakeholders
+- [ ] Run next test | [ ] Evolve idea | [ ] Share with stakeholders
 ```
 
+<<<<<<< Updated upstream
 ---
 
 ## Templates
@@ -454,3 +429,9 @@ assumptions/
 - [Synthesize Interview Snapshots](/synthesize-snapshots)
 - [Create Opportunities](/create-opportunities)
 - [Generate Solutions](/generate-solutions)
+=======
+## Time Efficiency
+- Complete assumption identification within 60 minutes per opportunity
+- Test card design should take no more than 30 minutes per LoFA
+- Start with the smallest viable simulation; scale only with positive signals
+>>>>>>> Stashed changes

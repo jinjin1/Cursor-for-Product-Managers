@@ -6,235 +6,138 @@ description: >
   ordering backlogs, or selecting items for exploration and experiments.
 ---
 
-# ICE-based Idea Prioritization (Evidence-Guided)
+# ICE-based Idea Prioritization
 
 ## Goal
-Ingest an idea description and current state, score it on **Impact, Confidence, and Ease**, and compute the **ICE Score = Impact × Confidence × Ease** to propose an execution priority. All evaluations must follow explicit criteria and rely only on stated evidence—no inference or guesswork.
-
----
+Score an idea on **Impact, Confidence, and Ease**, compute **ICE = I x C x E**, and propose execution priority. All evaluations rely on explicit evidence only.
 
 ## When to Use
-- To quickly order an idea backlog and select items for exploration and experiments
-- When you have at least some explicit evidence (interviews/data/tests) and a rough team effort estimate
-- Before drafting experiment plans for a leaf opportunity in an Opportunity-Solution Tree
-
----
+- Use when a PM or product manager needs to quickly order an idea backlog and select items for exploration
+- Before drafting experiment plans for a leaf opportunity in an Opportunity Solution Tree
+- When you have explicit evidence (interviews/data/tests) and a rough effort estimate for an initiative
 
 ## Input
-- **Idea title and description**: goal, target metric, scope, and working hypothesis
-- **Idea analysis and current state**: data/user/market/test evidence, execution hypothesis, risks, and effort estimate
-- Optional:
-  - Target metric and expected change rate (%) or range
-  - Estimated effort (person-weeks)
-
----
+- **Idea title and description**: goal, target metric, scope, hypothesis
+- **Idea analysis**: data/user/market/test evidence, risks, effort estimate
+- **Context source**: company-level-context/ (strategic goals, OKR, product strategy for alignment)
+- Optional: target metric change (%), estimated effort (person-weeks)
 
 ## Output
-- **Format:** Markdown (`.md`)
-- **Location:** `initiatives/[initiative]/solutions/`
+- **Format:** Markdown — **Location:** `initiatives/[initiative]/solutions/`
 - **Filename:** `ice-[YYYY-MM-DD]-[slugified-idea-title].md`
-
----
-
-## Scoring Model
-
-### 1) Impact Mapping
-| Target Metric Change (%) | Impact |
-|--------------------------|--------|
-| > 50%                    | 10     |
-| 35 - 49.9%               | 9      |
-| 25 - 34.9%               | 8      |
-| 18 - 24.9%               | 7      |
-| 12 - 17.9%               | 6      |
-| 7 - 11.9%                | 5      |
-| 4 - 6.9%                 | 4      |
-| 2 - 3.9%                 | 3      |
-| 0.5 - 1.9%               | 2      |
-| 0.1 - 0.4%               | 1      |
-| ≤ 0%                     | 0      |
-
-- Missing data handling: If no explicit percentage is provided, first ask the user for an estimate. If the user cannot provide one, apply default +1.5% improvement (Impact 2) and add a warning in the output: `⚠️ DEFAULT VALUE: Impact uses assumed +1.5% improvement due to missing data`.
-
-### 2) Ease Mapping (Estimated Effort: person-weeks)
-| Duration | Ease |
-|---------|------|
-| < 1 week | 10 |
-| 1–2 weeks | 9 |
-| 3–4 weeks | 8 |
-| 5–6 weeks | 7 |
-| 6–7 weeks | 6 |
-| 8–9 weeks | 5 |
-| 10–12 weeks | 4 |
-| 13–16 weeks | 3 |
-| 17–25 weeks | 2 |
-| ≥ 26 weeks | 1 |
-
-### 3) Evidence Types (Count only evidence directly tied to Impact)
-| Evidence Type | Description |
-|---|---|
-| Test Results | A/B tests, longitudinal user studies, beta experiments, large MVPs with quantitative validation |
-| User-based Evidence | Product usage data, 20+ user interviews, usability studies, MVP results/feedback |
-| Market Data | Surveys, smoke tests, "table stakes" in the competitive set |
-| Empirical Evidence | Few data points, sales requests, 1–3 interested customers, one competitor has the feature |
-| Estimates & Plans | Internal model-based estimates, feasibility review with Eng/Design, schedule/business model analysis |
-| Opinions of Others | Executives/colleagues/experts/investors opinions |
-| Directional Fit | Alignment with company vision/strategy, tech/market trends, external research, macro trends |
-| Self-belief | Personal intuition/gut feel/experience |
-
-- Caution: Use only explicitly stated evidence in the input. No inference.
-- Statements like "intuitively", "personally I think", "my gut says" → classify as Self-belief.
-- Without explicit quantitative backing, do not accept as Market Data or Estimates & Plans.
-
-### 4) Confidence Calculation
-- Principle: Include only evidence that directly supports Impact.
-- Per-type contribution = MIN(Weight × count, Max)
-- Group caps (sum upper bounds):
-  - Self-belief + Directional Fit ≤ 0.1
-  - Opinions of Others + Estimates & Plans ≤ 0.5
-  - Market Data + User-based Evidence ≤ 3.0
-
-| Evidence Type | Weight | Max |
-|---|---:|---:|
-| Self-belief | 0.01 | 0.1 |
-| Directional Fit | 0.05 | 0.1 |
-| Opinions of Others | 0.10 | 0.5 |
-| Estimates & Plans | 0.30 | 0.5 |
-| Empirical Evidence | 0.50 | 1.0 |
-| Market Data | 1.0 | 3.0 |
-| User-based Evidence | 2.0 | 3.0 |
-| Test Results | 3.0 | 5.0 |
-
-- Keyword hints (examples): "test/experiment/AB", "user request/behavioral data", "market/competitor/table stakes", "estimate/modeling", "intuition/gut/personally".
-
-### 5) ICE Score and Priority Interpretation
-- Formula: ICE = Impact × Confidence × Ease
-- Interpretation:
-  - ≥ 250: Consider immediate execution (high expected ROI)
-  - 150–249: Promising; recommend additional precision testing
-  - 100–149: Proceed with mitigations or phase-two testing
-  - < 100: On hold or needs strengthening
-
----
 
 ## Process
 
-1) Input validation
-- Verify target metric, expected change (%), evidence text, and estimated effort (person-weeks)
-- If missing, ask clarifying questions about metric/change, effort, and evidence type/source
+1. Validate inputs and gather context
+2. Execute core analysis
+3. Generate output and review results
+4. Iterate based on feedback
 
-2) Impact scoring
-- Map % change to table; if missing, apply default Impact 2
 
-3) Ease scoring
-- Map person-weeks to table; if uncertain, use conservative lower ease
+### Step 1: Input Validation
+Verify target metric, expected change (%), evidence text, and effort (person-weeks). If missing, ask clarifying questions.
 
-4) Evidence extraction and classification
-- Count only Impact-related evidence from the input
-- Tally per type and apply group caps
+### Step 2: Impact Scoring
+Map % change to Impact table. Default: +1.5% = Impact 2.
 
-5) Confidence calculation
-- Sum per-type contributions → apply group caps → final Confidence (0–10)
+| Target Metric Change (%) | Impact |
+|--------------------------|--------|
+| > 50% | 10 | 35-49.9% | 9 | 25-34.9% | 8 | 18-24.9% | 7 |
+| 12-17.9% | 6 | 7-11.9% | 5 | 4-6.9% | 4 | 2-3.9% | 3 |
+| 0.5-1.9% | 2 | 0.1-0.4% | 1 | <= 0% | 0 |
 
-6) ICE computation and bucket
-- Compute ICE = I × C × E; assign interpretation bucket
+### Step 3: Ease Scoring
+Map person-weeks to Ease table. If uncertain, use conservative lower ease.
 
-7) Report generation
-- Include score table, calculation rationale, cap applications, risks/assumptions, and recommended next steps
+| Duration | Ease |
+|---------|------|
+| < 1 wk: 10 | 1-2 wk: 9 | 3-4 wk: 8 | 5-6 wk: 7 | 6-7 wk: 6 |
+| 8-9 wk: 5 | 10-12 wk: 4 | 13-16 wk: 3 | 17-25 wk: 2 | >= 26 wk: 1 |
 
----
+### Step 4: Evidence Classification
+Count only Impact-related evidence. Evidence types and weights:
 
-## Output Format
+| Evidence Type | Weight | Max | Group Cap |
+|---|---:|---:|---|
+| Self-belief | 0.01 | 0.1 | A: <= 0.1 |
+| Directional Fit | 0.05 | 0.1 | A: <= 0.1 |
+| Opinions of Others | 0.10 | 0.5 | B: <= 0.5 |
+| Estimates & Plans | 0.30 | 0.5 | B: <= 0.5 |
+| Empirical Evidence | 0.50 | 1.0 | — |
+| Market Data | 1.0 | 3.0 | C: <= 3.0 |
+| User-based Evidence | 2.0 | 3.0 | C: <= 3.0 |
+| Test Results | 3.0 | 5.0 | — |
+
+Use only explicitly stated evidence. "Intuitively" / "gut feel" = Self-belief.
+
+### Step 5: Confidence Calculation
+Per-type contribution = MIN(Weight x count, Max). Apply group caps. Sum = final Confidence (0-10).
+
+### Step 6: ICE Computation
+Compute ICE = I x C x E. Assign priority bucket:
+- >= 250: Consider immediate execution (high ROI)
+- 150-249: Promising; recommend additional testing
+- 100-149: Proceed with mitigations
+- < 100: On hold or needs strengthening
+
+### Step 7: Report Generation
+Generate report using the template structure below within 15 minutes of receiving complete input.
+
+## Success Criteria
+- 100% of required sections completed in output
+- Evidence classification accuracy >= 90% (no inferred evidence)
+- Score computation mathematically verified with 0% error rate
+
+## Output Template Structure
+
+Required sections and fields for the report:
 
 ```markdown
 # ICE Evaluation — [Idea Title]
-
 ## Overview
-- **Idea:** [Title]
-- **One-line Summary:** [Brief description]
-- **Target Metric:** [Metric name]
-- **Assumptions/Scope:** [Key assumptions]
-
+- **Idea / One-line Summary / Target Metric / Assumptions**
 ## Score Summary
-- **Impact:** [I] (basis: [expected % change or default rule])
-- **Ease:** [E] (basis: [person-weeks])
-- **Confidence:** [C]
-  - Details:
-    - Self-belief: 0.01 × [n] → [x] (max 0.1, Group A ≤ 0.1)
-    - Directional Fit: 0.05 × [n] → [x]
-    - Opinions of Others: 0.10 × [n] → [x] (Group B ≤ 0.5)
-    - Estimates & Plans: 0.30 × [n] → [x]
-    - Empirical Evidence: 0.50 × [n] → [x] (max 1.0)
-    - Market Data: 1.0 × [n] → [x] (Group C ≤ 3.0)
-    - User-based Evidence: 2.0 × [n] → [x]
-    - Test Results: 3.0 × [n] → [x] (max 5.0)
-  - Group caps applied:
-    - Group A (Self-belief + Directional Fit): [sum] → [capped]
-    - Group B (Opinions + Estimates): [sum] → [capped]
-    - Group C (Market + User): [sum] → [capped]
-  - **Final Confidence:** [C]
-
+- **Impact:** [I] (basis: expected % change)
+- **Ease:** [E] (basis: person-weeks)
+- **Confidence:** [C] (with per-type details and group caps applied)
 ## ICE Calculation
-- ICE = [I] × [C] × [E] = **[Score]**
-- **Priority Guidance:** [Bucket label]
-
+- ICE = I x C x E = **[Score]** — **Priority Guidance:** [Bucket]
 ## Input Summary
-- **Expected Metric Change:** [value/none → default 1.5% applied]
-- **Estimated Effort (person-weeks):** [value/uncertain]
-- **Evidence Excerpts:** 
-  - [Excerpt 1 — classified as: user/market/test/...]
-  - [Excerpt 2 — classified as: ...]
-
+- Expected Metric Change / Effort / Evidence Excerpts with classification
 ## Risks / Assumptions
-- [Key risk]
-- [Key uncertainty]
-- [Critical assumption]
-
 ## Recommended Next Steps
-- [Tests/data collection/research/prototype]
-- Confidence Improvement Plan: [Which evidence to strengthen]
-
-## Notes
-- ICE is a fast comparison/sorting tool; final decisions must also consider strategy, market, and resources.
+- Confidence Improvement Plan
 ```
 
----
+## Decision Support
 
-## Example
-- Idea: "AI-based revenue anomaly detection dashboard"
-- Expected change: 26% → Impact 8  
-- Effort: 5 weeks → Ease 7  
-- Confidence input:
-  - User-based Evidence (3) → 2.0 × 3 = 6.0 → Group C cap (≤ 3.0) → 3.0
-  - Estimates & Plans (2) → 0.3 × 2 = 0.6 → Group B cap (≤ 0.5) → 0.5
-  - Total: 3.0 + 0.5 = 3.5 → Final C = 3.5  
-- ICE = 8 × 3.5 × 7 = 196 → "Promising; recommend additional precision testing"
+- **Option A — Execute immediately**: ICE >= 250. Recommend full implementation.
+- **Option B — Test first**: ICE 100-249. Recommend focused experiment or prototype.
+- **Option C — Deprioritize**: ICE < 100. Suggest shelving; revisit after gathering stronger evidence.
 
----
+When scores are close (within 10%), recommend comparing strategic alignment with company-level context and OKR priorities.
 
-## Customization (Team Tuning)
-- Adjust Impact bands to your target metric sensitivity
-- Adjust Ease bands to team speed/role mix
-- Extend evidence keywords to your domain language, while preserving the "explicit evidence only" rule
-- Recalibrate bucket thresholds per quarterly capacity/roadmap density
+## Quality Review
+Before finalizing, validate and evaluate:
+- All input fields present; Impact/Ease correctly mapped
+- Evidence classified from explicit information only (no inference)
+- Group caps correctly applied; ICE formula computed correctly
+- Priority bucket matches score; risks documented
+- Improve accuracy by cross-checking evidence sources
 
----
+## Workflow Integration
+
+**Before** this skill: [Create Opportunities](/create-opportunities) for input ideas, [Create Interview Snapshots](/create-interview-snapshots) for evidence.
+**After** this skill: [Create Design Brief](/create-design-brief) for high-scoring ideas, [Generate Figma Prompt](/generate-figma-prompt) for design workflow.
+
+```
+Opportunities → ICE Scoring → Design Brief → Figma Prompt
+                    ↑
+          Interview Evidence
+```
 
 ## Guardrails
 - Do not invent/infer evidence or over-credit weak signals
 - Exclude evidence not directly tied to Impact from Confidence
-- When uncertain, apply conservative caps and document in "Risks/Assumptions"
-- Prevent duplicate counting of the same source/content
-
----
-
-## Error Handling
-- Missing % change/effort: apply default rules (Impact 2) or ask clarifying questions
-- Insufficient evidence: request the needed evidence types with examples
-- Conflicting info: note conflicts and dependent assumptions; use conservative scoring
-
----
-
-## Interaction Model
-1) Collect & validate inputs → 2) Score I/E → 3) Classify/count evidence → 4) Compute Confidence (with caps) → 5) Compute ICE & assign bucket → 6) Generate report → 7) Resolve gaps/uncertainties and update
-
----
+- Prevent duplicate counting of the same source
+- When uncertain, apply conservative caps and document in Risks

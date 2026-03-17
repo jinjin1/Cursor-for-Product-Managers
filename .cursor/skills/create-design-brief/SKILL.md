@@ -6,346 +6,121 @@ description: >
   Figma, prototyping tools, or design handoff documents.
 ---
 
-# Create a design brief
+# Create a Design Brief
 
 ## Goal
+Generate consistent design briefs outputting both **machine-readable JSON** (for Figma/Make and prototyping tools) and **stakeholder-friendly Markdown**. Leverage the repo's design system (tokens, components) for reusability across advertising, prototyping, branding, and social media.
 
-Generate **consistent design briefs** from requester input, outputting both **machine-readable specifications (JSON)** for direct reference in **Figma/Make and other prototyping tools**, plus **stakeholder-friendly summaries (Markdown)**.
-If the project has a **design system**, reference its tokens and components (colors, typography, spacing, radius, elevation, motion). If no design system exists, ask the user for brand colors, typography, and grid preferences, then use those as the foundation.
+## When to Use
+- Use when a PM or product manager needs design specifications for a new feature or initiative
+- When creating Figma, prototyping, or design handoff documents
+- When ensuring design consistency across ads, branding, social media, and prototypes
+- When building reusable component specs from an existing design system
 
----
+## Input
+- **Primary**: Product/campaign objectives, constraints, deadlines, stakeholders
+- **Context source**: company-level-context/ (strategic goals, brand guidelines, product vision)
+- **Design system**: Existing design-system/ folder tokens and components
+- **Required**: At least product objective, target audience, and key components
 
 ## Output
-
-### Storage Location
-- **Per Initiative**: `initiatives/[initiative-name]/design/`
-- **File Naming Convention**: `design-brief-[feature-name].[json|md]`
-
-### File Structure Example
-```
-initiatives/live-sports-vod-conversion/
-├── design/
-│   ├── design-brief-autoplay-highlights.json
-│   ├── design-brief-autoplay-highlights.md
-│   └── README.md
-```
-
-### A) Machine-Readable JSON (Figma/variables & components friendly)
-
-Required root keys: `meta`, `purpose`, `audience`, `tone`, `brand_voice`, `variables`, `components`, `patterns`, `channels`, `deliverables`, `a11y`, `naming`, `file_structure`, `metrics`, `assets`.
-
-**Schema Overview**
-
-```json
-{
-  "meta": {
-    "version": "1.0", 
-    "date": "YYYY-MM-DD", 
-    "locale": "en-US", 
-    "brand": "YourBrand",
-    "design_system": {
-      "source": "internal",
-      "path": "design-system/",
-      "tokens_path": "tokens/design-tokens.json",
-      "components_path": "components/component-library.json"
-    },
-    "sources": ["research/2024-q1-user-study", "benchmark/competitor-analysis"]
-  },
-  "purpose": "<Campaign/Product objective>",
-  "audience": {
-    "primary": "<Primary target>",
-    "secondary": "<Secondary target>",
-    "personas": ["<Persona 1>", "<Persona 2>"],
-    "context": "<Usage context>"
-  },
-  "tone": "<Tone and manner>",
-  "brand_voice": {
-    "keywords": ["trustworthy", "modern", "accessible"],
-    "dos": ["Use clear, action-oriented language", "Emphasize user benefits"],
-    "donts": ["Use jargon or technical terms", "Make assumptions about user knowledge"]
-  },
-  "variables": {
-    "collections": {
-      "color": {
-        "semantic": {
-          "bg/default": "#FFFFFF", 
-          "text/primary": "#1A1A1A", 
-          "accent/brand": "#0066CC",
-          "accent/success": "#00AA44",
-          "accent/warning": "#FF8800",
-          "accent/error": "#CC0000"
-        },
-        "neutral": {
-          "50": "#FAFAFA",
-          "100": "#F5F5F5",
-          "200": "#E5E5E5",
-          "300": "#D4D4D4",
-          "400": "#A3A3A3",
-          "500": "#737373",
-          "600": "#525252",
-          "700": "#404040",
-          "800": "#262626",
-          "900": "#171717"
-        }
-      },
-      "typography": {
-        "font_family": {
-          "brand": "Inter",
-          "mono": "JetBrains Mono"
-        },
-        "sizes": {
-          "xs": 12, 
-          "sm": 14, 
-          "md": 16, 
-          "lg": 20, 
-          "xl": 24,
-          "2xl": 32,
-          "3xl": 40
-        },
-        "weights": {
-          "regular": 400,
-          "medium": 500,
-          "semibold": 600,
-          "bold": 700
-        }
-      },
-      "spacing": {
-        "scale": {
-          "0": 0, 
-          "1": 4, 
-          "2": 8, 
-          "3": 12, 
-          "4": 16, 
-          "6": 24, 
-          "8": 32,
-          "12": 48,
-          "16": 64
-        }
-      },
-      "radius": {
-        "none": 0, 
-        "sm": 4, 
-        "md": 8, 
-        "lg": 12, 
-        "xl": 16,
-        "full": 9999
-      },
-      "elevation": {
-        "e1": "0 1px 3px rgba(0,0,0,0.12)",
-        "e2": "0 4px 6px rgba(0,0,0,0.15)",
-        "e3": "0 10px 15px rgba(0,0,0,0.1)"
-      },
-      "motion": {
-        "duration": {
-          "fast": 120, 
-          "base": 240, 
-          "slow": 400
-        },
-        "easing": {
-          "standard": "cubic-bezier(0.4, 0, 0.2, 1)",
-          "decelerate": "cubic-bezier(0, 0, 0.2, 1)",
-          "accelerate": "cubic-bezier(0.4, 0, 1, 1)"
-        }
-      }
-    }
-  },
-  "components": [
-    {
-      "name": "Button",
-      "library_ref": "Button/Primary",
-      "variants": {
-        "emphasis": ["primary", "secondary", "tertiary"], 
-        "size": ["sm", "md", "lg"], 
-        "icon": ["none", "leading", "trailing"], 
-        "state": ["default", "hover", "pressed", "focus", "disabled"]
-      },
-      "props": {
-        "cornerRadius": "radius.md", 
-        "paddingX": "spacing.4", 
-        "paddingY": "spacing.2",
-        "fontSize": "typography.sizes.md",
-        "fontWeight": "typography.weights.medium"
-      },
-      "content_guidelines": {
-        "max_label": 24, 
-        "case": "Sentence",
-        "min_width": 80
-      },
-      "interactions": [
-        {
-          "event": "onClick", 
-          "action": "Navigate", 
-          "animate": {
-            "type": "scale", 
-            "duration": "motion.duration.fast", 
-            "easing": "motion.easing.standard"
-          }
-        }
-      ]
-    },
-    {
-      "name": "MetricCard",
-      "library_ref": "Card/Metric",
-      "props": {
-        "elevation": "elevation.e1", 
-        "padding": "spacing.6",
-        "cornerRadius": "radius.lg"
-      },
-      "data_bindings": {
-        "title": "string", 
-        "value": "number", 
-        "delta": "number", 
-        "trend": "up|down|flat",
-        "unit": "string"
-      }
-    }
-  ],
-  "patterns": [
-    {
-      "name": "Dashboard/Grid", 
-      "columns": 12, 
-      "gap": "spacing.6", 
-      "breakpoints": {
-        "sm": 640, 
-        "md": 768, 
-        "lg": 1024, 
-        "xl": 1280
-      }
-    },
-    {
-      "name": "Hero/Ad", 
-      "layout": "Left copy + Right visual", 
-      "ratio": "16:9",
-      "min_height": "400px"
-    }
-  ],
-  "channels": {
-    "ads": {
-      "message": "ROI proof in 3 bullets", 
-      "visual": "MetricCard + chart",
-      "cta_placement": "above_fold"
-    },
-    "branding": {
-      "usage": "Enterprise minimal", 
-      "lockups": ["logo top-left", "CTA bottom-right"],
-      "clear_space": "2x logo height"
-    },
-    "social": {
-      "formats": ["1080x1080", "1080x1920", "1920x1080"], 
-      "rules": ["1 idea per frame", "CTA within first 3s", "text overlay max 20%"]
-    },
-    "prototype": {
-      "flows": ["Signup", "Dashboard tour", "Settings"], 
-      "transitions": "smart animate 240ms",
-      "fidelity": "high"
-    }
-  },
-  "deliverables": [
-    {
-      "name": "Executive Dashboard", 
-      "key_elements": ["AI ROI card", "adoption chart", "exportable reports"],
-      "priority": "high"
-    },
-    {
-      "name": "Manager Dashboard", 
-      "key_elements": ["team heatmap", "individual profile", "coaching tips"],
-      "priority": "medium"
-    }
-  ],
-  "a11y": {
-    "contrast": "WCAG 2.2 AA", 
-    "min_touch": 44, 
-    "focus_visible": true, 
-    "rtl": true, 
-    "localization": ["en-US", "es-ES", "fr-FR"],
-    "screen_reader": true,
-    "keyboard_navigation": true
-  },
-  "naming": {
-    "components": "PascalCase", 
-    "variants": "kebab-case", 
-    "slash": "Component/Variant=Value", 
-    "tokens": "dot.case",
-    "files": "kebab-case"
-  },
-  "file_structure": {
-    "pages": [
-      "00 Cover", 
-      "01 Foundations (Tokens)", 
-      "02 Components", 
-      "03 Patterns", 
-      "04 Flows",
-      "05 Responsive"
-    ], 
-    "libraries": ["Core", "Marketing", "Data Visualization"]
-  },
-  "metrics": {
-    "primary": "CTR or Task completion", 
-    "secondary": ["Time to first value", "Recall/Brand lift", "User satisfaction"],
-    "success_criteria": ">15% CTR improvement"
-  },
-  "assets": {
-    "illustration_style": "isometric minimal", 
-    "photo": "warm neutral lighting", 
-    "icon_set": "Feather/Remix",
-    "image_formats": ["SVG", "PNG", "WebP"],
-    "max_file_size": "2MB"
-  }
-}
-```
-
-### B) Stakeholder Markdown Summary
-
-Generate the following sections with clear headings:
-
-* **Purpose & Audience**
-* **Tone & Brand Voice** (including Do/Don't guidelines)
-* **Design Variables (Tokens/Variables) Summary**
-* **Component Library Mapping & Variant Table**
-* **Patterns & Flows**
-* **Channel-Specific Guidelines** (Ads/Branding/Social/Prototype)
-* **Accessibility & Internationalization**
-* **Naming Conventions & File Structure**
-* **Success Metrics & Experiment Plan**
-* **Asset Guidelines**
-
----
+- **Location:** `initiatives/[initiative-name]/design/`
+- **Files:** `design-brief-[feature-name].json` + `design-brief-[feature-name].md`
 
 ## Process
 
-1. **Brief Intake**: Collect product/campaign objectives, constraints (e.g., regulations/brand guidelines), deadlines, and key stakeholders.
-2. **Design System Reference**: Reference tokens and components from the current repo's `design-system/` folder.
-3. **Library Mapping**: Prioritize existing components/patterns (minimize new creation).
-4. **Token First**: Define color, typography, spacing variables first → inject into components.
-5. **Channel Consistency**: Ensure Ads/Branding/Social/Prototype share the same variables and copy principles.
-6. **A11y/Localization Gate**: Check WCAG 2.2 AA, minimum 44px touch, RTL/multilingual support.
-7. **Output Dual-Track**: Generate JSON (tool input) + Markdown (review) simultaneously.
-8. **File Storage**: Save to `initiatives/[initiative-name]/design/` folder.
+1. Validate inputs and gather context
+2. Execute core analysis
+3. Generate output and review results
+4. Iterate based on feedback
 
----
+
+### Step 1: Brief Intake
+Collect product/campaign objectives, constraints (regulations, brand guidelines), deadlines, and key stakeholders. Complete within 5 minutes.
+
+### Step 2: Design System Reference
+Reference tokens and components from the repo's `design-system/` folder.
+
+### Step 3: Library Mapping
+Prioritize existing components/patterns. Minimize new creation.
+
+### Step 4: Token-First Definition
+Define color, typography, spacing variables first, then inject into components.
+
+### Step 5: Channel Consistency
+Ensure Ads/Branding/Social/Prototype share the same variables and copy principles.
+
+### Step 6: Accessibility Gate
+Check WCAG 2.2 AA, minimum 44px touch targets, RTL/multilingual support.
+
+### Step 7: Dual-Track Output
+Generate JSON (tool input) + Markdown (review) simultaneously.
+
+### Step 8: File Storage
+Save to `initiatives/[initiative-name]/design/` folder.
+
+## JSON Schema (Required Root Keys)
+
+`meta`, `purpose`, `audience`, `tone`, `brand_voice`, `variables`, `components`, `patterns`, `channels`, `deliverables`, `a11y`, `naming`, `file_structure`, `metrics`, `assets`
+
+Key sections and fields:
+- **meta**: version, date, locale, brand, design_system (source, paths), sources
+- **audience**: primary, secondary, personas, context
+- **variables**: color (semantic, neutral), typography (family, sizes, weights), spacing, radius, elevation, motion
+- **components**: name, library_ref, variants, props, content_guidelines, interactions
+- **channels**: ads, branding, social (formats/rules), prototype (flows/transitions)
+- **a11y**: contrast (WCAG 2.2 AA), min_touch (44), focus_visible, rtl, keyboard_navigation
+- **metrics**: primary, secondary, success_criteria (e.g., ">15% CTR improvement")
+
+## Markdown Summary Structure
+
+Required template sections:
+- Purpose & Audience
+- Tone & Brand Voice (Do/Don't guidelines)
+- Design Variables (Tokens) Summary
+- Component Library Mapping & Variant Table
+- Patterns & Flows
+- Channel-Specific Guidelines
+- Accessibility & Internationalization
+- Naming Conventions & File Structure
+- Success Metrics & Experiment Plan
+- Asset Guidelines
+
+## Success Criteria
+- JSON contains 100% of required root keys
+- All token references map to existing design-system/ values or marked "proposed"
+- Accessibility: WCAG 2.2 AA compliance verified at 100%
+- Success metrics are measurable with target % defined (e.g., >15% CTR improvement)
 
 ## Generation Rules
+- Use `"Button/Primary"` format for component references; mark unavailable ones as `"proposed"`
+- Use `dot.case` for tokens, slash-naming for components
+- Include measurable success criteria and experiment hypotheses
+- Attach research/benchmark sources in `meta.sources[]`
+- Include responsive breakpoints and mobile-first approach
 
-* **Design System**: Use the current repo's `design-system/` folder as the foundation.
-* **Library References**: Use `"Button/Primary"` format for component references, mark as `"proposed"` if not available.
-* **Token References**: Use `"color.semantic.primary.500"` format for token references.
-* **Data Binding Examples**: Specify type/unit/format in `data_bindings`.
-* **Interactions**: Detail event/action/animation (type/duration/easing) specifications.
-* **Token Naming**: Use `dot.case` for tokens, **Slash-Naming** for components.
-* **Success Metrics**: Include measurable success criteria and experiment hypotheses.
-* **Sources**: Attach research/benchmark sources in `meta.sources[]` for sensitive claims.
-* **Responsive Design**: Include breakpoint specifications and mobile-first approach.
-* **Performance**: Consider loading states, skeleton screens, and progressive enhancement.
+## Decision Support
 
----
+- **Option A — Full Design System**: Recommend when brand consistency is critical. All existing tokens/components, no custom elements.
+- **Option B — Extended Design System**: Recommend when existing components don't cover requirements. Extend with "proposed" components.
+- **Option C — Minimal Viable Design**: Suggest for rapid prototyping or MVPs. Core components only (Button, Card, Banner).
 
-## Example Prompts
+For channel selection, recommend prioritizing based on campaign objectives and strategic alignment with company-level context.
 
-### Basic Usage (Most Common)
-"Create a design brief. Product: sports autoplay highlights. Purpose: user adoption validation. Target: sports routine users. Use VideoPlayer, Button, Card components. Output both **JSON + Markdown summary** according to the schema above, and save to `initiatives/live-sports-vod-conversion/design/` folder."
+## Quality Review
+Before finalizing, review and evaluate:
+- JSON schema has all required root keys
+- All design tokens reference existing design-system/ values
+- Component library references are valid or marked "proposed"
+- Accessibility requirements met; channel guidelines consistent
+- Success metrics are measurable; brand voice includes Do/Don'ts
+- Iterate and improve based on stakeholder feedback
 
-### Detailed Usage
-"Create a design brief. Product: AI observability platform. Purpose: ROI proof and adoption scaling. Target: VP/CTO/EM at 100–999 employee software organizations. Leverage Button, Card, MetricCard, Tag, Banner components for reusability across social, advertising, and prototyping. Output both **JSON + Markdown summary** according to the schema above, and save to `initiatives/[initiative-name]/design/` folder."
+## Workflow Integration
 
-### Advanced Usage
-"Create a comprehensive design brief for a B2B SaaS onboarding flow. Include user journey mapping, component variants for different user roles, accessibility considerations, and A/B testing framework. Ensure the design system supports both light and dark themes. Output both **JSON + Markdown summary** and save to `initiatives/user-onboarding-v2/design/` folder."
+**Before** this skill: [Calculate ICE Score](/calculate-ice-score) for prioritized ideas, [Create Opportunities](/create-opportunities) for design objectives.
+**After** this skill: [Generate Figma Prompt](/generate-figma-prompt) — design brief JSON feeds into Figma Make prompt generation.
+
+```
+Opportunities → ICE Score → Design Brief → Figma Prompt
+```

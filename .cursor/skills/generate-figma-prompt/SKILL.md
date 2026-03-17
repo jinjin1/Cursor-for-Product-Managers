@@ -9,328 +9,128 @@ description: >
 # Generate Figma Make Prompt
 
 ## Goal
+Generate **Figma Make-ready prompts** based on design briefs and design systems. Output follows `tool`, `setup`, `pages` structure reflecting brand identity and design tokens. **Critical constraint**: maximum 5000 characters.
 
-Generate **Figma Make-ready prompts** based on design briefs and design systems. The prompt follows a `tool`, `setup`, `pages` structure that reflects brand identity and design tokens to enable consistent automated design generation for any brand or product.
+## When to Use
+- Use when a PM or product manager needs Figma Make auto-generation prompts from a design brief for an initiative
+- When converting design system tokens to Figma Make format
+- When automating prototype, ad, or social media design generation
+- When consistent JSON specifications are needed for design tooling
 
-**Critical Constraint**: Figma Make prompts are limited to **maximum 5000 characters**, requiring efficient resolution through structural constraints and balanced readability.
-
----
+## Input
+- **Primary**: Design brief JSON from `initiatives/[initiative-name]/design/`
+- **Context source**: company-level-context/ (brand guidelines, strategic direction)
+- **Design system**: Current repo's design-system/ tokens and components
+- **Required**: At least a design brief JSON or product/campaign objectives
 
 ## Output
-
-### Storage Location
-- **Per Initiative**: `initiatives/[initiative-name]/design/`
-- **File Naming Convention**: `figma-make-prompt-[feature-name].json`
-
-### File Structure Example
-```
-initiatives/feature-name/
-├── design/
-│   ├── figma-make-prompt-feature-name.json
-│   ├── design-brief-feature-name.json
-│   ├── design-brief-feature-name.md
-│   └── README.md
-```
-
-### A) Figma Make Prompt JSON Schema
-
-**Required Root Keys**: `tool`, `setup`, `pages`
-
-```json
-{
-  "tool": "Figma Make",
-  "setup": {
-    "theme": "<50 chars max theme description>",
-    "grid": "<core grid settings>",
-    "typography": "<3 sizes only>",
-    "colors": ["<7 essential colors only>"],
-    "brand": {
-      "name": "<Brand Name>",
-      "primary": "<Primary Color>",
-      "bg": "<Background Color>",
-      "text": "<Text Color>"
-    }
-  },
-  "pages": [
-    {
-      "name": "<page name>",
-      "layout": "<200 chars max layout description>",
-      "components": [
-        {
-          "name": "<component name>",
-          "variant": "<variant name>",
-          "props": {"<prop_name>": "<prop_value>"},
-          "position": {"x": 0, "y": 0, "w": 100, "h": 50}
-        }
-      ],
-      "copy": [
-        {"key": "<text key>", "text": "<actual text>", "component": "<component name>"}
-      ]
-    }
-  ]
-}
-```
-
-### B) Design System Mapping
-
-#### 1. Theme Configuration (50 chars max)
-```json
-{
-  "theme": "<Brand theme description with key visual characteristics>"
-}
-```
-
-#### 2. Grid System (core only)
-```json
-{
-  "grid": "<Responsive grid system with key breakpoints>"
-}
-```
-
-#### 3. Typography Configuration (3 sizes only)
-```json
-{
-  "typography": "<Font family with 3 key sizes>"
-}
-```
-
-#### 4. Color Palette (7 essential colors)
-```json
-{
-  "colors": ["<Primary>", "<Secondary>", "<Background>", "<Text>", "<Accent>", "<Success>", "<Neutral>"]
-}
-```
-
----
+- **Location:** `initiatives/[initiative-name]/design/`
+- **Filename:** `figma-make-prompt-[feature-name].json`
 
 ## Process
 
-1. **Design Brief Intake**: Collect product/campaign objectives, target audience, key components, and design patterns from existing design brief JSON
-2. **Design System Reference**: Reference tokens and components from the current repo's design system
-3. **Structural Constraint Application**: Apply maximum limits (2 pages, 6 components/page, 8 copy items/page)
-4. **Token Mapping**: Map design system tokens to Figma Make format with abbreviations
-5. **Component Optimization**: Select core variants and limit props to essential properties
-6. **Balanced Formatting**: Apply optimal balance between readability and compression
-7. **JSON Optimization**: Remove unnecessary whitespace while maintaining structure
-8. **Character Validation**: Ensure compliance with 5000 character limit
-9. **File Storage**: Save to `initiatives/[initiative-name]/design/` folder
+1. Validate inputs and gather context
+2. Execute core analysis
+3. Generate output and review results
+4. Iterate based on feedback
 
----
 
-## Generation Rules
+### Step 1: Design Brief Intake
+Collect objectives, audience, components, and patterns from existing design brief JSON. Complete within 10 minutes.
 
-### Structural Constraints (5000 character limit)
-- **Pages**: Maximum 2 pages
-- **Components**: Maximum 6 per page
-- **Copy Items**: Maximum 8 per page
-- **Layout Description**: 200 characters max
-- **Component Description**: 50 characters max
+### Step 2: Design System Reference
+Reference tokens and components from the repo's design system.
 
-### Setup Section Optimization
-- **Theme**: 50 characters max, focus on key visual characteristics
-- **Grid**: Core breakpoints only (desktop/mobile)
-- **Typography**: 3 sizes only (large/medium/small)
-- **Colors**: 7 essential colors (primary, secondary, background, text, accent, success, neutral)
-- **Brand**: 4 core properties (name, primary, background, text)
+### Step 3: Structural Constraint Application
+Apply limits: max 2 pages, 6 components/page, 8 copy items/page.
 
-### Component Optimization
-- **Naming**: Use component name + variant only
-- **Props**: Limit to 3 core properties (bg, color, borderRadius)
-- **Position**: Abbreviated format (x, y, w, h)
-- **Copy**: Key + text + component reference only
+### Step 4: Token Mapping
+Map design system tokens to Figma Make format with abbreviations (backgroundColor > bg, width > w).
 
-### Formatting Rules
-- **Indentation**: 2-space indentation throughout
-- **Compression**: Props and position on single line
-- **Arrays**: Copy arrays on single line
-- **Whitespace**: Minimize unnecessary line breaks and spaces
+### Step 5: Component Optimization
+Select core variants. Limit props to essentials (bg, color, borderRadius).
 
-### Auto-compression Rules
-- **Structure**: Maintain core JSON structure while removing whitespace
-- **Duplicates**: Consolidate repeated props
-- **Descriptions**: Minimize all descriptive text
-- **Abbreviations**: Use standard abbreviations (backgroundColor → bg, textColor → color)
+### Step 6: Balanced Formatting
+Apply 2-space indentation. Compress props/position to single lines.
 
----
+### Step 7: Character Validation
+Ensure total JSON is under 5000 characters. If over, reduce pages to 1 or components to 4/page.
 
-## Quality Validation
+### Step 8: File Storage
+Save to `initiatives/[initiative-name]/design/` folder.
 
-### Character Count Validation
-- **Target**: Under 5000 characters
-- **Check**: Validate total JSON length before output
-- **Fallback**: Further compress if over limit
+## JSON Schema Template
 
-### JSON Structure Validation
-- **Required Keys**: Verify `tool`, `setup`, `pages` are present
-- **Setup Completeness**: Ensure theme, grid, typography, colors, brand are included
-- **Page Structure**: Validate each page has name, layout, components, copy
+Required structure with sections and fields:
 
-### Design System Consistency
-- **Token Mapping**: Verify design system tokens are correctly mapped
-- **Component References**: Ensure component names match design system
-- **Brand Alignment**: Confirm brand values and identity are consistent
-
-### Readability Check
-- **Indentation**: Verify 2-space indentation is maintained
-- **Compression**: Check props and position are single-line
-- **Abbreviations**: Confirm consistent abbreviation usage
-
----
-
-## Example Output (Balanced Formatting)
-
-### Efficient Basic Usage (approximately 4500 characters)
-```json
-{
-  "tool": "Figma Make",
-  "setup": {
-    "theme": "Modern dark theme with glassmorphism effects",
-    "grid": "12-col responsive, 80px desktop, 16px mobile",
-    "typography": "Inter 24/16/14px",
-    "colors": ["#000000", "#1a1a1a", "#FFFFFF", "#B3B3B3", "#E50914", "#0066CC", "#333333"],
-    "brand": {"name": "BrandName", "primary": "#E50914", "bg": "#000000", "text": "#FFFFFF"}
-  },
-  "pages": [
-    {
-      "name": "Auto-play Highlight Player",
-      "layout": "Full-screen vertical video player (9:16) with Instagram Stories-style interface. Top: brand logo and progress indicators. Center: auto-playing highlight video. Bottom: control overlay with pause, skip, close buttons. Auto-hide controls after 3 seconds.",
-      "components": [
-        {"name": "VideoPlayer", "variant": "vertical_story", "props": {"aspectRatio": "9:16", "bg": "#000000", "autoPlay": true, "showControls": false}, "position": {"x": 0, "y": 0, "w": 375, "h": 812}},
-        {"name": "ProgressIndicator", "variant": "story_progress", "props": {"activeColor": "#FFFFFF", "inactiveColor": "rgba(255,255,255,0.3)", "h": "3px"}, "position": {"x": 16, "y": 44, "w": 343, "h": 3}},
-        {"name": "ControlOverlay", "variant": "video_controls", "props": {"bg": "rgba(0,0,0,0.8)", "autoHide": true, "hideDelay": "3000ms"}, "position": {"x": 16, "y": 680, "w": 343, "h": 100}},
-        {"name": "Button", "variant": "control_pause", "props": {"bg": "rgba(255,255,255,0.2)", "color": "#FFFFFF", "borderRadius": "50%", "icon": "pause"}, "position": {"x": 50, "y": 700, "w": 48, "h": 48}},
-        {"name": "Button", "variant": "control_skip", "props": {"bg": "rgba(255,255,255,0.2)", "color": "#FFFFFF", "borderRadius": "50%", "icon": "skip_forward"}, "position": {"x": 160, "y": 700, "w": 48, "h": 48}},
-        {"name": "Button", "variant": "control_close", "props": {"bg": "rgba(255,255,255,0.2)", "color": "#FFFFFF", "borderRadius": "50%", "icon": "close"}, "position": {"x": 270, "y": 700, "w": 48, "h": 48}}
-      ],
-      "copy": [
-        {"key": "loading_text", "text": "Preparing highlights...", "component": "LoadingIndicator"},
-        {"key": "pause_tooltip", "text": "Pause", "component": "Button"},
-        {"key": "skip_tooltip", "text": "Skip", "component": "Button"},
-        {"key": "close_tooltip", "text": "Close", "component": "Button"}
-      ]
-    },
-    {
-      "name": "Highlight Selection Card",
-      "layout": "Horizontal card layout with thumbnail (16:9), title, description, duration, and action buttons. Card has subtle elevation and brand styling.",
-      "components": [
-        {"name": "Card", "variant": "highlight_preview", "props": {"bg": "#1a1a1a", "borderRadius": "12px", "padding": "16px", "border": "1px solid #333333"}, "position": {"x": 80, "y": 200, "w": 1120, "h": 200}},
-        {"name": "VideoThumbnail", "variant": "preview_image", "props": {"aspectRatio": "16:9", "bg": "#000000", "borderRadius": "8px"}, "position": {"x": 96, "y": 216, "w": 300, "h": 168}},
-        {"name": "Button", "variant": "play_overlay", "props": {"bg": "rgba(229,9,20,0.9)", "color": "#FFFFFF", "borderRadius": "50%", "icon": "play"}, "position": {"x": 216, "y": 276, "w": 60, "h": 60}},
-        {"name": "Button", "variant": "cta_play", "props": {"bg": "#E50914", "color": "#FFFFFF", "borderRadius": "8px", "padding": "12px 24px"}, "position": {"x": 1056, "y": 216, "w": 120, "h": 48}},
-        {"name": "Button", "variant": "secondary_share", "props": {"bg": "transparent", "color": "#B3B3B3", "borderColor": "#333333", "borderRadius": "8px", "icon": "share"}, "position": {"x": 1056, "y": 280, "w": 120, "h": 48}},
-        {"name": "Tag", "variant": "duration_badge", "props": {"bg": "#E50914", "color": "#FFFFFF", "borderRadius": "4px"}, "position": {"x": 424, "y": 216, "w": 40, "h": 24}}
-      ],
-      "copy": [
-        {"key": "content_title", "text": "Featured Content Title", "component": "ContentInfo"},
-        {"key": "content_info", "text": "Content description or metadata", "component": "ContentInfo"},
-        {"key": "duration", "text": "0:45", "component": "Tag"},
-        {"key": "play_button", "text": "Play", "component": "Button"},
-        {"key": "share_button", "text": "Share", "component": "Button"}
-      ]
-    }
-  ]
-}
-```
-
-### Balanced Formatting Checklist
-- ✅ Maximum 2 pages
-- ✅ Maximum 6 components per page
-- ✅ Maximum 8 copy items per page
-- ✅ Layout description under 200 characters
-- ✅ Base indentation (2 spaces)
-- ✅ Props and position single-line compression
-- ✅ Copy arrays single-line compression
-- ✅ Abbreviation usage (bg, color, w, h)
-
----
-
-## Usage Examples (Balanced Formatting Applied)
-
-### 1. Basic Usage
-"Generate a Figma Make prompt. Reference design brief from `initiatives/feature-name/design/design-brief-feature-name.json` and use the design system to create a feature dashboard. **Apply balanced formatting to satisfy both readability and 5000 character limit.**"
-
-### 2. Detailed Usage (Optimized)
-"Generate a Figma Make prompt. Product: live streaming dashboard. Purpose: increase user engagement. Target: content consumers. Use only VideoPlayer, Scoreboard components, **compress props and position to single line while maintaining base indentation.**"
-
-### 3. Subscription Plan Page (Balanced)
-"Generate a Figma Make prompt. Product: subscription plan selection page. Purpose: conversion optimization. Target: new users. Use only SubscriptionCard, PricingBadge components, **balance readability and compression.**"
-
----
-
-## Integration & Workflow
-
-### Design Brief Integration
-- **Input Source**: Use existing design brief JSON as primary input
-- **Token Extraction**: Map design brief variables to Figma Make format
-- **Component Mapping**: Reference design brief components in Figma Make structure
-
-### Design System Mapping
-- **Token Mapping**: `color.semantic.accent.brand` → `"primary": "<brand color>"`
-- **Spacing**: `spacing.6` → `"w": 24, "h": 24`
-- **Typography**: `typography.fontSize.base` → `"16px"`
-- **Component Library**: Use only core variants, limit props to 3 (bg, color, borderRadius)
-
-### Figma Make Workflow
-- **Direct Import**: JSON can be directly imported into Figma Make
-- **Auto-generation**: Enables automated design generation from specifications
-- **Consistency**: Ensures brand and design system consistency across generated designs
-
----
-
-## Troubleshooting & Common Issues
-
-### Character Limit Exceeded
-- **Issue**: JSON exceeds 5000 character limit
-- **Solution**: Reduce pages to 1, components to 4 per page, or compress descriptions further
-- **Check**: Use JSON minifier to identify largest sections
-
-### Invalid JSON Structure
-- **Issue**: Figma Make rejects the JSON format
-- **Solution**: Validate required keys (`tool`, `setup`, `pages`) and ensure proper nesting
-- **Check**: Use JSON validator before importing
-
-### Missing Design System Tokens
-- **Issue**: Components reference non-existent design tokens
-- **Solution**: Map to existing design system tokens or use fallback values
-- **Check**: Verify token references against design system documentation
-
-### Poor Readability
-- **Issue**: JSON is too compressed to review or edit
-- **Solution**: Increase indentation or add strategic line breaks while staying under limit
-- **Check**: Balance compression with human readability needs
-
----
-
-## Quick Reference
-
-### JSON Schema Template
 ```json
 {
   "tool": "Figma Make",
   "setup": {
     "theme": "<50 chars max>",
-    "grid": "<responsive grid>",
+    "grid": "<core grid>",
     "typography": "<3 sizes>",
-    "colors": ["<7 colors>"],
-    "brand": {"name": "<name>", "primary": "<color>", "bg": "<color>", "text": "<color>"}
+    "colors": ["<7 essential colors>"],
+    "brand": {"name": "<>", "primary": "<>", "bg": "<>", "text": "<>"}
   },
-  "pages": [{"name": "<name>", "layout": "<200 chars max>", "components": [...], "copy": [...]}]
+  "pages": [{
+    "name": "<page name>",
+    "layout": "<200 chars max>",
+    "components": [{"name": "<>", "variant": "<>", "props": {}, "position": {"x":0,"y":0,"w":100,"h":50}}],
+    "copy": [{"key": "<>", "text": "<>", "component": "<>"}]
+  }]
 }
 ```
 
-### Character Limits
-- **Total**: 5000 characters max
-- **Pages**: 2 max
-- **Components per page**: 6 max
-- **Copy per page**: 8 max
-- **Layout description**: 200 chars max
-- **Theme description**: 50 chars max
+## Character Limits
+- **Total**: 5000 chars max | **Pages**: 2 max | **Components/page**: 6 max
+- **Copy/page**: 8 max | **Layout desc**: 200 chars | **Theme**: 50 chars
 
-### Common Abbreviations
-- `backgroundColor` → `bg`
-- `textColor` → `color`
-- `borderRadius` → `borderRadius`
-- `width` → `w`
-- `height` → `h`
+## Generation Rules
+- **Naming**: component name + variant only
+- **Props**: limit to 3 core (bg, color, borderRadius)
+- **Position**: abbreviated (x, y, w, h)
+- **Indentation**: 2-space throughout
+- **Compression**: props and position on single lines; consolidate repeated props
+- **Abbreviations**: backgroundColor > bg, textColor > color, width > w, height > h
 
----
+## Success Criteria
+- JSON under 5000 characters with 100% compliance
+- All required keys present (tool, setup, pages) with valid structure
+- Design system tokens correctly mapped at 95% accuracy or higher
+- Brand values and identity consistent across all components
+
+## Design System Mapping
+- **Token**: `color.semantic.accent.brand` > `"primary": "<color>"`
+- **Spacing**: `spacing.6` > `"w": 24`
+- **Typography**: `typography.fontSize.base` > `"16px"`
+- **Components**: Use only core variants, limit props to 3
+
+## Decision Support
+
+- **Option A — Full Fidelity**: Recommend for final design handoff. Max 2 pages, 6 components each, detailed token mapping.
+- **Option B — Single Page Focus**: Suggest for rapid prototyping. 1 page, 4 core components for faster iteration.
+- **Option C — Minimal Skeleton**: Recommend for early concept exploration. 1 page, 2-3 components, minimal copy.
+
+Selection depends on project phase, character budget, and review purpose.
+
+## Quality Review
+Before finalizing, validate and evaluate:
+- Character count under 5000; required keys present
+- Design tokens correctly mapped; component names match design system
+- Brand alignment consistent; indentation and compression correct
+- Iterate to improve compression if over character limit
+
+## Troubleshooting
+- **Over 5000 chars**: Reduce to 1 page, 4 components, compress descriptions
+- **Invalid JSON**: Verify required keys and proper nesting
+- **Missing tokens**: Map to existing tokens or use fallback values
+
+## Workflow Integration
+
+**Before** this skill: [Create Design Brief](/create-design-brief) for design brief JSON input.
+**After** this skill: Import JSON directly into Figma Make for automated design generation.
+
+```
+Opportunities → ICE Score → Design Brief → Figma Prompt → Figma Make
+```

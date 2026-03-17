@@ -11,15 +11,26 @@ description: >
 
 To guide an AI assistant in creating a detailed, step-by-step task list in Markdown format based on user requirements, feature requests, or existing documentation. The task list should guide a developer through implementation.
 
+## When to Use
+- When breaking down a PRD or feature request into actionable development tasks
+- When creating a step-by-step implementation plan for developers
+- When organizing work for sprint planning
+- 적용 대상: PM이 개발팀에 구체적인 작업 목록을 전달할 때 사용
+
+## Input
+- **Required:** Feature request, PRD, or requirements document
+- **Optional:** Existing codebase context, tech stack information
+- **Context Source:** Reference `company-level-context/` for strategic alignment and `prd/` for requirements
+
 ## Output
 
 - **Format:** Markdown (`.md`)
 - **Location:** `/tasks/`
 - **Filename:** `tasks-[feature-name].md` (e.g., `tasks-user-profile-editing.md`)
 
-## Process
+## Process (Step-by-Step Workflow)
 
-1.  **Receive Requirements:** The user provides a feature request, task description, or points to existing documentation
+### Step 1: Receive Requirements The user provides a feature request, task description, or points to existing documentation
 2.  **Analyze Requirements:** The AI analyzes the functional requirements, user needs, and implementation scope from the provided information
 3.  **Phase 1: Generate Parent Tasks:** Based on the requirements analysis, create the file and generate the main, high-level tasks required to implement the feature. **IMPORTANT: Always include task 0.0 "Create feature branch" as the first task, unless the user specifically requests not to create a branch.** Use your judgement on how many additional high-level tasks to use. It's likely to be about 5. Present these tasks to the user in the specified format (without sub-tasks yet). Inform the user: "I have generated the high-level tasks based on your requirements. Ready to generate the sub-tasks? Respond with 'Go' to proceed."
 4.  **Wait for Confirmation:** Pause and wait for the user to respond with "Go".
@@ -71,6 +82,30 @@ Update the file after completing each sub-task, not just after completing an ent
 ## Interaction Model
 
 The process explicitly requires a pause after generating parent tasks to get user confirmation ("Go") before proceeding to generate the detailed sub-tasks. This ensures the high-level plan aligns with user expectations before diving into details.
+
+## Success Criteria
+- All parent tasks have at least 2 sub-tasks (metric: task decomposition score)
+- Each task is actionable by a junior developer (metric: clarity %)
+- Relevant files section accurately identifies affected codebase areas
+- Total task count proportional to feature complexity (score: coverage)
+
+## Quality Check
+Before finalizing, validate:
+- [ ] All tasks follow numbered format (0.0, 1.0, 2.0...)
+- [ ] Sub-tasks are specific and atomic
+- [ ] Relevant files section is complete with descriptions
+- [ ] Task 0.0 (feature branch creation) is included
+
+## Decision Support
+When task scope is ambiguous, suggest options:
+- **Option A:** Minimal scope — core functionality only
+- **Option B:** Full scope — includes edge cases and tests
+- **Recommend:** Option B for production features, Option A for prototypes
+
+## Skill Chaining
+- **Before this skill:** Use `create-prd` to define requirements, or `create-one-pager` for scope
+- **After this skill:** Use `process-task-list` to execute tasks systematically
+- **Related workflow:** `create-prd` → this skill → `process-task-list`
 
 ## Target Audience
 

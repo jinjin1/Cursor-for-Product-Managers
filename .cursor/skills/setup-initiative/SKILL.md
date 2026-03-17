@@ -11,7 +11,25 @@ description: >
 ## Goal
 Create a new initiative folder with standardized structure and populate with customized templates from the initiative template.
 
-## Process
+## When to Use (활용 시나리오)
+- When starting a new product initiative or project
+- When a PM needs a consistent folder structure for discovery, design, and delivery
+- When onboarding a new initiative into the team's workflow
+- 적용 대상: 구조화된 PM 아티팩트가 필요한 모든 사용 상황
+
+## Input
+- **Required:** Initiative name (kebab-case: e.g., 'mobile-app-redesign')
+- **Required:** Owner/Product Manager name
+- **Required:** Brief description of the initiative goal
+- **Optional:** Target timeline, key stakeholders
+- **Context Source:** Reference `company-level-context/okrs/` and `company-level-context/product-vision-and-strategy/` to align initiative with strategic direction
+
+## Output
+- **Format:** Folder structure with Markdown (`.md`) files
+- **Location:** `initiatives/[initiative-name]/`
+- **Filename convention:** kebab-case initiative name as folder
+
+## Process (단계별 워크플로우)
 1. **Gather Initiative Details**
    - Initiative name (use kebab-case: e.g., 'mobile-app-redesign')
    - Owner/Product Manager name
@@ -37,6 +55,26 @@ Create a new initiative folder with standardized structure and populate with cus
    - Ensure all subfolder README files are properly copied
    - Maintain file permissions and structure
    - **Critical:** Preserve all `.gitkeep` files from template to maintain empty folder structure
+
+## Success Criteria
+- All template folders and files are created (score: completeness 100%)
+- README.md is customized with initiative-specific details (metric: all placeholders replaced)
+- Folder structure matches the template exactly
+- Initiative aligns with at least one company OKR or strategic goal
+
+## Decision Support
+When the user provides ambiguous initiative scope, suggest options:
+- **Option A:** Full initiative structure (all subfolders)
+- **Option B:** Lightweight structure (only prd/, tasks/, design/)
+- **Recommend:** Option A for discovery-driven initiatives, Option B for well-defined features
+
+## Quality Check
+After creation, validate:
+- [ ] All folders from template are copied (including design folder)
+- [ ] README.md is properly customized
+- [ ] All subfolder README files are present
+- [ ] Folder structure matches the template exactly
+- [ ] Initiative name follows naming conventions
 
 ## Naming Conventions
 - **Initiative Folder:** Use kebab-case (e.g., `mobile-app-redesign`, `checkout-optimization`)
@@ -67,6 +105,10 @@ initiatives/[initiative-name]/
 └── tasks/
     └── README.md
 ```
+
+## Skill Chaining
+- **Before this skill:** Align initiative with company strategy from `company-level-context/`
+- **After this skill:** Begin discovery with `create-interview-snapshots` or define scope with `create-one-pager`
 
 ## Integration Points
 After creating the initiative structure, remind the user about these workflow integrations:
