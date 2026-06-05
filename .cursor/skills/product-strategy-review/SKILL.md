@@ -6,568 +6,71 @@ description: >
   conducting CPO-level strategy assessments with structured frameworks.
 ---
 
-<<<<<<< Updated upstream
-# CPO Self-Review Partner — PRISM Strategy 
-
-## Intent
-Head of Product/CPO conducts **evidence-based** self-review of their strategy document to validate:
-(1) Core Thesis, (2) Strategic Options comparison, (3) Capital Allocation decisions,
-(4) Pre-mortem/Kill-Switch + Adaptation definition, (5) **Mission/Vision alignment** and **Stakeholder alignment**.
-Outputs: **Markdown (human-readable)** + **JSON (machine-readable)** simultaneously generated.
-
-## Folder Globs (read-only)
-# Safe globs reflecting attached structure. External/unconnected materials only referenced when version snapshots exist.
-- company-level-context/**/*
-- company-level-context/okrs/**/*                     # includes /okr-sparring-partner skill
-- company-level-context/product-vision-and-strategy/**/*  # product-strategy.md, /product-strategy-review skill
-- team-structure/**/*                                 # team structure/role context
-- .cursor/skills/**/*                                 # all skill definitions (interview/opportunity/solution/assumption-testing, ICE scoring, PRD, tasks, etc.)
-- initiatives/**/*                                    # individual initiatives, _templates/initiative-template included
-- meetings/**/*                                       # meeting/retrospective notes
-- .cursor/rules/**/*                                  # related rule references allowed
-
-## Inputs (required)
-- doc_link (string, required)                         # strategy document to review
-- evidence_hub_link (string, required)                # initiatives/<name>/ or meeting-notes/ etc. root hub
-- product_or_area (string, required)
-- owner (string, required)
-- review_window_start (YYYY-MM-DD, required)
-- review_window_end (YYYY-MM-DD, required)
-- riskiest_assumptions (string[], minItems=2, required)
-- baseline_metric (string|number, optional)
-- north_star (string, optional)                       # NSM
-- capacity_window (object, optional)                  # {fte:number, budget:number}
-- runway_months (number, optional)
-> If missing → **HOLD**: Return MissingInputs list with 1-Day Evidence Sprint proposal only (no scoring).
-
-## Citation Standard (required)
-All evidence must use this format:
-- [[ev-id|path#line-range|YYYY-MM-DD]]
-Example) [[ev-12|initiatives/kbo/analysis.md#L42-L77|2025-09-10]]
-> Missing citations result in **1-step deduction** per dimension.
-
-# ------------------------------
-# Modes — Self-Review Flow
-# ------------------------------
-
-## Mode 0 — Principle Alignment (Mission/Vision/Principles Coherence)
-- Mission/Vision Coherence: How does this strategy connect to company **Mission/Vision/Principles**?
-- Vision Narrative (1–3y): One paragraph **Narrative** of success 1–3 years from now.
-- Value Thesis (one sentence): Value mechanism of "Why Us, Why Now".
-
-## Mode 1 — Socratic Checklist (Core Questions)
-- Thesis (core claim in one sentence)
-- Outcome (Leading vs Lagging distinction, customer/business)
-- Opportunity (ICP/Segment/Use-case, TAM/SAM/SOM evidence)
-- Causality (Why Now? Change factors: market/technology/user behavior/regulation)
-- Alternatives (≥3: Do Nothing / Focused Bet / Portfolio Bet)
-- Trade-off & Non-goals (what we intentionally won't do)
-- Unit Economics (LTV/CAC/Payback/GMs/CMs) key assumptions
-- Disconfirming Evidence (counterexamples) and rejection reasons
-
-## Mode 2 — Bias Guardrails (Bias Prevention)
-Must address each of these 6 in one line each, otherwise Proceed prohibited (=HOLD).
-- Confirmation / Availability / Sunk Cost / Survivorship / Overconfidence / Anchoring
-
-## Mode 3 — Options & Capital Allocation (Comparison Table)
-For each option:
-- Assumptions (Top-3) + Confidence (0–1)
-- Investment: FTE, CapEx, Opex, Time-to-Impact (weeks)
-- Impact: NSM/OKR expected range (Δ)
-- Risks (Top-3) + Mitigation
-- Non-goals (out of scope)
-- Decision Rule (selection threshold/condition; e.g., Payback ≤ 9m then Go)
-
-## Mode 4 — Scenario(3) & Runway (Sensitivity/Constraints)
-- Base/Upside/Downside: ROI/Payback sensitivity
-- Runway/Capacity constraints reflected in **Sequencing by Quarter** (Q-by-Q start order/parallel limits)
-
-## Mode 5 — Pre-mortem, Kill-Switch & Adaptability (Extended)
-- Pre-mortem: Top-5 failure causes
-- Leading Indicators (3): metrics/queries/logs + measurement frequency
-- Kill-Switch Criteria: **metric + period(window)** + Action (Pause/Pivot/Stop)
-- Pivot Triggers: transition conditions
-- Market Triggers (new): external signals (competitor launch/policy/platform change/cost curve/ecosystem events)
-- Adaptation Plan (new): discussion and priority reallocation rules (Playbook) when signals detected
-
-## Mode 6 — Stakeholder Lens (Extended)
-- Investor/Board Lens: North Star/OKR/Unit Economics ↔ IR Narrative fit, Volatility/Seasonality risks
-- Engineering Lens: Technical Debt/platform constraints, team autonomy/motivation
-- GTM Lens: Sales/Marketing Narrative Fit, channel/sales motion alignment
-- Customer Support Lens: expected issue volume/type, Help Center/Macro/Tooling preparation
-
-# ------------------------------
-# Evidence Gate (Auto)
-# ------------------------------
-Core (≥4 required for Proceed):
-1) Last-180d Signals ≥ 3 (founder/customer notes, 3–5 conv. summaries, tickets/reviews, competitor moves)
-2) "Riskiest" assumptions ≥ 2 (tagged/listed)
-3) Success criterion (OMTM or qualitative heuristic) exists
-4) 1–2 week Discovery Plan or OKR draft
-5) Versioned Evidence Hub link 1+
-Advanced (bonus points):
-- Baseline metric
-- NSM/Metric tree or Funnel
-- Experiment plan/results (hypothesis–method–outcome)
-- TAM/SAM/SOM/ICP estimates
-Auto-decision:
-- HOLD: Core ≤ 3 → Return 1-Day Evidence Sprint proposal
-- PROCEED: Core ≥ 4 (must include #2, #3)
-- AUTO-ESCALATE: PROCEED + Advanced ≥ 2
-- PROVISIONAL: major blocker conditional (missing condition/deadline → error)
-
-# ------------------------------
-# Scoring (0–5) & Anchors (Reference Points)
-# ------------------------------
-General Anchors:
-0=no evidence, 1=memo level, 2=fragmentary/early, 3=solid/recent, 4=strong (metrics/experiment connected), 5=exemplary (reproducible)
-
-P — Problem Diagnosis:
-- 4: Recent 90-day behavioral data + JTBD mapping + broken assumptions list (evidence links)
-R — Reframe Opportunity:
-- 4: Segment×Use-case clarity, competitive/substitute changes & timing logic quantified
-I — Intentional Bets:
-- 4: Trade-off/Non-goals articulated + thresholds connected to OKR/NSM
-S — Systemized Execution:
-- 4: Strategy→OKR/NSM→Discovery loop→Backlog/operating rhythm, calendar/issue tracker links
-M — Momentum & Meta-Reflection:
-- 4: Retrospective/stop/resource reallocation history + learning summary (last 2 quarters)
-
-> Overall Score = average (equal weighting). **HOLD prohibits scoring**.
-> Missing Stop-Rule allows Decision=Conditional only.
-> Options < 3 triggers warning, < 2 triggers HOLD.
-
-# ------------------------------
-# Outputs
-# ------------------------------
-1) review.md (≤900 words)
-- Executive Summary (3–5): **Decision** (Approve/Conditional/Park/Kill), Top Strengths, Top Risks
-- **Impact × Confidence 2×2** (Options visual summary; Markdown table)
-- PRISM Scores (0–5, Anchors applied) + evidence citations
-- Pre-mortem/Kill-Switch, Market Triggers & Adaptation Plan
-- Next Review Date
-
-2) review.json (machine-readable; example schema)
-```json
-{
-  "title": "PRISM Strategy Review — <Area> — <YYYY-MM-DD>",
-  "eligibility": "PROCEED|HOLD|AUTO-ESCALATE|PROVISIONAL",
-  "window": {"start":"YYYY-MM-DD","end":"YYYY-MM-DD"},
-  "doc": "<link>", "evidenceHub": "<link>", "owner": "@name",
-  "principle_alignment": {
-    "mission_vision_coherence": "...",
-    "vision_narrative_1_3y": "...",
-    "value_thesis": "..."
-  },
-  "scores": {"P":4,"R":3,"I":4,"S":3,"M":4,"overall":3.6},
-  "options": [{
-    "name":"Do Nothing",
-    "assumptions":[{"text":"...","confidence":0.4},{"text":"...","confidence":0.6}],
-    "investment":{"fte":2,"capex":0,"opex":50000,"tti_weeks":4},
-    "impact":{"nsm_delta":"~0–1%","okr":["KR1","KR2"]},
-    "risks":["...","...","..."],
-    "non_goals":["..."],
-    "decision_rule":"..."
-  }],
-  "capital_allocation":{"total_fte": "...", "budget":"..."},
-  "scenarios":{"base":{"roi":1.8,"payback_months":10},"upside":{},"downside":{}},
-  "assumptions_tests":[
-    {"assumption":"...", "test_method":"A/B|Survey|Logs|Causal",
-     "threshold":"X%", "sample":"n", "duration_days":14,
-     "confidence_before":0.3, "confidence_after": null,
-     "stop_rule":"if < X% for 2w then pause"}
-  ],
-  "leading_indicators":[{"name":"...","query_or_log":"...","cadence":"weekly"}],
-  "kill_switch":[{"metric":"D+7 Retention","threshold":"<X%","window_days":14,"action":"Pause"}],
-  "market_triggers":[{"signal":"Competitor launches X","monitor":"rss/source","play":"Re-prioritize Y→Z"}],
-  "stakeholder_lens":{"investor_board":"...","engineering":"...","gtm":"...","customer_support":"..."},
-  "next_steps":{"immediate":["..."],"nextReviewDate":"YYYY-MM-DD"},
-  "citations":["[[ev-12|...]]","[[ev-13|...]]"]
-}
-```
-
-# ------------------------------
-# Operational Rules
-# ------------------------------
-- Missing required input → **HOLD** + 1-Day Evidence Sprint (specify required items)
-- Never hallucinate evidence; **only cite materials within globs and inputs**
-- Generation order: **review.json → review.md**
-- Action Items follow /process-task-list skill rules
-- Token/length: md ≤ 900 words; Exec Summary 3–5 bullets
-
-## How to Use (Fastest Path)
-1) Run Evidence Readiness auto-gate below. If status = Hold, run 1-day evidence sprint, then re-run gate. Do not score while on Hold.
-2) If status = Proceed, score each PRISM dimension 0–5 using rubrics. Capture concrete evidence citations.
-3) Record strengths, risks, decisions, and improvements using Output Template.
-4) Compute Overall Score and decision. Assign owners and due dates for improvements.
-
-## Evidence Readiness Check (gate)
-Track selection not required. Checklist below auto-applies Light or Standard interpretation based on evidence provided.
-
-### How to use (fastest path):
-- Paste strategy doc link. Checklist will guide auto-judgment.
-- Optionally add this mini-header at top of doc:
-  - Doc: <link>
-  - Owner: @name
-  - Window: YYYY-MM-DD ~ YYYY-MM-DD
-
-#### Unified Evidence Checklist (auto-applied)
-
-- Core items
-  - 1–3 recent signals (≤ 180 days): founder/customer notes, 3–5 conversation summaries, support tickets/reviews, competitor moves
-  - Top 2–3 riskiest assumptions clearly tagged ("Riskiest")
-  - One success criterion: OMTM or qualitative success heuristic
-  - 1–2 week discovery plan or OKR draft
-  - One consolidated evidence hub link (doc/sheet/folder)
-
-- Advanced items
-  - Baseline metric (rough logs or estimates acceptable)
-  - North Star/metric tree or lightweight funnel
-  - Experiment plan/results with hypothesis-method-outcome
-  - User/market size estimate (rough TAM/SAM/SOM or ICP count)
-
-#### Auto-decision rules
-- Proceed (eligible to score PRISM): ≥ 3 Core items present
-- Hold: ≤ 2 Core items → run 1-day evidence sprint, then re-check
-- Auto-escalate to Standard interpretation for future reviews if either:
-  - Core met + ≥ 2 Advanced items, or
-  - Both baseline metric and plan/OKR exist together
-
-#### Operating notes
-- If quantitative data missing, qualitative/market signals count toward Core
-- Any tool fine; keep links consolidated in one place
-- If on Hold, 1-day sprint must be time-boxed (e.g., 3 interviews summary; capture 10 competitive leads)
-
-## Scoring Overview
-- Eligibility: Only compute and record PRISM scores if Evidence Readiness status = Proceed.
-- Scale per dimension: 0–5
-  - 0: Not present; 1: Minimal; 2: Emerging; 3: Solid; 4: Strong; 5: Exemplary
-- Weighting: Equal weighting across PRISM (20% each)
-- Overall Score = average of P, R, I, S, M
-
----
-
-### P — Problem Diagnosis
-
-What good looks like:
-- Identifies core challenge, distinguishes causes vs. symptoms, evidence-based.
-- Articulates what's changing (market/tech/user behavior) and which assumptions broke.
-- Ties user Jobs-To-Be-Done and unmet needs to business context.
-
-Ask:
-- What's changing in market, technology, or user behavior?
-- Which assumptions are no longer holding true?
-- What are users really trying to get done, and what blocks them?
-
-Evidence to cite:
-- Market/tech trend brief, user research synthesis, JTBD statements, opportunity map, analytics showing friction.
-
-Red flags:
-- Problem framed as feature gap, not causal diagnosis
-- No user or market evidence; dated insights
-- Confusing symptom metrics with root cause
-
-Rubric (0–5):
-- 0–1: Vague or opinion-only problem; no causal chain
-- 2: Some evidence; symptoms and causes mixed
-- 3: Clear causal story with recent evidence; scope reasonable
-- 4: Strong causal model, validated with multiple sources and segmentation
-- 5: Robust problem thesis with leading/lagging indicators and falsification paths
-
-Reviewer outputs:
-- Summary of diagnosed core problem(s)
-- Top 1–2 causal insights supported by evidence links
-- Improvement suggestions (e.g., missing segments, contradictory signals to reconcile)
-
----
-
-### R — Reframe Opportunity
-
-What good looks like:
-- Converts problem into compelling strategic opportunity with timing rationale.
-- Clarifies what would shift for users/business if solved well; beyond incrementalism.
-
-Ask:
-- Why is now the right time?
-- If solved, what materially changes for users and the business?
-- What makes this more than incremental?
-
-Evidence to cite:
-- TAM/SAM/SOM or value pool, competitive whitespace, timing catalysts (tech, regulation, distribution), user willingness signals.
-
-Red flags:
-- Jumps to features; lacks clear opportunity thesis
-- No timing rationale; ignores competitive dynamics
-- Overpromises without mechanism of change
-
-Rubric (0–5):
-- 0–1: No opportunity framing
-- 2: Opportunity stated but generic; weak timing
-- 3: Clear opportunity thesis with timing and scope
-- 4: Differentiated framing with credible mechanism of advantage
-- 5: Compelling, time-sensitive opportunity with defensibility and user/business shift defined
-
-Reviewer outputs:
-- Opportunity statement and timing logic
-- Key differentiators and value mechanism
-- Improvements (e.g., clarify defensibility, quantify upside bounds)
-
----
-
-### I — Intentional Bets
-
-What good looks like:
-- Bold, testable strategic choices with explicit trade-offs and non-goals.
-- Crisp Where-to-Play / How-to-Win statements linked to measurable hypotheses.
-
-Ask:
-- What are the few big bets? What are we not doing?
-- How are bets testable within timeframe with clear success thresholds?
-- How do bets connect to hypotheses and upside?
-
-Evidence to cite:
-- Bet statements, non-goals, hypotheses with metrics, decision logs, alternative paths considered.
-
-Red flags:
-- Feature lists disguised as strategy; no trade-offs
-- No hypotheses or thresholds; can't be falsified
-- Everything is a priority
-
-Rubric (0–5):
-- 0–1: No real choices; themes only
-- 2: Choices exist but lack trade-offs or tests
-- 3: Defined bets with non-goals and baseline hypotheses
-- 4: Testable, time-bound bets with success/failure thresholds and resourcing
-- 5: Coherent portfolio of bets with staged options and kill/sustain criteria
-
-Reviewer outputs:
-- List of bets and non-goals with links
-- Testability assessment and gaps
-- Improvements (e.g., define thresholds, add non-goals, narrow scope)
-
----
-
-### S — Systemized Execution
-
-What good looks like:
-- Strategy translates into OKRs, North Star/inputs, and discovery loops.
-- Bets shape backlog, governance, and learning checkpoints.
-
-Ask:
-- Do OKRs reflect the bets vs. BAU metrics?
-- Are discovery/validation loops defined with leading indicators?
-- Are check-ins and operating rhythms in place?
-
-Evidence to cite:
-- OKRs, North Star metric tree, discovery plan, experiment backlog, rituals calendar, resource plan.
-
-Red flags:
-- OKRs disconnected from bets; vanity or lag-only metrics
-- No discovery cadence; roadmap-first planning
-- Lack of ownership or governance
-
-Rubric (0–5):
-- 0–1: No bridge to execution
-- 2: Some metrics or OKRs, weak alignment
-- 3: OKRs and discovery plan map to bets
-- 4: Robust metric tree, clear owners, and learning cadence
-- 5: Tight strategy-to-execution system with adaptive re-planning and leading→lagging linkage
-
-Reviewer outputs:
-- Execution readiness assessment (OKRs, metrics, loops, owners)
-- Risks to delivery or learning velocity
-- Improvements (e.g., define leading indicators, set decision checkpoints)
-
----
-
-### M — Momentum & Meta-Reflection
-
-What good looks like:
-- Built-in reflection to avoid strategic drift; deliberate learning objectives.
-- Regularly says no; challenges assumptions; documents learning.
-
-Ask:
-- What did we learn this quarter? What changed?
-- Where did we say yes when we should've said no?
-- What are we not challenging enough?
-
-Evidence to cite:
-- Quarterly retro, decision reviews, stopped work examples, updated assumptions log.
-
-Red flags:
-- No retros; strategy as static doc
-- Accretion of scope; no stopped initiatives
-- Assumptions never revisited
-
-Rubric (0–5):
-- 0–1: No reflection mechanisms
-- 2: Ad-hoc reflection; little impact on choices
-- 3: Quarterly reviews with documented learning and some course-correction
-- 4: Systematic reflection tied to decisions and resource shifts
-- 5: Strong learning culture with explicit un-learning and portfolio rebalancing
-
-Reviewer outputs:
-- Reflection mechanisms and learning culture assessment
-- Improvements (e.g., add stop criteria, schedule decision reviews)
-
----
-
-## Output Template (copy for each review)
-
-```md
-Title: PRISM Strategy Review — <Product/Area> — <YYYY-MM-DD>
-
-Eligibility (auto-gate): Proceed / Hold / Auto-escalated
-Doc: <link>
-Evidence Hub: <link>
-Owner: @name
-Window: YYYY-MM-DD ~ YYYY-MM-DD
-
-Executive Summary (3–5 bullets)
-- Key call: Approve / Provisionally Approve (with conditions) / Revise & Resubmit
-- Top strengths
-- Top risks/assumptions to resolve
-
-Scores (0–5)
-- P – Problem Diagnosis: <score> — evidence: <links>
-- R – Reframe Opportunity: <score> — evidence: <links>
-- I – Intentional Bets: <score> — evidence: <links>
-- S – Systemized Execution: <score> — evidence: <links>
-- M – Momentum & Meta-Reflection: <score> — evidence: <links>
-- Overall Score: <avg>
-
-Findings & Rationale
-- P: <summary of diagnosis quality>
-- R: <summary of opportunity framing>
-- I: <summary of bets and trade-offs>
-- S: <summary of strategy→execution alignment>
-- M: <summary of reflection mechanisms>
-
-Priority Improvements (numbered, with owners & dates)
-1) [P/R/I/S/M] <improvement>, Owner: <name>, Due: <date>, Success: <measure>
-2) ...
-
-Risks & Assumptions to Validate
-- Assumption: <text> — Test: <method> — Threshold: <value> — By: <date>
-
-Decision & Next Steps
-- Decision: <approve status>
-- Immediate actions: <bullets>
-- Next review date: <date>
-```
-
-## Reviewer Checklist Before Submission
-- Evidence Readiness status recorded (Proceed/Hold/Auto-escalated)
-- If Hold, 1-day evidence sprint was executed and gate re-run
-- Links consolidated to single evidence hub
-- All scores justified with links to evidence
-- Improvements are actionable, prioritized, and owned
-- Decision is explicit; conditions (if any) are measurable
-- Next review date is set; learning objectives defined
-
-## Common Anti-patterns (Quick Reference)
-- Strategy as feature list; no explicit trade-offs or non-goals
-- Lagging metrics only; no leading indicators for discovery
-- Untested assumptions presented as facts; no falsification plan
-- Over-expansive scope; unclear target segment or use case
-- Reflection is performative; no stopped work or resource reallocation
-=======
 # CPO Self-Review Partner — PRISM Strategy
 
-## When to Use
-- Use when a PM or product manager needs to review and validate a product strategy document
-- For CPO-level strategy self-assessment with structured evidence-based evaluation
-- During quarterly strategy reviews or when comparing strategic options for an initiative
-- When preparing strategy documents for leadership or board review
+CPO-level, evidence-based self-review of a product strategy document.
 
-## Inputs (required fields)
+## When to Use
+- Reviewing and validating a product strategy document
+- Quarterly strategy reviews or comparing strategic options for an initiative
+- Preparing a strategy for leadership or board review
+
+## Input
 - `doc_link`: strategy document to review
 - `evidence_hub_link`: evidence folder (e.g., `initiatives/<name>/`)
 - `product_or_area`, `owner`, `review_window_start/end` (YYYY-MM-DD)
-- `riskiest_assumptions`: minimum 2 tagged assumptions
+- `riskiest_assumptions`: at least 2 tagged assumptions
 - Optional: `baseline_metric`, `north_star`, `capacity_window`, `runway_months`
+- **Context:** `company-level-context/` for strategy/OKR/vision alignment; reference prior review versions.
 
-If inputs are missing, return HOLD status with a 1-Day Evidence Sprint proposal.
+If required inputs are missing, return **HOLD** with a 1-Day Evidence Sprint proposal.
 
-## Context and References
-- Read from `company-level-context/` for company-level strategy, OKR, and product vision alignment
-- Reference previous review versions for context continuity
-- Citation format: `[[ev-id|path#line-range|YYYY-MM-DD]]` (missing citations = 1-step score deduction)
+Citation format: `[[ev-id|path#line-range|YYYY-MM-DD]]` (missing citations deduct one step).
+
+## Output
+- **Format:** `review.json` (machine-readable) + `review.md` (≤ 900 words)
+- **Location:** same directory as the strategy document
+- **Required sections:** Executive Summary, Impact × Confidence table, PRISM Scores, Pre-mortem/Kill-Switch, Next Review Date
 
 ## Process
 
-### Step 1: Evidence readiness check (gate)
-Evaluate core evidence items (need 4+ to proceed):
-1. Last-180-day signals (3+ founder/customer notes, tickets, competitor moves)
-2. Riskiest assumptions (2+) clearly tagged
-3. Success criterion (OMTM or qualitative heuristic) defined
-4. 1-2 week discovery plan or OKR draft
-5. Versioned evidence hub link
-
-**Decision rules:** HOLD if core items <=3. PROCEED if core >=4 (must include #2 and #3). AUTO-ESCALATE if PROCEED + 2+ advanced items.
+### Step 1: Evidence readiness gate
+Core items (need 4+ to proceed): (1) last-180-day signals — 3+ founder/customer notes,
+tickets, competitor moves; (2) 2+ riskiest assumptions tagged; (3) success criterion (OMTM
+or qualitative heuristic); (4) 1-2 week discovery plan or OKR draft; (5) versioned evidence
+hub link. **HOLD** if ≤3 core. **PROCEED** if ≥4 (must include #2 and #3). **AUTO-ESCALATE**
+if PROCEED + 2+ advanced items.
 
 ### Step 2: PRISM scoring (0-5 per dimension)
-Score each dimension using evidence citations:
+1. **P — Problem Diagnosis** — causal analysis, recent behavioral data, JTBD, broken assumptions
+2. **R — Reframe Opportunity** — opportunity with timing rationale, competitive whitespace, user/business shift
+3. **I — Intentional Bets** — bold testable choices with explicit trade-offs, non-goals, success/failure thresholds
+4. **S — Systemized Execution** — OKRs reflecting bets, discovery loops, leading indicators, operating rhythm
+5. **M — Momentum & Meta-Reflection** — quarterly retros, stopped work, updated assumptions, learning culture
 
-1. **P — Problem Diagnosis:** Causal analysis with recent behavioral data, JTBD mapping, broken assumptions
-2. **R — Reframe Opportunity:** Strategic opportunity with timing rationale, competitive whitespace, user/business shift
-3. **I — Intentional Bets:** Bold, testable choices with explicit trade-offs, non-goals, success/failure thresholds
-4. **S — Systemized Execution:** OKRs reflecting bets, discovery loops, leading indicators, operating rhythm
-5. **M — Momentum & Meta-Reflection:** Quarterly retros, stopped work examples, updated assumptions, learning culture
+Scale: 0 = no evidence, 1 = memo, 2 = fragmentary, 3 = solid/recent, 4 = strong (metrics-connected), 5 = exemplary (reproducible). Overall = equal-weighted average.
 
-Scale: 0=no evidence, 1=memo level, 2=fragmentary, 3=solid/recent, 4=strong (metrics-connected), 5=exemplary (reproducible). Overall = equal-weighted average.
-
-### Step 3: Mode analysis (evaluate each)
-- **Mode 0 — Principle alignment:** Mission/vision coherence, 1-3yr narrative, value thesis
-- **Mode 1 — Socratic checklist:** Thesis, outcomes, opportunity, causality, alternatives (3+), trade-offs, unit economics, disconfirming evidence
-- **Mode 2 — Bias guardrails:** Address all 6: Confirmation, Availability, Sunk Cost, Survivorship, Overconfidence, Anchoring
-- **Mode 3 — Options & capital allocation:** Assumptions, investment, impact, risks, decision rules per option
+### Step 3: Mode analysis
+- **Mode 0 — Principle alignment:** mission/vision coherence, 1-3yr narrative, value thesis
+- **Mode 1 — Socratic checklist:** thesis, outcomes, opportunity, causality, alternatives (3+), trade-offs, unit economics, disconfirming evidence
+- **Mode 2 — Bias guardrails:** address all 6 — Confirmation, Availability, Sunk Cost, Survivorship, Overconfidence, Anchoring
+- **Mode 3 — Options & capital allocation:** assumptions, investment, impact, risks, decision rules per option
 - **Mode 4 — Scenarios & runway:** Base/Upside/Downside sensitivity, quarterly sequencing
-- **Mode 5 — Pre-mortem & kill-switch:** Top-5 failure causes, leading indicators, kill criteria, pivot/market triggers, adaptation plan
-- **Mode 6 — Stakeholder lens:** Investor/Board, Engineering, GTM, Customer Support perspectives
+- **Mode 5 — Pre-mortem & kill-switch:** top-5 failure causes, leading indicators, kill criteria, pivot/market triggers, adaptation plan
+- **Mode 6 — Stakeholder lens:** Investor/Board, Engineering, GTM, Customer Support
 
-### Step 4: Generate outputs and recommend improvements
-Produce review.json first, then review.md (max 900 words). Include decision, improvements with owners, and next review date.
+### Step 4: Outputs and recommendations
+Produce `review.json` first, then `review.md`. Include the decision, improvements with
+owners and due dates, and the next review date.
 
-## Output
-- **Format:** `review.md` (max 900 words) + `review.json` (machine-readable)
-- **Template structure:** Required sections: Executive Summary, Impact x Confidence table, PRISM Scores, Pre-mortem/Kill-Switch, Next Review Date
-- **Location:** Same directory as the strategy document
-
-## Success Criteria
-- All 5 PRISM dimensions scored with evidence citations (metric: 5/5 dimensions scored)
-- Evidence gate completed with clear PROCEED/HOLD decision
-- At least 3 strategic options compared (Options < 3 triggers warning)
-- Improvements are actionable with assigned owners and due dates
-- Success metric: Overall PRISM score reported with 0-5 precision
-
-## Decision Support
-Based on PRISM scores, recommend one option:
-- **Option A: Approve** — Recommend when PRISM overall score >= 3.5/5
-- **Option B: Conditional approve** — Suggest when specific dimensions need strengthening
-- **Option C: Revise and resubmit** — Suggest when critical evidence gaps exist or score < 2.5/5
-
-## Self-Evaluation
-- Review whether all evidence citations are valid and current (not hallucinated)
-- Evaluate scoring consistency: Are anchor descriptions applied uniformly?
-- Validate that improvements are prioritized by impact, not just listed
-- Iterate on review quality by comparing with previous PRISM reviews for the same area
-- Improve by incorporating feedback from strategy document owners
+## Quality bar
+- All 5 PRISM dimensions scored with valid, current evidence citations (not hallucinated); anchors applied consistently.
+- Evidence gate produces a clear PROCEED/HOLD; at least 3 strategic options compared (warn if fewer).
+- Decision follows the scores: Approve (overall ≥ 3.5), Conditional (dimensions need strengthening), or Revise (critical gaps or < 2.5).
+- Improvements are prioritized by impact with owners and dates.
+- Watch the anti-patterns: strategy as a feature list, lagging-only metrics, untested assumptions as fact, over-broad scope, no stopped work.
 
 ## Skill Integration
-- **Before this skill:** Gather evidence from initiatives, use [OKR Sparring Partner](/okr-sparring-partner) for OKR validation
-- **After this skill:** Feed improvements into strategy revision workflow and next planning cycle
-- **Related:** [OKR Sparring Partner](/okr-sparring-partner) for OKR-specific review
-
-## Common Anti-Patterns
-- Strategy as feature list with no trade-offs or non-goals
-- Lagging metrics only with no leading indicators
-- Untested assumptions presented as facts
-- Over-expansive scope with unclear target segment
-- No stopped work or resource reallocation evidence
-
-## Time Efficiency
-- Evidence readiness check should complete within 15 minutes
-- Full PRISM scoring should complete within 60 minutes per strategy document
-- Keep review.md under 900 words to respect reviewer time constraints
->>>>>>> Stashed changes
+- **Before:** gather evidence from initiatives; use [OKR Sparring Partner](/okr-sparring-partner) for OKR validation.
+- **After:** feed improvements into strategy revision and the next planning cycle.
+- **Related:** [OKR Sparring Partner](/okr-sparring-partner) for OKR-specific review.

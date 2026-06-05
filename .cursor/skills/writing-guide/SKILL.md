@@ -8,85 +8,29 @@ description: >
 
 # Writing Style Guide
 
-## Goal
-Ensure all PM artifacts and communications follow consistent voice, tone, and quality standards.
+Keep PM artifacts and communications clear, direct, and human-sounding. Apply as a
+quality layer over any document-generating skill.
 
 ## When to Use
-- Use when a PM or product manager writes or reviews any document (PRDs, 1-pagers, OKRs, updates)
-- When providing feedback on written content from team members
-- When creating customer-facing or stakeholder communications
-- Applied as a quality layer across all document-generating PM skills in this toolkit
+- Writing or reviewing any document (PRDs, 1-pagers, OKRs, updates)
+- Giving feedback on written content
+- Creating customer-facing or stakeholder communications
 
 ## Input
-- **Required:** Text content to review or guidelines to apply
-- **Optional:** Target audience (internal team, leadership, customers)
-- **Context:** Reference `company-level-context/` for company-level brand voice and strategy alignment
+- Text to review, or guidelines to apply
+- Optional: target audience (team, leadership, customers)
+- **Context:** `company-level-context/` for brand voice
 
 ## Output
-- **Format:** Edited text or review feedback in Markdown (`.md`)
-- **Location:** Same as the source document (no separate file created)
-- **Template structure:** Feedback organized by section: voice issues, banned words, LLM patterns, formatting
+- Edited text or section-by-section feedback (voice, banned words, LLM patterns, formatting)
+- Saved in place with the source document; no separate file
 
-## Process
-
-1. Validate inputs and gather context
-2. Execute core analysis
-3. Generate output and review results
-4. Iterate based on feedback
-
-
-### Step 1: Scan for issues
-Read the content and identify banned words, LLM patterns, passive voice, and tone problems.
-
-### Step 2: Apply voice rules
-Check active voice, specificity, and directness against the rules in the voice and tone section below.
-
-### Step 3: Check formatting
-Validate punctuation, structure, readability, and consistency with the formatting standards.
-
-### Step 4: Suggest improvements
-Provide concrete before/after options for each issue found. Prioritize high-impact changes.
-
-### Step 5: Review and validate
-Evaluate whether suggested changes improve clarity without losing meaning. Iterate on edge cases.
-
-## Success Criteria
-- Zero banned words remaining in final output (metric: banned word count = 0/total)
-- Active voice usage in 90% or more of sentences
-- All claims backed by specific data or examples
-- Readability score appropriate for target audience
-
-## Decision Support
-When tone conflicts arise, recommend options:
-- **Option A:** Formal tone (for leadership, board communications)
-- **Option B:** Conversational tone (for team updates, internal docs)
-- **Recommend:** Match the document type and audience context
-
-## Context Preservation
-- Reference `company-level-context/` for brand voice guidelines and strategic messaging
-- Maintain consistency with existing document tone when editing (not rewriting from scratch)
-- Preserve the author's intent and domain-specific terminology
-
-## Self-Evaluation
-- Review whether edits improve clarity without distorting meaning
-- Evaluate consistency: Are rules applied uniformly across the document?
-- Validate that LLM pattern removal produces natural-sounding text
-- Improve by collecting feedback on which edits were accepted vs. rejected
-
-## Skill Integration
-- **Before this skill:** Apply after any other skill generates written output (PRDs, 1-pagers, OKRs)
-- **After this skill:** Content is ready for review or publication workflow
-- **Related:** Works with all document-generating PM skills as a quality layer
-
-## Time Efficiency
-- Quick scan for banned words should complete within 2 minutes
-- Full voice and tone review should complete within 10 minutes per document
-- Focus on highest-impact issues first when time is limited
-
----
+## How to apply
+Scan for banned words, LLM patterns, passive voice, and tone problems; apply the rules
+below; offer concrete before/after rewrites for the highest-impact issues. Preserve the
+author's intent and domain terms — edit, don't rewrite from scratch.
 
 ## Voice and Tone Rules
-
 - Write like humans speak. Avoid corporate jargon and marketing fluff.
 - Be confident and direct. Avoid softening phrases like "I think," "maybe," or "could."
 - Use active voice instead of passive voice.
@@ -95,7 +39,6 @@ When tone conflicts arise, recommend options:
 - Use contractions like "I'll," "won't," and "can't" for a warmer tone.
 
 ## Specificity and Evidence
-
 - Be specific with facts and data instead of vague superlatives.
 - Back up claims with concrete examples or metrics.
 - Highlight customers and community members over company achievements.
@@ -103,7 +46,6 @@ When tone conflicts arise, recommend options:
 - Make content concrete, visual, and falsifiable.
 
 ## Title Creation
-
 - Make a promise in the title so readers know what they get.
 - Share something uniquely helpful that makes readers better at their work.
 - Avoid vague titles like "My Thoughts On XYZ." Titles should be opinions or shareable facts.
@@ -146,3 +88,14 @@ When tone conflicts arise, recommend options:
 - Use exclamation points sparingly.
 - Sentences can start with "But" and "And" (do not overuse).
 - Use periods instead of commas when possible for clarity.
+
+## Quality bar
+- Zero banned words and LLM patterns remain; voice is active and direct.
+- Claims are backed by specific data or examples.
+- Edits improve clarity without distorting meaning or the author's intent.
+- Tone matches the audience (formal for leadership/board, conversational for internal).
+
+## Skill Integration
+- **Before:** apply after any skill generates written output (PRDs, 1-pagers, OKRs).
+- **After:** content is ready for review or publication.
+- **Related:** works with all document-generating PM skills as a quality layer.

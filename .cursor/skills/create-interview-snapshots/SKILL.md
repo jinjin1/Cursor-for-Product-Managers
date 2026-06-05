@@ -8,75 +8,47 @@ description: >
 
 # Extract Interview Snapshots (Continuous Discovery Habits)
 
-## Goal
-Systematically extract meaningful insights from qualitative interviews or user test sessions, creating structured interview snapshots that capture stories, opportunities, and behavioral insights.
+Turn a qualitative interview or user test into a structured snapshot that captures
+concrete behavioral stories, opportunities, and insights.
 
 ## When to Use
-- Use when a PM or product manager needs structured insights from qualitative interviews or user tests
-- When processing interview transcripts following Continuous Discovery Habits methodology
-- When converting interview data into input for opportunity analysis in an initiative
-- When systematically organizing multiple interviews to identify patterns
+- Extracting structured insights from interview transcripts or user tests
+- Converting interview data into input for opportunity analysis
+- Organizing multiple interviews to identify patterns
 
 ## Input
-- **Primary source**: Interview transcripts, observation notes, user test recordings
-- **Context source**: company-level-context/ (product strategy, OKR, strategic documents for context)
-- **Required**: At least 1 interview transcript or user test recording
-- **Optional**: Participant profiles, research goals, previous snapshots
+- **Primary:** Interview transcripts, observation notes, user test recordings (at least 1)
+- **Context:** `company-level-context/` for product strategy / OKR
+- **Optional:** Participant profiles, research goals, previous snapshots
 
 ## Output
-- **Format:** Markdown (`.md`)
-- **Location:** `user-interviews/snapshots/`
+- **Format:** Markdown — **Location:** `user-interviews/snapshots/`
 - **Filename:** `snapshot-[participant-name]-[date].md`
 
 ## Process
 
-1. Validate inputs and gather context
-2. Execute core analysis
-3. Generate output and review results
-4. Iterate based on feedback
+### Step 1: Validate and frame
+Assess the data's completeness; identify session type, research goals, and participant context.
 
+### Step 2: Identify stories
+Extract specific behavioral stories (concrete actions), not generalizations. Capture
+contextual details (when/where/with whom/why), emotional moments, and workarounds.
+Distinguish what people **say** from what they **do**.
 
-### Step 1: Data Validation
-Assess completeness and quality of provided interview data. Complete within 5 minutes.
+### Step 3: Map the experience
+For key stories, map the journey: actions, thoughts/feelings, pain points, tools.
 
-### Step 2: Context Extraction
-Identify session type, research goals, and participant context.
+### Step 4: Surface opportunities and insights
+Identify pain points, needs, and improvement areas from the stories, then the patterns
+that hold across stories.
 
-### Step 3: Story Identification
-Extract specific behavioral stories, not generalizations. Focus on concrete actions.
+### Step 5: Compile the snapshot
+Write it up using the template below. Pick the depth that fits:
+- **Full** — discovery interviews with rich data: all sections + detailed experience map.
+- **Quick** — usability tests / follow-ups: Quick Facts, Stories, Opportunities only.
+- **Synthesis-ready** — when prepping for cross-interview synthesis: emphasize patterns, quotes, opportunity statements.
 
-### Step 4: Experience Mapping
-Create user journey maps for key stories with actions, emotions, and pain points.
-
-### Step 5: Opportunity Analysis
-Identify pain points, needs, and improvement areas from stories.
-
-### Step 6: Insight Synthesis
-Recognize patterns and behavioral insights across stories.
-
-### Step 7: Snapshot Creation
-Compile into the structured template format below.
-
-### Step 8: Quality Review
-Validate completeness and clarity against success criteria. Improve weak areas.
-
-## Success Criteria
-- Completeness: 100% of required sections filled (Quick Facts, Stories, Experience Map, Opportunities, Insights)
-- Specificity: Each story contains at least 3 concrete behavioral details
-- Quote coverage: 70% or more of opportunities backed by direct quotes
-- Actionability: 80% or more of opportunities are addressable through product changes
-
-## Data Processing Guidelines
-- Focus on concrete behaviors over opinions or intentions
-- Extract contextual details (when, where, with whom, why)
-- Identify emotional moments (frustration, delight, surprise, confusion)
-- Capture workarounds and problem-solving approaches
-- Distinguish between what people say vs. what they do
-- Note repeated patterns indicating systematic issues
-
-## Output Template Structure
-
-Required sections and fields:
+## Output Template
 
 ```markdown
 # Interview Snapshot: [Participant Name]
@@ -108,26 +80,12 @@ Required sections and fields:
 - **[Category]**: [Pattern or behavior beyond a single story]
 ```
 
-## Decision Support
+## Quality bar
+- Stories are concrete and behavioral, with specific details — not opinions or intentions.
+- Opportunities are backed by direct quotes and are addressable through product changes.
+- Insights go beyond a single story; quotes are accurate.
 
-- **Option A — Full Snapshot**: Recommend for discovery interviews with rich behavioral data. All sections with detailed experience maps.
-- **Option B — Quick Snapshot**: Suggest for usability tests or follow-up sessions. Quick Facts, Stories, and Opportunities only.
-- **Option C — Synthesis-Ready Snapshot**: Recommend when preparing for cross-interview synthesis. Emphasize patterns, quotes, and opportunity statements.
-
-Selection depends on interview type, data richness, and next-step purpose.
-
-## Quality Review
-Before finalizing, evaluate and validate:
-- All required sections complete with concrete behavioral details
-- Experience map follows logical flow; opportunities are specific and actionable
-- Insights go beyond individual stories; quotes are accurate
-- Iterate to improve specificity where needed
-
-## Workflow Integration
-
-**Before** this skill: Conduct interviews and transcription to collect raw data.
-**After** this skill: [Create Opportunities](/create-opportunities) to extract and prioritize opportunities from snapshots. Also feeds into [Calculate ICE Score](/calculate-ice-score) as evidence.
-
-```
-Interview → Create Snapshots → Synthesize → Create Opportunities → Solutions
-```
+## Skill Integration
+- **Before:** conduct and transcribe interviews to collect raw data.
+- **After:** [Create Opportunities](/create-opportunities) to extract and prioritize; also feeds [Calculate ICE Score](/calculate-ice-score) as evidence.
+- **Workflow:** Interview → Snapshots → Synthesize → Opportunities → Solutions

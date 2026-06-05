@@ -8,73 +8,62 @@ description: >
 
 # Create and Prioritize Opportunities (Continuous Discovery Habits)
 
-## Goal
-Extract opportunities from interview snapshots based on customer needs, pain points, and desires. Organize them in an Opportunity Solution Tree structure and propose target opportunities for exploration.
+Extract opportunities (customer needs, pain points, desires) from research, organize
+them in an Opportunity Solution Tree, and propose a target opportunity to explore.
 
 ## When to Use
-- Use when a PM or product manager needs to identify and prioritize customer problems worth solving for an initiative
-- After completing interview snapshots with [Create Interview Snapshots](/create-interview-snapshots)
-- After synthesizing multiple snapshots with [Synthesize Interview Snapshots](/synthesize-snapshots)
-- Before generating solutions to ensure focus on the right opportunities
+- Identifying and prioritizing customer problems worth solving for an initiative
+- After [Create Interview Snapshots](/create-interview-snapshots) or [Synthesize Snapshots](/synthesize-snapshots)
+- Before generating solutions, to focus on the right problem
 
 ## Input
-- **Primary**: Interview snapshots from `user-interviews/snapshots/`
-- **Secondary**: Synthesis documents from `user-interviews/synthesis/`
-- **Context source**: company-level-context/ (Product Vision, Strategy, OKR, Goals — for strategic alignment)
-- **Minimum**: 3-5 interview snapshots or 1 synthesis document
+- **Primary:** Interview snapshots from `user-interviews/snapshots/`
+- **Secondary:** Synthesis documents from `user-interviews/synthesis/`
+- **Context:** `company-level-context/` (Vision, Strategy, OKR, Goals) for strategic alignment
+- **Minimum:** 3-5 snapshots or 1 synthesis document
 
 ## Output
 - **Format:** Markdown — **Location:** `opportunities/[topic]/`
-- **Filename:** `opportunities-[topic]-v[version].md` (kebab-case, auto-incrementing version)
-- Never overwrite existing files; always create new version
+- **Filename:** `opportunities-[topic]-v[version].md` (kebab-case, auto-increment; never overwrite)
 
 ## Process
 
-### Step 1: File Management (Pre-step)
-Extract topic from content. Check existing files with pattern `opportunities-[topic]-v*.md`. Auto-increment version. Complete within 2 minutes.
+### Step 1: Set up and scan context
+Pick the topic and next version number. Scan `company-level-context/` for vision, goals,
+OKR priorities, and constraints to use as alignment criteria.
 
-### Step 2: Context Analysis (Pre-step)
-Scan company-level-context/ for strategic materials. Extract vision, goals, OKR priorities, constraints. Set evaluation criteria for strategic alignment.
+### Step 2: Extract opportunities
+Pull customer stories, needs, pain points, and desires from the snapshots. Frame each as:
+- **Need:** "I want [outcome] but [barrier] makes it difficult"
+- **Pain point:** "I feel frustrated in [situation] because of [problem]"
+- **Desire:** "I wish I could [experience] but [constraint] prevents it"
 
-### Step 3: Extract Opportunities
-Extract customer stories, needs, pain points, desires from snapshots. Format as:
-- **Need-based**: "I want [outcome] but [barrier] makes it difficult"
-- **Pain point-based**: "I feel frustrated in [situation] because of [problem]"
-- **Desire-based**: "I wish I could [experience] but [constraint] prevents it"
+Exclude feature suggestions — reconstruct them as the underlying need. Link evidence
+(quotes, frequency, segments).
 
-Exclude feature suggestions; reconstruct as underlying needs. Link evidence (quotes, frequency, segments).
+### Step 3: Map into the Opportunity Solution Tree
+Place opportunities in the tree (Outcome > Parent > Child > Leaf) using parent-child and
+sibling relationships. Merge duplicates; reconstruct any disguised solutions.
 
-### Step 4: Map Opportunities
-Place in Opportunity Solution Tree (Outcome > Parent > Child > Leaf). Use parent-child and sibling relationships. Merge duplicates; reconstruct disguised solutions.
+### Step 4: User review #1
+Present the candidate table (`ID | Parent | Statement | Evidence Count | Quotes`) and
+ask whether to merge/split/delete/rename any. Pause for feedback.
 
-### Step 5: User Review #1
-Present opportunity candidate table: `ID | Parent | Statement | Evidence Count | Quotes`. Ask: "Merge/split/delete/rename any?" PAUSE for feedback.
+### Step 5: Assess sibling sets
+Compare siblings across four lenses (discussion, not scoring):
+1. **Opportunity Sizing** — how many customers, how often?
+2. **Market** — table stakes vs differentiator?
+3. **Company** — alignment with company-level context, OKR, resources?
+4. **Customer** — importance, and satisfaction with alternatives?
 
-### Step 6: Assess Opportunities
-Compare sibling sets across four lenses:
-1. **Opportunity Sizing** — How many customers, how frequently?
-2. **Market Factors** — Table stakes vs differentiator?
-3. **Company Factors** — Strategic alignment with company-level context, OKR, resource availability
-4. **Customer Factors** — Importance to customers, satisfaction with alternatives?
+### Step 6: User review #2
+Present the priority summary (`Sibling Set | Candidates | Key Factors | Tentative Winner`).
+Pause for feedback.
 
-Use discussion-based recording, not scoring.
+### Step 7: Propose target opportunity
+Mark a leaf node as the Target Opportunity (a reversible, two-way-door proposal).
 
-### Step 7: User Review #2
-Present priority summary: `Sibling Set | Candidates | Key Factors | Tentative Winner`. PAUSE for feedback.
-
-### Step 8: Propose Target Opportunity
-Mark a leaf node as Target Opportunity (Proposal). This is a reversible, two-way door decision.
-
-## Success Criteria
-- Coverage: 90% or more of identifiable opportunities extracted from interview data
-- Evidence strength: Each opportunity backed by 2+ participants or strong behavioral evidence
-- Customer language: 80% or more of statements use customer terminology
-- Solution-free: 0 feature requests in opportunity statements
-- Strategy alignment: Measured against company-level-context OKR/strategy
-
-## Output Template Structure
-
-Required sections and fields:
+## Output Template
 
 ```markdown
 # Opportunities — [Topic Name]
@@ -95,32 +84,13 @@ Required sections and fields:
 - Rationale, Supporting Evidence, Next Steps
 ```
 
-## Decision Support
+## Quality bar
+- Every opportunity states a customer problem in customer language — no internal jargon, no feature requests, no bare emotions.
+- Each is backed by 2+ participants or strong behavioral evidence, and mapped to the tree.
+- Company-factor assessment references the strategic context; both user reviews completed.
+- Decisions are hypothetical and reversible — explore now, gather more evidence, or deprioritize.
 
-- **Option A — Explore immediately**: Recommend when multiple participants mention it, strategic alignment is high, and product changes can address it. Proceed to solution generation.
-- **Option B — Gather more evidence**: Suggest when evidence exists but sample is insufficient. Conduct additional interviews.
-- **Option C — Deprioritize**: Recommend when evidence is weak or strategic alignment is low. Revisit next quarter or merge with other opportunities.
-
-## Quality Review
-Before finalizing, review and evaluate:
-- Each opportunity describes a customer problem in customer language
-- Evidence supports each opportunity; opportunities are actionable
-- All mapped to solution tree; user reviews completed
-- Company factors include strategic alignment analysis from context
-- Iterate to improve weak opportunity statements with better evidence
-
-## Guardrails
-- Opportunities must use customer language (no internal jargon)
-- Feature suggestions are NOT opportunities; reconstruct as underlying needs
-- Emotions alone are not opportunities; reconstruct as actionable problems
-- Use problem-focused statement format; no precise scoring
-- All decisions are hypothetical and reversible
-
-## Workflow Integration
-
-**Before** this skill: [Create Interview Snapshots](/create-interview-snapshots) for input data.
-**After** this skill: [Generate Solutions](/generate-solutions) to explore solutions for target opportunities. Also feeds into [Calculate ICE Score](/calculate-ice-score).
-
-```
-Interviews → Snapshots → Synthesize → Create Opportunities → Generate Solutions
-```
+## Skill Integration
+- **Before:** [Create Interview Snapshots](/create-interview-snapshots) / [Synthesize Snapshots](/synthesize-snapshots)
+- **After:** [Generate Solutions](/generate-solutions); also feeds [Calculate ICE Score](/calculate-ice-score)
+- **Workflow:** Interviews → Snapshots → Synthesize → Create Opportunities → Generate Solutions

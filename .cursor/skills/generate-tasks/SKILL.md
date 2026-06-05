@@ -5,108 +5,71 @@ description: >
   breaking down feature requests into actionable implementation tasks for developers.
 ---
 
-# Generating a Task List from User Requirements
+# Generating a Task List from a PRD
 
-## Goal
-
-To guide an AI assistant in creating a detailed, step-by-step task list in Markdown format based on user requirements, feature requests, or existing documentation. The task list should guide a developer through implementation.
+Break a PRD or feature request into a step-by-step task list a developer can implement.
+Written for a junior developer: explicit and actionable.
 
 ## When to Use
-- When breaking down a PRD or feature request into actionable development tasks
-- When creating a step-by-step implementation plan for developers
-- When organizing work for sprint planning
-- 적용 대상: PM이 개발팀에 구체적인 작업 목록을 전달할 때 사용
+- Breaking a PRD or feature request into development tasks
+- Creating an implementation plan or organizing work for sprint planning
 
 ## Input
 - **Required:** Feature request, PRD, or requirements document
-- **Optional:** Existing codebase context, tech stack information
-- **Context Source:** Reference `company-level-context/` for strategic alignment and `prd/` for requirements
+- **Optional:** Existing codebase context, tech stack
+- **Context:** `company-level-context/` for alignment, `prd/` for requirements
 
 ## Output
-
-- **Format:** Markdown (`.md`)
-- **Location:** `/tasks/`
+- **Format:** Markdown — **Location:** `tasks/` (the initiative's `tasks/` directory)
 - **Filename:** `tasks-[feature-name].md` (e.g., `tasks-user-profile-editing.md`)
 
-## Process (Step-by-Step Workflow)
+## Process
 
-### Step 1: Receive Requirements The user provides a feature request, task description, or points to existing documentation
-2.  **Analyze Requirements:** The AI analyzes the functional requirements, user needs, and implementation scope from the provided information
-3.  **Phase 1: Generate Parent Tasks:** Based on the requirements analysis, create the file and generate the main, high-level tasks required to implement the feature. **IMPORTANT: Always include task 0.0 "Create feature branch" as the first task, unless the user specifically requests not to create a branch.** Use your judgement on how many additional high-level tasks to use. It's likely to be about 5. Present these tasks to the user in the specified format (without sub-tasks yet). Inform the user: "I have generated the high-level tasks based on your requirements. Ready to generate the sub-tasks? Respond with 'Go' to proceed."
-4.  **Wait for Confirmation:** Pause and wait for the user to respond with "Go".
-5.  **Phase 2: Generate Sub-Tasks:** Once the user confirms, break down each parent task into smaller, actionable sub-tasks necessary to complete the parent task. Ensure sub-tasks logically follow from the parent task and cover the implementation details implied by the requirements.
-6.  **Identify Relevant Files:** Based on the tasks and requirements, identify potential files that will need to be created or modified. List these under the `Relevant Files` section, including corresponding test files if applicable.
-7.  **Generate Final Output:** Combine the parent tasks, sub-tasks, relevant files, and notes into the final Markdown structure.
-8.  **Save Task List:** Save the generated document in the `/tasks/` directory with the filename `tasks-[feature-name].md`, where `[feature-name]` describes the main feature or task being implemented (e.g., if the request was about user profile editing, the output is `tasks-user-profile-editing.md`).
+1. **Analyze requirements** — functional requirements, user needs, implementation scope.
+2. **Phase 1 — parent tasks:** generate the high-level tasks (about 5; use judgment).
+   Always include task `0.0 Create feature branch` first, unless the user opts out.
+   Present parent tasks only, then ask: "Ready to generate the sub-tasks? Respond 'Go' to proceed."
+3. **Wait for "Go"** before expanding — this confirms the high-level plan first.
+4. **Phase 2 — sub-tasks:** break each parent task into specific, atomic sub-tasks.
+5. **Relevant Files** — list files likely created/modified, with their test files, matching
+   the project's conventions and test framework.
+6. **Assemble** the final list using the format below.
 
 ## Output Format
-
-The generated task list _must_ follow this structure:
 
 ```markdown
 ## Relevant Files
 
-- `path/to/potential/file1.ts` - Brief description of why this file is relevant (e.g., Contains the main component for this feature).
-- `path/to/file1.test.ts` - Unit tests for `file1.ts`.
-- `path/to/another/file.tsx` - Brief description (e.g., API route handler for data submission).
-- `path/to/another/file.test.tsx` - Unit tests for `another/file.tsx`.
-- `lib/utils/helpers.ts` - Brief description (e.g., Utility functions needed for calculations).
-- `lib/utils/helpers.test.ts` - Unit tests for `helpers.ts`.
+- `path/to/component` - Why this file is relevant (e.g., main component for the feature).
+- `path/to/component.test` - Tests for the component.
+- `path/to/api-handler` - e.g., API route handler for data submission.
 
 ### Notes
-
-- Unit tests should typically be placed alongside the code files they are testing (e.g., `MyComponent.tsx` and `MyComponent.test.tsx` in the same directory).
-- Use `npx jest [optional/path/to/test/file]` to run tests. Running without a path executes all tests found by the Jest configuration.
-
-## Instructions for Completing Tasks
-
-**IMPORTANT:** As you complete each task, you must check it off in this markdown file by changing `- [ ]` to `- [x]`. This helps track progress and ensures you don't skip any steps.
-
-Example:
-- `- [ ] 1.1 Read file` → `- [x] 1.1 Read file` (after completing)
-
-Update the file after completing each sub-task, not just after completing an entire parent task.
+- Co-locate tests with the code they cover, following the project's conventions.
+- Run tests with the project's test command (see the repo's README / config).
 
 ## Tasks
 
 - [ ] 0.0 Create feature branch
-  - [ ] 0.1 Create and checkout a new branch for this feature (e.g., `git checkout -b feature/[feature-name]`)
+  - [ ] 0.1 Create and checkout a new branch (e.g., `git checkout -b feature/[feature-name]`)
 - [ ] 1.0 Parent Task Title
-  - [ ] 1.1 [Sub-task description 1.1]
-  - [ ] 1.2 [Sub-task description 1.2]
+  - [ ] 1.1 [Sub-task description]
+  - [ ] 1.2 [Sub-task description]
 - [ ] 2.0 Parent Task Title
-  - [ ] 2.1 [Sub-task description 2.1]
-- [ ] 3.0 Parent Task Title (may not require sub-tasks if purely structural or configuration)
+  - [ ] 2.1 [Sub-task description]
+- [ ] 3.0 Parent Task Title (may need no sub-tasks if purely structural/config)
 ```
 
-## Interaction Model
+As each task is completed, check it off in the file (`- [ ]` → `- [x]`) after every
+sub-task, not just at the end of a parent task.
 
-The process explicitly requires a pause after generating parent tasks to get user confirmation ("Go") before proceeding to generate the detailed sub-tasks. This ensures the high-level plan aligns with user expectations before diving into details.
+## Quality bar
+- Numbered format (0.0, 1.0, 2.0…); sub-tasks specific and atomic; task 0.0 present.
+- Relevant Files section accurately identifies affected areas, with test files.
+- Each task is actionable by a junior developer; task count fits the feature's complexity.
+- Pause for "Go" after parent tasks; offer minimal vs full scope when scope is ambiguous.
 
-## Success Criteria
-- All parent tasks have at least 2 sub-tasks (metric: task decomposition score)
-- Each task is actionable by a junior developer (metric: clarity %)
-- Relevant files section accurately identifies affected codebase areas
-- Total task count proportional to feature complexity (score: coverage)
-
-## Quality Check
-Before finalizing, validate:
-- [ ] All tasks follow numbered format (0.0, 1.0, 2.0...)
-- [ ] Sub-tasks are specific and atomic
-- [ ] Relevant files section is complete with descriptions
-- [ ] Task 0.0 (feature branch creation) is included
-
-## Decision Support
-When task scope is ambiguous, suggest options:
-- **Option A:** Minimal scope — core functionality only
-- **Option B:** Full scope — includes edge cases and tests
-- **Recommend:** Option B for production features, Option A for prototypes
-
-## Skill Chaining
-- **Before this skill:** Use `create-prd` to define requirements, or `create-one-pager` for scope
-- **After this skill:** Use `process-task-list` to execute tasks systematically
-- **Related workflow:** `create-prd` → this skill → `process-task-list`
-
-## Target Audience
-
-Assume the primary reader of the task list is a **junior developer** who will implement the feature.
+## Skill Integration
+- **Before:** [create-prd](/create-prd) for requirements, or [create-one-pager](/create-one-pager) for scope.
+- **After:** execute the task list, checking off each sub-task as you complete it.
+- **Workflow:** create-prd → this skill → task execution

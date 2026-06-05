@@ -8,19 +8,18 @@ description: >
 
 # ICE-based Idea Prioritization
 
-## Goal
-Score an idea on **Impact, Confidence, and Ease**, compute **ICE = I x C x E**, and propose execution priority. All evaluations rely on explicit evidence only.
+Score an idea on **Impact, Confidence, and Ease**, compute **ICE = I × C × E**, and
+propose execution priority. Score only on explicit evidence — never inferred.
 
 ## When to Use
-- Use when a PM or product manager needs to quickly order an idea backlog and select items for exploration
+- Ordering an idea backlog and selecting items for exploration
 - Before drafting experiment plans for a leaf opportunity in an Opportunity Solution Tree
-- When you have explicit evidence (interviews/data/tests) and a rough effort estimate for an initiative
+- When you have explicit evidence (interviews/data/tests) and a rough effort estimate
 
 ## Input
-- **Idea title and description**: goal, target metric, scope, hypothesis
-- **Idea analysis**: data/user/market/test evidence, risks, effort estimate
-- **Context source**: company-level-context/ (strategic goals, OKR, product strategy for alignment)
-- Optional: target metric change (%), estimated effort (person-weeks)
+- **Idea**: goal, target metric, scope, hypothesis
+- **Analysis**: data/user/market/test evidence, risks, effort estimate (person-weeks)
+- **Context**: `company-level-context/` for strategic/OKR alignment
 
 ## Output
 - **Format:** Markdown — **Location:** `initiatives/[initiative]/solutions/`
@@ -28,17 +27,12 @@ Score an idea on **Impact, Confidence, and Ease**, compute **ICE = I x C x E**, 
 
 ## Process
 
-1. Validate inputs and gather context
-2. Execute core analysis
-3. Generate output and review results
-4. Iterate based on feedback
+### Step 1: Validate input
+Confirm target metric, expected change (%), evidence text, and effort (person-weeks).
+Ask clarifying questions if any are missing.
 
-
-### Step 1: Input Validation
-Verify target metric, expected change (%), evidence text, and effort (person-weeks). If missing, ask clarifying questions.
-
-### Step 2: Impact Scoring
-Map % change to Impact table. Default: +1.5% = Impact 2.
+### Step 2: Impact scoring
+Map expected % change to the table (default: +1.5% = Impact 2).
 
 | Target Metric Change (%) | Impact |
 |--------------------------|--------|
@@ -46,16 +40,16 @@ Map % change to Impact table. Default: +1.5% = Impact 2.
 | 12-17.9% | 6 | 7-11.9% | 5 | 4-6.9% | 4 | 2-3.9% | 3 |
 | 0.5-1.9% | 2 | 0.1-0.4% | 1 | <= 0% | 0 |
 
-### Step 3: Ease Scoring
-Map person-weeks to Ease table. If uncertain, use conservative lower ease.
+### Step 3: Ease scoring
+Map person-weeks to the table. When uncertain, take the conservative (lower) ease.
 
 | Duration | Ease |
 |---------|------|
 | < 1 wk: 10 | 1-2 wk: 9 | 3-4 wk: 8 | 5-6 wk: 7 | 6-7 wk: 6 |
 | 8-9 wk: 5 | 10-12 wk: 4 | 13-16 wk: 3 | 17-25 wk: 2 | >= 26 wk: 1 |
 
-### Step 4: Evidence Classification
-Count only Impact-related evidence. Evidence types and weights:
+### Step 4: Evidence classification
+Count only Impact-related evidence. "Intuitively" / "gut feel" = Self-belief.
 
 | Evidence Type | Weight | Max | Group Cap |
 |---|---:|---:|---|
@@ -68,29 +62,23 @@ Count only Impact-related evidence. Evidence types and weights:
 | User-based Evidence | 2.0 | 3.0 | C: <= 3.0 |
 | Test Results | 3.0 | 5.0 | — |
 
-Use only explicitly stated evidence. "Intuitively" / "gut feel" = Self-belief.
+### Step 5: Confidence calculation
+Per-type contribution = MIN(Weight × count, Max). Apply group caps. Sum = Confidence (0-10).
 
-### Step 5: Confidence Calculation
-Per-type contribution = MIN(Weight x count, Max). Apply group caps. Sum = final Confidence (0-10).
+### Step 6: ICE computation and priority
+Compute ICE = I × C × E, then bucket:
+- **>= 250** — consider immediate execution (high ROI)
+- **150-249** — promising; recommend additional testing
+- **100-149** — proceed with mitigations
+- **< 100** — on hold or needs stronger evidence
 
-### Step 6: ICE Computation
-Compute ICE = I x C x E. Assign priority bucket:
-- >= 250: Consider immediate execution (high ROI)
-- 150-249: Promising; recommend additional testing
-- 100-149: Proceed with mitigations
-- < 100: On hold or needs strengthening
+When two scores are within ~10%, break the tie on strategic alignment with
+`company-level-context/` and OKR priorities.
 
-### Step 7: Report Generation
-Generate report using the template structure below within 15 minutes of receiving complete input.
+### Step 7: Report
+Write the report using the template below.
 
-## Success Criteria
-- 100% of required sections completed in output
-- Evidence classification accuracy >= 90% (no inferred evidence)
-- Score computation mathematically verified with 0% error rate
-
-## Output Template Structure
-
-Required sections and fields for the report:
+## Output Template
 
 ```markdown
 # ICE Evaluation — [Idea Title]
@@ -99,9 +87,9 @@ Required sections and fields for the report:
 ## Score Summary
 - **Impact:** [I] (basis: expected % change)
 - **Ease:** [E] (basis: person-weeks)
-- **Confidence:** [C] (with per-type details and group caps applied)
+- **Confidence:** [C] (per-type details, group caps applied)
 ## ICE Calculation
-- ICE = I x C x E = **[Score]** — **Priority Guidance:** [Bucket]
+- ICE = I × C × E = **[Score]** — **Priority:** [Bucket]
 ## Input Summary
 - Expected Metric Change / Effort / Evidence Excerpts with classification
 ## Risks / Assumptions
@@ -109,35 +97,13 @@ Required sections and fields for the report:
 - Confidence Improvement Plan
 ```
 
-## Decision Support
+## Quality bar
+- Score only on explicitly stated evidence — never invent, infer, or over-credit weak signals.
+- Exclude evidence not directly tied to Impact; don't double-count the same source.
+- Apply group caps; when uncertain, stay conservative and note it in Risks.
+- Verify the ICE arithmetic and that the priority bucket matches the score.
 
-- **Option A — Execute immediately**: ICE >= 250. Recommend full implementation.
-- **Option B — Test first**: ICE 100-249. Recommend focused experiment or prototype.
-- **Option C — Deprioritize**: ICE < 100. Suggest shelving; revisit after gathering stronger evidence.
-
-When scores are close (within 10%), recommend comparing strategic alignment with company-level context and OKR priorities.
-
-## Quality Review
-Before finalizing, validate and evaluate:
-- All input fields present; Impact/Ease correctly mapped
-- Evidence classified from explicit information only (no inference)
-- Group caps correctly applied; ICE formula computed correctly
-- Priority bucket matches score; risks documented
-- Improve accuracy by cross-checking evidence sources
-
-## Workflow Integration
-
-**Before** this skill: [Create Opportunities](/create-opportunities) for input ideas, [Create Interview Snapshots](/create-interview-snapshots) for evidence.
-**After** this skill: [Create Design Brief](/create-design-brief) for high-scoring ideas, [Generate Figma Prompt](/generate-figma-prompt) for design workflow.
-
-```
-Opportunities → ICE Scoring → Design Brief → Figma Prompt
-                    ↑
-          Interview Evidence
-```
-
-## Guardrails
-- Do not invent/infer evidence or over-credit weak signals
-- Exclude evidence not directly tied to Impact from Confidence
-- Prevent duplicate counting of the same source
-- When uncertain, apply conservative caps and document in Risks
+## Skill Integration
+- **Before:** [Create Opportunities](/create-opportunities) for ideas, [Create Interview Snapshots](/create-interview-snapshots) for evidence.
+- **After:** [Create Design Brief](/create-design-brief) for high-scoring ideas.
+- **Workflow:** Opportunities → ICE Scoring → Design Brief → Figma Prompt

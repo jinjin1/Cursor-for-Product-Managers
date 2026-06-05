@@ -8,98 +8,57 @@ description: >
 
 # 1-Pager Creation Guide
 
-## Goal
+Create a decision-focused 1-Pager in Amazon-style narrative format. Its purpose is to
+test whether the Outcome and Opportunity are valuable enough to pursue — not to pick a
+solution. Keep it short enough to read quickly while giving leadership what they need to
+decide.
 
-Guide the AI assistant to create a **decision-focused 1-Pager** in **narrative document format** using Markdown based on initial user input.
-The document should be short enough to read within 5 minutes while providing sufficient context and key points to enable **fast and high-quality decision-making**.
-
-The core purpose is to verify whether the Outcome and Opportunity are truly valuable enough to be addressed as initiatives or projects. In other words, rather than simply selecting solutions, we must examine: **"Are this opportunity and goal important enough?"**
-
----
-
-## Output Format
-
-* **Format:** Markdown
-* **Structure:** Each section is written as a narrative paragraph, with **key summary bullets** provided below the paragraph.
-* **Section Division:** Outcome → Opportunity → Lessons → Solutions & Assumptions → Decision Requests
-* **Style:** Amazon-style 1-pager narrative (logically connected writing, avoiding unnecessary headings/list enumerations)
-* **Writing Standards:** Follow the `/writing-guide` skill rules for voice, tone, banned words, and LLM pattern avoidance.
-
-## When to Use (활용 시나리오)
-- When creating a concise product proposal for leadership decision-making
-- When verifying whether an opportunity is worth pursuing as an initiative
-- When preparing a decision document before committing resources
-- 적용 대상: 모든 PM이 새 이니셔티브를 제안할 때 사용
+## When to Use
+- A concise product proposal for a leadership decision
+- Testing whether an opportunity is worth pursuing as an initiative
+- A decision document before committing resources
 
 ## Input
-- **Required:** Initiative description, target outcome, and opportunity hypothesis
-- **Optional:** User research data, metrics, competitive analysis
-- **Context Source:** Reference `company-level-context/product-vision-and-strategy/` and `company-level-context/okrs/` for strategic alignment
-
----
-
-## Process (Step-by-Step Workflow)
-
-1. **Clarifying Questions:** Collect detailed information about Outcome, Opportunity, Lessons, Solutions, Assumptions, and Decision Request before writing.
-2. **Narrative Writing:** Write each section as a storytelling paragraph. (e.g., "Current situation is... however... therefore...")
-3. **Bullet Summary Addition:** After each paragraph, organize 2-4 key points as bullets for quick scanning.
-4. **Risk Framework:** In Solutions & Assumptions, always examine assumptions using the four axes: **Value, Viability, Feasibility, Usability Risk**.
-5. **Emphasize Discussion Triggers:** The end of the document must clearly reveal **decision points** that leadership should discuss.
-
----
-
-## Example Section Style
-
-### Outcome (Example)
-
-Narrative paragraph:
-"Currently, TVING's recommendation and search ranking heavily depends on click-through rate (CTR). However, this is not directly connected to the completion rate of users actually watching to the end, creating limitations in platform retention and ad revenue improvement. If we reflect completion propensity in the ranking, episode completion rate could improve by +5pp and Start Rate by +3pp, which could lead to long-term ARPU and revisit rate increases."
-
-Bullet summary:
-
-* Current problem: CTR-centered ranking → completion rate deviation
-* Goal: Episode completion rate +5pp, Start Rate +3pp
-* Expected effect: Users more frequently discover "one episode worth watching to the end"
-* Business impact: Increased retention time, improved ad ARPU, increased revisit rate
-
----
+- **Required:** Initiative description, target outcome, opportunity hypothesis
+- **Optional:** User research, metrics, competitive analysis
+- **Context:** `company-level-context/product-vision-and-strategy/` and `.../okrs/` for alignment
 
 ## Output
+- **Format:** Markdown — **Location:** `prd/` (the initiative's `prd/` directory)
+- **Filename:** `1-pager-[initiative-name].md`
+- **Structure:** Each section is a narrative paragraph followed by 2-4 key summary bullets.
+  Sections: Outcome → Opportunity → Lessons → Solutions & Assumptions → Decision Requests.
+  Amazon-style prose (logically connected), not heading/list dumps. Apply the
+  [writing-guide](/writing-guide) rules.
 
-* **Format:** Markdown (`.md`)
-* **Location:** `/prd/`
-* **Filename:** `1-pager-[initiative-name].md`
+## Process
+1. **Clarifying questions** — gather Outcome, Opportunity, Lessons, Solutions, Assumptions,
+   and the Decision Request before writing.
+2. **Narrative writing** — each section as a story ("Current situation is… however… therefore…").
+3. **Bullet summary** — 2-4 scannable key points under each paragraph.
+4. **Risk framework** — in Solutions & Assumptions, examine assumptions on four axes:
+   **Value, Viability, Feasibility, Usability Risk**.
+5. **Decision triggers** — end with the explicit decision points leadership should discuss.
 
-## Success Criteria
-- Document readable within 5 minutes (metric: word count < 1500)
-- Clear decision request with specific options stated (score: decision clarity %)
-- All 4 risk axes (Value, Viability, Feasibility, Usability) addressed
-- At least 2 quantified metrics in Outcome section
+## Example (Outcome section)
 
-## Quality Check
-Before finalizing, validate:
-- [ ] Narrative + bullet structure followed for all sections
-- [ ] Decision points are explicit and actionable
-- [ ] Risk assumptions identified with test plans
-- [ ] Strategic alignment with company OKRs verified
+> Currently, TVING's recommendation and search ranking depends heavily on click-through
+> rate (CTR), which isn't tied to whether users actually finish what they start — limiting
+> retention and ad revenue. Reflecting completion propensity in ranking could lift episode
+> completion rate +5pp and Start Rate +3pp, raising long-term ARPU and revisit rate.
 
-## Decision Support
-When outcome value is ambiguous, suggest options:
-- **Option A:** Proceed with pilot — small scope, fast validation
-- **Option B:** Gather more data — defer decision, run research
-- **Option C:** Reject — opportunity does not meet threshold
-- **Recommend:** Based on data confidence level and time pressure
+- Current problem: CTR-centered ranking → completion-rate deviation
+- Goal: completion rate +5pp, Start Rate +3pp
+- Business impact: more retention time, better ad ARPU, higher revisit rate
 
-## Skill Chaining
-- **Before this skill:** Use `create-opportunities` to identify the opportunity, and `synthesize-snapshots` for user research context
-- **After this skill:** If approved, proceed to `create-prd` for detailed requirements
-- **Related workflow:** `create-opportunities` → this skill → `create-prd` → `generate-tasks`
+## Quality bar
+- Narrative + bullet structure in every section; reads fast and aids a real decision.
+- The decision request is explicit, with specific options to choose between.
+- All four risk axes addressed, each with a test plan; Outcome backed by quantified metrics.
+- Surfaces the uncomfortable facts rather than burying them; aligns with company OKRs.
+- Ask clarifying questions first; when value is ambiguous, offer pilot / gather-more-data / reject and recommend one.
 
-## Final Instructions
-
-1. Do not generate the 1-Pager immediately; always supplement input through Clarifying Questions first.
-2. Write in **narrative + summary bullet** structure reflecting user responses.
-3. **Save 1-Pager:** Save the generated document as `1-pager-[feature-name].md` inside the `/prd/` directory.
-4. Verify that the completed document fulfills the purpose of **triggering discussion, revealing uncomfortable facts, and decision resolution**.
-
----
+## Skill Integration
+- **Before:** [create-opportunities](/create-opportunities) for the opportunity, [synthesize-snapshots](/synthesize-snapshots) for research.
+- **After:** if approved, [create-prd](/create-prd) for detailed requirements.
+- **Workflow:** create-opportunities → this skill → create-prd → generate-tasks
