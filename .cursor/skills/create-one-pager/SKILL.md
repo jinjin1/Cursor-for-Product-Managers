@@ -20,6 +20,7 @@ decide.
 
 ## Input
 - **Required:** Initiative description, target outcome, opportunity hypothesis
+- **Recommended:** Selected solution from `solutions/` and the validated/open assumptions from `assumptions/` — these feed the Solutions & Assumptions section
 - **Optional:** User research, metrics, competitive analysis
 - **Context:** `company-level-context/product-vision-and-strategy/` and `.../okrs/` for alignment
 
@@ -59,6 +60,6 @@ decide.
 - Ask clarifying questions first; when value is ambiguous, offer pilot / gather-more-data / reject and recommend one.
 
 ## Skill Integration
-- **Before:** [create-opportunities](/create-opportunities) for the opportunity, [synthesize-snapshots](/synthesize-snapshots) for research.
+- **Before:** [create-opportunities](/create-opportunities) for the opportunity, [generate-solutions](/generate-solutions) for the selected solution, [identify-test-assumptions](/identify-test-assumptions) for validated/open assumptions.
 - **After:** if approved, [create-prd](/create-prd) for detailed requirements.
 - **Workflow:** create-opportunities → this skill → create-prd → generate-tasks

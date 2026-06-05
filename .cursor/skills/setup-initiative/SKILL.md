@@ -61,4 +61,5 @@ Naming: kebab-case (`checkout-optimization`); add a quarter prefix if relevant
 - **After (per subfolder):** [create-interview-snapshots](/create-interview-snapshots) → `user-interviews/snapshots/`,
   [create-opportunities](/create-opportunities) → `opportunities/`, [generate-solutions](/generate-solutions) → `solutions/`,
   [identify-test-assumptions](/identify-test-assumptions) → `assumptions/`, [create-one-pager](/create-one-pager) / [create-prd](/create-prd) → `prd/`,
-  [create-design-brief](/create-design-brief) / [generate-figma-prompt](/generate-figma-prompt) → `design/`, [generate-tasks](/generate-tasks) → `tasks/`.
+  [create-design-brief](/create-design-brief) / [generate-figma-prompt](/generate-figma-prompt) → `design/`, [generate-tasks](/generate-tasks) → `tasks/`,
+  [analyze-metrics](/analyze-metrics) → `product-analytics/`.

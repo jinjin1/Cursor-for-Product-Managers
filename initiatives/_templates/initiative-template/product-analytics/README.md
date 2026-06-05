@@ -2,6 +2,8 @@
 
 This folder contains data analysis, metrics tracking, and quantitative insights for this initiative.
 
+Generate these with the `/analyze-metrics` skill — it turns raw analytics into structured quantitative evidence that feeds `/calculate-ice-score`, `/identify-test-assumptions`, and `/create-opportunities`.
+
 ## 📁 Recommended Files
 
 ### baseline-metrics.md

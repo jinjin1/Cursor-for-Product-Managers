@@ -91,6 +91,6 @@ Mark a leaf node as the Target Opportunity (a reversible, two-way-door proposal)
 - Decisions are hypothetical and reversible — explore now, gather more evidence, or deprioritize.
 
 ## Skill Integration
-- **Before:** [Create Interview Snapshots](/create-interview-snapshots) / [Synthesize Snapshots](/synthesize-snapshots)
+- **Before:** [Create Interview Snapshots](/create-interview-snapshots) / [Synthesize Snapshots](/synthesize-snapshots); [Analyze Metrics](/analyze-metrics) for the Opportunity Sizing lens.
 - **After:** [Generate Solutions](/generate-solutions); also feeds [Calculate ICE Score](/calculate-ice-score)
 - **Workflow:** Interviews → Snapshots → Synthesize → Create Opportunities → Generate Solutions

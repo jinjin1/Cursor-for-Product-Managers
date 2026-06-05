@@ -14,8 +14,8 @@ Create a clear, actionable PRD a junior developer can implement without extra co
 - Turning a product decision or user need into an actionable spec
 
 ## Input
-- **Required:** Feature description or user request
-- **Optional:** User research, 1-pager, design brief
+- **Required:** Feature description or user request — ideally the approved 1-pager plus the selected solution from `solutions/`
+- **Optional:** User research, design brief, validated/open assumptions from `assumptions/`
 - **Context:** `company-level-context/product-vision-and-strategy/` for alignment
 
 ## Output
@@ -53,7 +53,9 @@ Clarifying-question example:
 8. **Success Metrics** — how success is measured (e.g., "reduce X support tickets by 10%").
 9. **Open Questions** — anything still needing clarification.
 
-Write for a junior developer: explicit, unambiguous, low-jargon.
+Ground the requirements in the selected solution. Carry any open (untested) assumptions
+into Open Questions, and reflect validated ones in Success Metrics. Write for a junior
+developer: explicit, unambiguous, low-jargon.
 
 ## Quality bar
 - All applicable sections present; functional requirements numbered and unambiguous.
@@ -63,6 +65,6 @@ Write for a junior developer: explicit, unambiguous, low-jargon.
 - Ask the clarifying questions before writing; do not start implementing the feature.
 
 ## Skill Integration
-- **Before:** [create-one-pager](/create-one-pager) for approval, [create-design-brief](/create-design-brief) for UX context.
+- **Before:** [create-one-pager](/create-one-pager) for approval, [generate-solutions](/generate-solutions) for the selected solution, [identify-test-assumptions](/identify-test-assumptions) for validated assumptions, [create-design-brief](/create-design-brief) for UX context.
 - **After:** [generate-tasks](/generate-tasks) to break the PRD into development tasks.
 - **Workflow:** create-one-pager → this skill → generate-tasks

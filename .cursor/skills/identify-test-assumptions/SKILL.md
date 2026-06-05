@@ -90,6 +90,6 @@ Move assumptions leftward as evidence grows. Then decide: most LoFA pass → pro
 - Evidence citations linked where available; reference prior versions to track how understanding evolved.
 
 ## Skill Integration
-- **Before:** [Create Opportunities](/create-opportunities) or [Generate Solutions](/generate-solutions)
+- **Before:** [Create Opportunities](/create-opportunities) or [Generate Solutions](/generate-solutions); [Analyze Metrics](/analyze-metrics) supplies quantitative evidence that moves assumptions off the weak-evidence axis.
 - **After:** feed results back into [Generate Solutions](/generate-solutions) for refinement
 - **Workflow:** Opportunities → Solutions → Assumptions → Test → Iterate

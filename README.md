@@ -48,6 +48,7 @@ Or let the `/discovery-researcher` subagent run the entire flow for you.
 | `/create-opportunities` | Build an Opportunity Solution Tree (OST) |
 | `/generate-solutions` | AI-human collaborative solution ideation |
 | `/identify-test-assumptions` | Surface and test leap-of-faith assumptions |
+| `/analyze-metrics` | Turn product analytics into quantitative evidence for ICE and assumptions |
 
 ### Product Documents
 
@@ -184,7 +185,7 @@ Skills, subagents, and rules live in `.cursor/` and are auto-discovered by Curso
 2. Enter this repository's URL
 
 ### Manual Installation
-Clone the repository and open in Cursor. All 17 skills and 3 subagents are automatically discovered.
+Clone the repository and open in Cursor. All 18 skills and 3 subagents are automatically discovered.
 
 ## Migration from v1
 

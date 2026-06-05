@@ -104,6 +104,6 @@ Write the report using the template below.
 - Verify the ICE arithmetic and that the priority bucket matches the score.
 
 ## Skill Integration
-- **Before:** [Create Opportunities](/create-opportunities) for ideas, [Create Interview Snapshots](/create-interview-snapshots) for evidence.
+- **Before:** [Create Opportunities](/create-opportunities) for ideas; [Create Interview Snapshots](/create-interview-snapshots) (qualitative) and [Analyze Metrics](/analyze-metrics) (quantitative — Market Data / User-based / Test Results) for evidence.
 - **After:** [Create Design Brief](/create-design-brief) for high-scoring ideas.
 - **Workflow:** Opportunities → ICE Scoring → Design Brief → Figma Prompt
