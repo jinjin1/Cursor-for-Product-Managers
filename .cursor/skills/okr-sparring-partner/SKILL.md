@@ -58,6 +58,7 @@ succeeds? Will the team feel motivated by it? Is it hard to measure? Are budget/
 - Feedback hits root issues, not surface symptoms; revised OKRs are genuinely testable and executable.
 - At least two concrete before/after examples; focus on the top 3 highest-impact fixes, not exhaustive critique.
 - Scope the call: minor refinement, major restructuring, or complete rewrite when alignment is missing.
+- Spar, don't soothe: take a position on every claim and name what evidence would change it; never hedge with "interesting" or "you might consider"; challenge the strongest version, not a strawman.
 
 ## Skill Integration
 - **Before:** gather strategic context from `company-level-context/` and team mission docs.

@@ -69,6 +69,7 @@ Write strengths, gaps, and concrete improvement options; state the decision.
 - Decision stated clearly (Proceed at total ≥ 14/20; Revise; or Hold when essentials are missing).
 - Recommendations are specific and actionable, referencing company strategic context — at least two.
 - For borderline scores (12-14/20): strengthen the weakest criterion, rewrite from user problems up, or run a team workshop.
+- Spar, don't soothe: take a position on every claim and name what evidence would change it; never hedge with "interesting" or "you might consider"; challenge the strongest version, not a strawman.
 
 ## Skill Integration
 - **Before:** draft the vision using context from `company-level-context/product-vision-and-strategy/`.

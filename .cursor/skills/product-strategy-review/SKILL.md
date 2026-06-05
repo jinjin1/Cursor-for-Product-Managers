@@ -69,6 +69,7 @@ owners and due dates, and the next review date.
 - Decision follows the scores: Approve (overall ≥ 3.5), Conditional (dimensions need strengthening), or Revise (critical gaps or < 2.5).
 - Improvements are prioritized by impact with owners and dates.
 - Watch the anti-patterns: strategy as a feature list, lagging-only metrics, untested assumptions as fact, over-broad scope, no stopped work.
+- Spar, don't soothe: take a position on every claim and name what evidence would change it; never hedge with "interesting" or "you might consider"; challenge the strongest version, not a strawman.
 
 ## Skill Integration
 - **Before:** gather evidence from initiatives; use [OKR Sparring Partner](/okr-sparring-partner) for OKR validation.

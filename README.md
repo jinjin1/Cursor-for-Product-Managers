@@ -43,6 +43,7 @@ Or let the `/discovery-researcher` subagent run the entire flow for you.
 
 | Skill | What it does |
 |:------|:-------------|
+| `/product-diagnostic` | Sparring pressure-test of demand and premise before you build (YC office-hours style) |
 | `/create-interview-snapshots` | Extract structured snapshots from qualitative interviews |
 | `/synthesize-snapshots` | Find patterns and themes across multiple interviews |
 | `/create-opportunities` | Build an Opportunity Solution Tree (OST) |
@@ -185,7 +186,7 @@ Skills, subagents, and rules live in `.cursor/` and are auto-discovered by Curso
 2. Enter this repository's URL
 
 ### Manual Installation
-Clone the repository and open in Cursor. All 18 skills and 3 subagents are automatically discovered.
+Clone the repository and open in Cursor. All 19 skills and 3 subagents are automatically discovered.
 
 ## Migration from v1
 
