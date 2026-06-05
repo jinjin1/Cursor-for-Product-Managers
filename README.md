@@ -61,6 +61,7 @@ Create professional product artifacts through guided conversation:
 | `/create-one-pager` | Amazon-style decision-focused 1-Pagers |
 | `/create-design-brief` | Design briefs in JSON + Markdown |
 | `/generate-figma-prompt` | Figma Make-ready prompts (5000 char limit) |
+| `/build-prototype` | Working prototype + companion doc (10-question FAQ) in place of a heavyweight PRD |
 
 ### Product Strategy & OKRs
 
@@ -125,9 +126,10 @@ For complex workflows, subagents orchestrate multiple skills end-to-end:
 /setup-    /create-    /create-   /create-   /generate-
 initiative  one-pager    prd     design-brief  tasks
                                       │
-                                      ▼
-                              /generate-figma-
-                                  prompt
+                              ┌───────┴────────┐
+                              ▼                ▼
+                      /generate-figma-   /build-prototype
+                          prompt          (+ companion doc)
 ```
 
 ## Common Workflows
@@ -135,7 +137,7 @@ initiative  one-pager    prd     design-brief  tasks
 ### Starting a New Product Initiative
 ```
 /setup-initiative → /create-one-pager → /create-prd
-→ /create-design-brief → /generate-tasks
+→ /create-design-brief → /build-prototype → /generate-tasks
 ```
 Or use `/initiative-planner` to run the full flow.
 
@@ -166,6 +168,7 @@ initiatives/                   → Active product initiatives
     ├── assumptions/           → Assumption tests
     ├── solutions/             → Solution ideation
     ├── design/                → Design briefs & Figma prompts
+    ├── prototype/             → Working prototype & companion doc
     ├── prd/                   → Product Requirements Documents
     ├── product-analytics/     → Analytics frameworks
     └── tasks/                 → Task breakdowns
@@ -186,7 +189,7 @@ Skills, subagents, and rules live in `.cursor/` and are auto-discovered by Curso
 2. Enter this repository's URL
 
 ### Manual Installation
-Clone the repository and open in Cursor. All 19 skills and 3 subagents are automatically discovered.
+Clone the repository and open in Cursor. All 20 skills and 3 subagents are automatically discovered.
 
 ## Migration from v1
 

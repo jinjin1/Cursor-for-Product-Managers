@@ -64,5 +64,5 @@ Plan · Asset Guidelines
 
 ## Skill Integration
 - **Before:** [Calculate ICE Score](/calculate-ice-score), [Create Opportunities](/create-opportunities) for objectives.
-- **After:** [Generate Figma Prompt](/generate-figma-prompt) — the brief's JSON feeds Figma Make prompt generation.
+- **After:** [Generate Figma Prompt](/generate-figma-prompt) for a static visual mock, or [Build Prototype](/build-prototype) for a working, clickable prototype — the brief's tokens feed both.
 - **Workflow:** Opportunities → ICE Score → Design Brief → Figma Prompt

@@ -91,5 +91,5 @@ Move assumptions leftward as evidence grows. Then decide: most LoFA pass → pro
 
 ## Skill Integration
 - **Before:** [Create Opportunities](/create-opportunities) or [Generate Solutions](/generate-solutions); [Analyze Metrics](/analyze-metrics) supplies quantitative evidence that moves assumptions off the weak-evidence axis.
-- **After:** feed results back into [Generate Solutions](/generate-solutions) for refinement
+- **After:** validate a desirability/usability LoFA with [Build Prototype](/build-prototype) as the test method, then feed results back into [Generate Solutions](/generate-solutions) for refinement
 - **Workflow:** Opportunities → Solutions → Assumptions → Test → Iterate

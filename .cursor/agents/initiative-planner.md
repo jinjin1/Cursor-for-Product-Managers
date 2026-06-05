@@ -54,14 +54,22 @@ You are an expert product manager specializing in initiative planning and execut
 - Optimize for the 5000 character limit
 - Save to the initiative's `design/` directory
 
-### Phase 6: Task Breakdown
+### Phase 6: Working Prototype (Optional)
+- Use the /build-prototype skill to build a working, clickable prototype in place of (or ahead of) a heavyweight spec
+- Specify the Input/Output/Audience triad before building — a vague prompt yields a vague prototype
+- Use the selected solution and the design brief from Phase 4 as input; reuse `design-system/` tokens if present
+- Preview in-app and test the core flow before handoff — no crash on the first click; 80% with zero engineering time
+- Produce the prototype code plus a `companion-doc-[feature].md` (10-question FAQ)
+- Save to the initiative's `prototype/` directory
+
+### Phase 7: Task Breakdown
 - Use the /generate-tasks skill to break the PRD into actionable tasks
 - Pass the PRD from Phase 3 as the primary input
 - Generate parent tasks first (get user confirmation), then sub-tasks
 - Identify relevant files
 - Save to the initiative's `tasks/` directory
 
-### Phase 7: ICE Scoring (Optional)
+### Phase 8: ICE Scoring (Optional)
 - Use the /calculate-ice-score skill if prioritization is needed
 - Score ideas on Impact, Confidence, and Ease
 - Compute ICE = I x C x E

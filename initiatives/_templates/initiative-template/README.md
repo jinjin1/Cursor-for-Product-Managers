@@ -24,6 +24,8 @@
 - **[opportunities/](./opportunities/)** - Identified opportunities and pain points
 - **[assumptions/](./assumptions/)** - Assumption logs and test cards from `/identify-test-assumptions`
 - **[solutions/](./solutions/)** - Solution explorations from `/generate-solutions`
+- **[design/](./design/)** - Design briefs and Figma prompts from `/create-design-brief` and `/generate-figma-prompt`
+- **[prototype/](./prototype/)** - Working prototype and companion doc from `/build-prototype`
 - **[product-analytics/](./product-analytics/)** - Data analysis and metrics
 - **[prd/](./prd/)** - Product Requirements Document using `/create-prd`
 - **[tasks/](./tasks/)** - Implementation tasks using `/generate-tasks`
@@ -34,6 +36,7 @@
 - [Priority Opportunities](./opportunities/)
 - [Assumptions & Tests](./assumptions/)
 - [Solution Explorations](./solutions/)
+- [Prototype & Companion Doc](./prototype/)
 - [Implementation Tasks](./tasks/)
 
 ## 📝 Notes

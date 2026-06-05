@@ -69,5 +69,6 @@ reflecting brand identity and design tokens. **Hard constraint: 5000 characters 
 
 ## Skill Integration
 - **Before:** [Create Design Brief](/create-design-brief) for the design brief JSON.
+- **Parallel:** [Build Prototype](/build-prototype) for a working, clickable prototype — this skill is the static-visual branch; use it for visual exploration, build-prototype for interaction/flow.
 - **After:** import the JSON into Figma Make for automated design generation.
 - **Workflow:** Opportunities → ICE Score → Design Brief → Figma Prompt → Figma Make
