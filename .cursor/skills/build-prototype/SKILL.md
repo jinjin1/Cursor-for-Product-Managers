@@ -35,7 +35,7 @@ Then gather:
 ## Output
 - **Location:** `prototype/` (the initiative's `prototype/` directory)
 - **Files:**
-  - working prototype code — a runnable, self-contained static app (single page or a few screens)
+  - the prototype artifact — a runnable HTML app (single page or a few screens), or a `.canvas.tsx` board for data/decision views
   - `companion-doc-[feature-name].md` — the 10-question FAQ that lives next to the prototype
   - `README.md` — how to run the local preview
 
@@ -44,8 +44,8 @@ Then gather:
 2. **Pull context.** Read the selected solution, design brief, and assumption(s); load `design-system/` tokens if they exist.
 3. **Scope to a thin slice.** Pick the one core flow that *must* work in V1. Keep screens minimal (ideally one, a few at most). Everything else becomes a non-goal in the companion doc.
 4. **Build it.** A self-contained static app with few dependencies (prefer a single HTML file or a light component). Fill with realistic mock data.
-5. **Preview in-app.** Preview inside the agent's native surface. In Cursor, the **Browser tool** auto-detects a running dev server and renders inline with no external setup, and a single-file artifact can open as a **Canvas** beside the chat. Check the layout; adjust to a specific brand aesthetic if asked.
-6. **Test before showing.** Click the core flow end to end. **The biggest failure mode is showing an engineer a prototype that crashes on the first click** — if it does, it is not ready to hand off. (In Cursor, drive the **Browser tool** — click through, read the **Console** for errors, check Network; gstack users can use `/verify`, `/qa`, or `/browse`; otherwise a manual click-through.)
+5. **Preview — match the surface to the artifact.** A *data/decision board* (metrics, cohorts, charts, tables) renders best as a **Cursor Canvas** (a `.canvas.tsx` beside the chat) — package its layout, data sources, and formatting so it regenerates consistently. A *working UI prototype* (a clickable flow) stays a runnable HTML app; surface the **`localhost` URL to open in a browser**. Don't assume an inline browser pane appears — Cursor's native Browser tool needs a paid plan, a capable model, and approval, so treat inline preview as a bonus, not the path. Adjust to a brand aesthetic if asked.
+6. **Test before showing.** Click the core flow end to end. **The biggest failure mode is showing an engineer a prototype that crashes on the first click** — if it does, it is not ready to hand off. Verify by actually loading it: open the `localhost` URL in a browser (or run a headless click-through) and read the console for errors. **Do not report the flow as tested unless a tool actually ran** — narrating "I clicked through" without a real check is the exact failure this guards against.
 7. **Write the companion doc** — the 10 questions below.
 8. **Save** the code and companion doc to `prototype/`.
 
