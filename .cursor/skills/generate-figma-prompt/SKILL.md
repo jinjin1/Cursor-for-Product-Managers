@@ -16,13 +16,13 @@ reflecting brand identity and design tokens. **Hard constraint: 5000 characters 
 - Converting design-system tokens to Figma Make format for prototypes, ads, or social designs
 
 ## Input
-- **Primary:** Design brief JSON from `initiatives/[initiative-name]/design/`
+- **Primary:** Design brief JSON from the initiative's `design/` directory
 - **Context:** `company-level-context/` (brand guidelines, direction)
 - **Design system:** repo `design-system/` tokens and components
 - **Required:** a design brief JSON, or product/campaign objectives
 
 ## Output
-- **Location:** `initiatives/[initiative-name]/design/`
+- **Location:** `design/` (the initiative's `design/` directory)
 - **Filename:** `figma-make-prompt-[feature-name].json`
 
 ## Process

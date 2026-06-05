@@ -23,7 +23,7 @@ them in an Opportunity Solution Tree, and propose a target opportunity to explor
 - **Minimum:** 3-5 snapshots or 1 synthesis document
 
 ## Output
-- **Format:** Markdown — **Location:** `opportunities/[topic]/`
+- **Format:** Markdown — **Location:** `opportunities/` (the initiative's `opportunities/` directory)
 - **Filename:** `opportunities-[topic]-v[version].md` (kebab-case, auto-increment; never overwrite)
 
 ## Process

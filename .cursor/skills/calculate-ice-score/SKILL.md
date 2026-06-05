@@ -22,7 +22,7 @@ propose execution priority. Score only on explicit evidence — never inferred.
 - **Context**: `company-level-context/` for strategic/OKR alignment
 
 ## Output
-- **Format:** Markdown — **Location:** `initiatives/[initiative]/solutions/`
+- **Format:** Markdown — **Location:** `solutions/` (the initiative's `solutions/` directory — same folder as generate-solutions)
 - **Filename:** `ice-[YYYY-MM-DD]-[slugified-idea-title].md`
 
 ## Process

@@ -22,7 +22,7 @@ then evaluate and select the top 3.
 - Minimum: 1 target opportunity with supporting evidence
 
 ## Output
-- **Format:** Markdown — **Location:** `solutions/[topic]/`
+- **Format:** Markdown — **Location:** `solutions/` (the initiative's `solutions/` directory)
 - **Filename:** `solutions-[topic]-v[version].md` (kebab-case, auto-increment; never overwrite)
 
 ## Process

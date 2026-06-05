@@ -19,7 +19,7 @@ description: >
 - **Minimum:** 1 target opportunity with evidence + 2-3 candidate solutions (or 1 solution with key user journeys)
 
 ## Output
-- **Format:** Markdown, saved to `assumptions/[topic]/`
+- **Format:** Markdown, saved to `assumptions/` (the initiative's `assumptions/` directory)
 - **Filename:** `assumptions-[opportunity-name]-v[version].md` (kebab-case, auto-increment; never overwrite prior versions)
 
 ## Process

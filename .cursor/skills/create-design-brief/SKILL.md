@@ -24,7 +24,7 @@ system (tokens, components) for reuse.
 - **Required:** at least a product objective, target audience, and key components
 
 ## Output
-- **Location:** `initiatives/[initiative-name]/design/`
+- **Location:** `design/` (the initiative's `design/` directory)
 - **Files:** `design-brief-[feature-name].json` + `design-brief-[feature-name].md`
 
 ## Process
