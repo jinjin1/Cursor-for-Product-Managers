@@ -26,6 +26,7 @@ moves assumptions off weak evidence, and supplies the data ICE weights most heav
 ## Output
 - **Format:** Markdown — **Location:** `product-analytics/` (the initiative's `product-analytics/` directory)
 - **Filename:** `metrics-[topic]-v[version].md` (kebab-case, auto-increment; never overwrite)
+- **Optional interactive view (Cursor):** present the review as a **Cursor Canvas** — a `.canvas.tsx` board beside the chat with cohort filters, stat callouts, charts, and tables. Package it as a canvas-skill (trigger · layout · data sources · formatting) so a short prompt regenerates it with fresh data.
 
 ## Process
 

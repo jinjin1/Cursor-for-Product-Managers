@@ -35,7 +35,7 @@ Then gather:
 ## Output
 - **Location:** `prototype/` (the initiative's `prototype/` directory)
 - **Files:**
-  - the prototype artifact — a runnable HTML app (single page or a few screens), or a `.canvas.tsx` board for data/decision views
+  - the prototype artifact — a runnable, self-contained HTML app (single page or a few screens)
   - `companion-doc-[feature-name].md` — the 10-question FAQ that lives next to the prototype
   - `README.md` — how to run the local preview
 
@@ -44,8 +44,8 @@ Then gather:
 2. **Pull context.** Read the selected solution, design brief, and assumption(s); load `design-system/` tokens if they exist.
 3. **Scope to a thin slice.** Pick the one core flow that *must* work in V1. Keep screens minimal (ideally one, a few at most). Everything else becomes a non-goal in the companion doc.
 4. **Build it.** A self-contained static app with few dependencies (prefer a single HTML file or a light component). Fill with realistic mock data.
-5. **Preview — match the surface to the artifact.** A *data/decision board* (metrics, cohorts, charts, tables) renders best as a **Cursor Canvas** (a `.canvas.tsx` beside the chat) — package its layout, data sources, and formatting so it regenerates consistently. A *working UI prototype* (a clickable flow) stays a runnable HTML app; surface the **`localhost` URL to open in a browser**. Don't assume an inline browser pane appears — Cursor's native Browser tool needs a paid plan, a capable model, and approval, so treat inline preview as a bonus, not the path. Adjust to a brand aesthetic if asked.
-6. **Test before showing.** Click the core flow end to end. **The biggest failure mode is showing an engineer a prototype that crashes on the first click** — if it does, it is not ready to hand off. Verify by actually loading it: open the `localhost` URL in a browser (or run a headless click-through) and read the console for errors. **Do not report the flow as tested unless a tool actually ran** — narrating "I clicked through" without a real check is the exact failure this guards against.
+5. **Serve and health-check.** Serve the HTML prototype at a `localhost` URL and confirm it's actually up (**returns 200**) before previewing — a dead URL is the most common reason the browser step silently no-ops.
+6. **Preview and test in the browser.** With the URL confirmed live, **name it in the prompt** to open Cursor's Browser (e.g. `@browser http://localhost:PORT — open and click the core flow`); click end to end and read the console for errors. Adjust to a brand aesthetic if asked. **The biggest failure mode is a prototype that crashes on the first click** — if it does, it is not ready to hand off. If the browser won't open, recheck the 200 and Settings → Agents → Auto-Run (approval defaults to manual). **Do not report the flow as tested unless a tool actually ran.**
 7. **Write the companion doc** — the 10 questions below.
 8. **Save** the code and companion doc to `prototype/`.
 
@@ -73,5 +73,6 @@ A FAQ that lives next to the prototype and answers the obvious questions. Not a 
 ## Skill Integration
 - **Before:** [generate-solutions](/generate-solutions) for the selected solution, [create-design-brief](/create-design-brief) for visual direction and tokens, [identify-test-assumptions](/identify-test-assumptions) for the assumption under test.
 - **Parallel:** [generate-figma-prompt](/generate-figma-prompt) produces a *static visual* mock — a branch, not a replacement (interaction test → prototype; visual exploration → Figma Make).
+- **Not here:** a *data/decision board* (metrics, cohorts, charts) belongs in [analyze-metrics](/analyze-metrics) as a Cursor Canvas — this skill is for a clickable UI artifact, not a dashboard.
 - **After:** feed test results back into [identify-test-assumptions](/identify-test-assumptions); at handoff, [create-prd](/create-prd) and [generate-tasks](/generate-tasks) treat the prototype + companion doc as their most precise input (the prototype *is* the spec).
 - **Workflow:** Solutions → Design Brief → Build Prototype (+ Companion Doc) → Test → Eng handoff
