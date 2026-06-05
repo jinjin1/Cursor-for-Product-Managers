@@ -23,7 +23,7 @@ propose execution priority. Score only on explicit evidence — never inferred.
 
 ## Output
 - **Format:** Markdown — **Location:** `solutions/` (the initiative's `solutions/` directory — same folder as generate-solutions)
-- **Filename:** `ice-[YYYY-MM-DD]-[slugified-idea-title].md`
+- **Filename:** `ice-[slugified-idea-title]-v[version].md` (kebab-case, auto-increment; never overwrite — re-score after tests as a new version)
 
 ## Process
 

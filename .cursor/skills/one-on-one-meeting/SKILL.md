@@ -17,11 +17,11 @@ Turn raw 1:1 notes into a structured Markdown record with tracked action items a
 
 ## Input
 - **Required:** Raw meeting notes (any format) + the person's name
-- **Optional:** Previous notes from `meeting-notes/1-1 notes/`
+- **Optional:** Previous notes from `meeting-notes/1-1-notes/`
 - **Context:** `company-level-context/` for OKR alignment of discussion topics
 
 ## Output
-- **Format:** Markdown — **Location:** `meeting-notes/1-1 notes/`
+- **Format:** Markdown — **Location:** `meeting-notes/1-1-notes/`
 - **Filename:** `[PersonName].md` (e.g., `JohnDoe.md`)
 - Append each new meeting at the **top** of the file (most recent first).
 
